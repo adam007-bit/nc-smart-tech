@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="NC Smart Tech — end-to-end IoT, robotics and materials R&D. Smart solutions for a smart future." />
+  <title>NC Smart Tech — Smart solutions for a smart future</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <style>
+    /* ----- Base ----- */
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#4f46e5; --accent-2:#06b6d4; --glass: rgba(255,255,255,0.04);
+      --radius:12px; --container:1100px; --max-w:1200px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%; margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,#061024 0%, #081226 100%); color:#e6eef6}
+    a{color:var(--accent); text-decoration:none}
+    .container{max-width:var(--container); margin:0 auto; padding:28px}
+    header{backdrop-filter: blur(4px); background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-bottom:1px solid rgba(255,255,255,0.03)}
+    .nav{display:flex; align-items:center; gap:18px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); display:inline-grid; place-items:center; font-weight:700; color:white}
+
+    /* ----- Hero ----- */
+    .hero{display:grid; grid-template-columns:1fr 420px; gap:32px; align-items:center; padding:48px 0}
+    .hero h1{font-size:38px; line-height:1.02; margin:0}
+    .sub{color:var(--muted); margin-top:12px; font-size:15px}
+    .cta-row{margin-top:20px; display:flex; gap:12px; align-items:center}
+    .btn{background:var(--accent); color:white; padding:10px 16px; border-radius:10px; font-weight:600; border:0; cursor:pointer}
+    .btn.alt{background:transparent; border:1px solid rgba(255,255,255,0.06); color:#cfe6ff}
+
+    /* Card and grid */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03); padding:18px; border-radius:var(--radius)}
+
+    /* Features */
+    .features{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:28px}
+    .feature h3{margin:0 0 8px 0}
+    .muted{color:var(--muted)}
+
+    /* Projects */
+    .projects{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:26px}
+    .project{padding:14px; border-radius:10px; background:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(255,255,255,0.01));}
+
+    /* Live demo box */
+    .live-demo{height:320px; border-radius:10px; overflow:hidden; display:flex; flex-direction:column}
+    .telemetry{flex:1; display:grid; grid-template-columns:1fr 120px}
+    .chart-sim{padding:14px}
+    .chip{display:inline-block; padding:6px 10px; border-radius:999px; background:var(--glass); color:#cde6ff; font-size:13px; border:1px solid rgba(255,255,255,0.03)}
+
+    /* Footer */
+    footer{padding:34px 0; border-top:1px solid rgba(255,255,255,0.03); margin-top:40px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .features, .projects{grid-template-columns:1fr}
+      .telemetry{grid-template-columns:1fr}
+    }
+
+    /* small helpers */
+    .small{font-size:13px}
+    .pill{padding:6px 8px; border-radius:8px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03)}
+
+    /* Accessibility focus */
+    a:focus, button:focus{outline:3px solid rgba(79,70,229,0.18); outline-offset:2px}
+
+    /* Simple chart bars */
+    .bars{display:flex; gap:8px; align-items:end; height:110px}
+    .bar{width:10px; background:linear-gradient(180deg,var(--accent-2),var(--accent)); border-radius:6px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Main navigation">
+      <div class="brand">
+        <div class="logo">NC</div>
+        <div>
+          <div style="font-weight:700">NC Smart Tech</div>
+          <div class="small muted">Smart solution for smart future</div>
+        </div>
+      </div>
+      <nav style="margin-left:auto; display:flex; gap:14px; align-items:center">
+        <a class="pill" href="#solutions">Solutions</a>
+        <a class="pill" href="#projects">Projects</a>
+        <a class="pill" href="#education">Education</a>
+        <a class="pill" href="/dashboard">Dashboard</a>
+        <button class="btn" id="requestDemoBtn">Request Demo</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="top">
+    <section class="hero">
+      <div>
+        <h1>NC Smart Tech — <span style="color:var(--accent)">Smart solutions</span> for a smart future</h1>
+        <p class="sub">IoT, robotics, coatings and education — end-to-end design, prototyping and deployment for industry and academia.</p>
+        <div class="cta-row">
+          <button class="btn" id="demoPrimary">Request Demo</button>
+          <a class="btn alt" href="#products">View Products</a>
+          <a class="btn alt" href="#contact">Hire Us</a>
+        </div>
+
+        <div class="features" aria-hidden="false">
+          <div class="card feature">
+            <h3>End-to-end R&D</h3>
+            <p class="muted small">From concept to pilot — design, prototype and certify hardware & software.</p>
+          </div>
+          <div class="card feature">
+            <h3>Industrial IoT</h3>
+            <p class="muted small">Secure device fleets, telemetry, OTA updates and predictive analytics.</p>
+          </div>
+          <div class="card feature">
+            <h3>Materials & Coatings</h3>
+            <p class="muted small">Custom formulations, lab testing and material qualification for harsh environments.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:22px; display:flex; gap:10px; align-items:center">
+          <div class="chip">Clients: Manufacturing • Research • Education</div>
+          <div class="muted small">• ISO-friendly lab processes • SaaS analytics</div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card live-demo" aria-label="Live demo snapshot">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 14px 0 14px">
+            <div>
+              <div class="small muted">Live Telemetry</div>
+              <div style="font-weight:700">Factory Sensor Cluster</div>
+            </div>
+            <div class="small muted">Device uptime <strong>99.92%</strong></div>
+          </div>
+
+          <div class="telemetry">
+            <div class="chart-sim">
+              <div class="bars" id="bars">
+                <!-- JS will populate -->
+              </div>
+            </div>
+            <div style="padding:12px; border-left:1px solid rgba(255,255,255,0.03);">
+              <div class="small muted">Latest</div>
+              <div style="margin-top:8px;font-weight:700">Temp: <span id="tempVal">--</span> °C</div>
+              <div style="margin-top:10px;color:var(--muted); font-size:13px">Battery: <span id="battVal">--</span>%</div>
+              <div style="margin-top:16px"><button class="btn" id="openTelemetry">Open Dashboard</button></div>
+            </div>
+          </div>
+
+          <div style="padding:12px; display:flex; gap:8px; align-items:center; justify-content:space-between">
+            <div class="small muted">Featured project: Autonomous surface inspection</div>
+            <div class="small muted">ETA prototype: <strong>Q2 2026</strong></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="solutions">
+      <h2 style="margin-top:24px">Solutions</h2>
+      <p class="muted small">Problem-led engineering: we align with your KPIs and regulatory needs.</p>
+      <div class="projects" id="projects">
+        <div class="project card">
+          <h3>Smart IoT Platform</h3>
+          <p class="muted small">Device registration, telemetry store, alerts and analytics with role-based access.</p>
+          <div style="margin-top:12px"><a href="#" class="small">View case study →</a></div>
+        </div>
+        <div class="project card">
+          <h3>Robotics & Autonomy</h3>
+          <p class="muted small">Perception stack, navigation, simulation and field trials for industrial tasks.</p>
+          <div style="margin-top:12px"><a href="#" class="small">View case study →</a></div>
+        </div>
+        <div class="project card">
+          <h3>Coatings & Materials</h3>
+          <p class="muted small">Corrosion-resistant coatings and bespoke composites with lab verification reports.</p>
+          <div style="margin-top:12px"><a href="#" class="small">View data sheet →</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" style="margin-top:28px">
+      <h2>Education & Training</h2>
+      <p class="muted small">Workshops, online courses and postgraduate mentoring to upskill teams and students.</p>
+      <div style="display:flex; gap:12px; margin-top:10px; flex-wrap:wrap">
+        <div class="card" style="min-width:220px;">Online Courses<br/><small class="muted">Intro to IoT, ROS for robotics, Materials testing</small></div>
+        <div class="card" style="min-width:220px;">Teaching Materials<br/><small class="muted">Labs, slides and assessment kits</small></div>
+        <div class="card" style="min-width:220px;">Mentoring & Research<br/><small class="muted">University supervision and lab access</small></div>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:34px">
+      <div style="display:flex; gap:18px; align-items:stretch; flex-wrap:wrap">
+        <div style="flex:1" class="card">
+          <h3>Contact / Request Demo</h3>
+          <p class="muted small">Tell us a bit about your project — we’ll propose a pilot & timeline.</p>
+          <form id="demoForm" style="margin-top:8px; display:grid; gap:8px">
+            <input name="name" placeholder="Your name" required style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit" />
+            <input name="email" type="email" placeholder="you@company.com" required style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit" />
+            <textarea name="brief" rows="4" placeholder="Short project brief" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit"></textarea>
+            <div style="display:flex; gap:8px"><button class="btn" type="submit">Send Request</button><button class="btn alt" type="button" id="clearForm">Clear</button></div>
+            <div id="formMsg" class="muted small" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <div style="width:320px" class="card">
+          <h4>Quick contacts</h4>
+          <div style="margin-top:8px" class="small muted">Email: <a href="mailto:hello@ncsmarttech.example">hello@ncsmarttech.example</a></div>
+          <div class="small muted" style="margin-top:6px">Phone: +60 12 345 6789</div>
+          <div class="small muted" style="margin-top:6px">Address: R&amp;D Park, Cyberjaya, Malaysia</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap">
+        <div>
+          <div style="font-weight:700">NC Smart Tech</div>
+          <div class="small muted">Smart solution for smart future</div>
+        </div>
+        <div class="small muted">© <span id="year"></span> NC Smart Tech — All rights reserved</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal (simple) -->
+  <div id="modal" role="dialog" aria-modal="true" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;padding:24px">
+    <div style="background:linear-gradient(180deg, rgba(10,12,18,0.92), rgba(8,12,20,0.95)); padding:18px; border-radius:12px; width:100%; max-width:680px; border:1px solid rgba(255,255,255,0.04);">
+      <h3 style="margin:0 0 8px 0">Request a demo</h3>
+      <p class="muted small">Leave your contact and we’ll schedule a short walkthrough.</p>
+      <form id="modalForm" style="display:grid; gap:8px; margin-top:8px">
+        <input name="name" placeholder="Your name" required style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit" />
+        <input name="email" type="email" placeholder="you@company.com" required style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit" />
+        <textarea name="message" rows="4" placeholder="Short message" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit"></textarea>
+        <div style="display:flex; gap:8px; justify-content:flex-end">
+          <button class="btn" type="submit">Send</button>
+          <button type="button" class="btn alt" id="closeModal">Close</button>
+        </div>
+        <div id="modalMsg" class="muted small" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // small interactive helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // populate bars
+    const barsEl = document.getElementById('bars');
+    function renderBars(){
+      barsEl.innerHTML = '';
+      for(let i=0;i<14;i++){
+        const h = Math.round(20 + Math.random()*90);
+        const div = document.createElement('div'); div.className='bar'; div.style.height = h + 'px';
+        barsEl.appendChild(div);
+      }
+      // update values
+      document.getElementById('tempVal').textContent = (20 + Math.random()*14).toFixed(1);
+      document.getElementById('battVal').textContent = Math.floor(60 + Math.random()*40);
+    }
+    renderBars(); setInterval(renderBars, 2000);
+
+    // demo modal
+    const modal = document.getElementById('modal');
+    function openModal(){ modal.style.display='flex'; modal.querySelector('input[name="name"]').focus(); }
+    function closeModal(){ modal.style.display='none'; }
+    document.getElementById('requestDemoBtn').addEventListener('click', openModal);
+    document.getElementById('demoPrimary').addEventListener('click', openModal);
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+
+    // simple form handlers (mock)
+    document.getElementById('demoForm').addEventListener('submit', function(e){
+      e.preventDefault(); document.getElementById('formMsg').textContent = 'Thanks — request sent. We will contact you soon.';
+    });
+    document.getElementById('clearForm').addEventListener('click', function(){ document.getElementById('demoForm').reset(); document.getElementById('formMsg').textContent=''; });
+
+    document.getElementById('modalForm').addEventListener('submit', function(e){
+      e.preventDefault(); document.getElementById('modalMsg').textContent = 'Demo request received — expect an email within 2 business days.'; setTimeout(closeModal, 1600);
+    });
+
+    document.getElementById('openTelemetry').addEventListener('click', ()=>{ window.location.href = '/dashboard'; });
+
+    // accessible close on Esc
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+  </script>
+</body>
+</html>
