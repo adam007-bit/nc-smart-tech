@@ -334,57 +334,38 @@
     &copy; 2025 NC Smart Tech. Smart Solution for Smart Future.
   </footer>
 
-  <!-- WhatsApp Floating Button -->
+   <!-- WhatsApp Floating Button -->
   <a href="https://wa.me/601158605250" class="whatsapp-btn" target="_blank">
     <img src="images/whatsapp.jpg" alt="WhatsApp">
   </a>
-<!-- Chatbot Floating Button -->
-<div class="chatbot-icon" onclick="toggleChat()">💬</div>
 
-<!-- Chatbot Window -->
-<div class="chatbot-box" id="chatbox">
-  <div class="chatbot-header">
-    <strong>NC Smart Tech AI</strong>
-    <span onclick="toggleChat()" style="cursor:pointer;">✖</span>
-  </div>
-  <div class="chatbot-content" id="chatContent">
-    <p>Hello! I am your AI assistant. Ask me anything about NC Smart Tech!</p>
-  </div>
-  <input type="text" id="userInput" placeholder="Type a message..." onkeydown="sendMessage(event)">
-</div>
-
+<!-- Chatbase Widget -->
 <script>
-function toggleChat() {
-  const box = document.getElementById("chatbox");
-  box.style.display = box.style.display === "flex" ? "none" : "flex";
-}
-
-async function sendMessage(event) {
-  if (event.key === "Enter") {
-    let input = document.getElementById("userInput");
-    let content = document.getElementById("chatContent");
-
-    let userText = input.value.trim();
-    if (userText === "") return;
-
-    content.innerHTML += "<p><strong>You:</strong> " + userText + "</p>";
-    input.value = "";
-    content.scrollTop = content.scrollHeight;
-
-    // Call backend AI
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: userText })
-    });
-    const data = await response.json();
-
-    content.innerHTML += "<p><strong>Bot:</strong> " + data.reply + "</p>";
-    content.scrollTop = content.scrollHeight;
-  }
-}
+(function(){
+    if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+        window.chatbase = (...arguments)=>{
+            if(!window.chatbase.q){ window.chatbase.q = []; }
+            window.chatbase.q.push(arguments);
+        };
+        window.chatbase = new Proxy(window.chatbase,{
+            get(target, prop){
+                if(prop === "q"){ return target.q; }
+                return (...args)=>target(prop, ...args);
+            }
+        });
+    }
+    const onLoad = function(){
+        const script = document.createElement("script");
+        script.src = "https://www.chatbase.co/embed.min.js";
+        script.id = "aBUV61zdhX_JDu2BMFFYm";  // Your Chatbase bot ID
+        script.domain = "www.chatbase.co";
+        document.body.appendChild(script);
+    };
+    if(document.readyState === "complete"){ onLoad(); }
+    else { window.addEventListener("load", onLoad); }
+})();
 </script>
-
 
 </body>
 </html>
+
