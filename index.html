@@ -43,13 +43,13 @@
     }
 
     .brand img {
-      width: 300px;
-      height: 300px;
+      width: 80px;
+      height: 80px;
       object-fit: contain;
     }
 
     .brand-name {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 700;
       color: #0056d2;
     }
@@ -72,13 +72,13 @@
     }
 
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       color: #003d99;
       margin-bottom: 1rem;
     }
 
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #555;
       margin-bottom: 2rem;
     }
@@ -122,6 +122,27 @@
       font-size: 0.9rem;
       color: #555;
     }
+
+    /* WhatsApp Floating Button */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    .whatsapp-btn img {
+      width: 32px;
+      height: 32px;
+    }
+
   </style>
 </head>
 <body>
@@ -150,6 +171,7 @@
       <a href="#">Hire Us</a>
     </div>
   </section>
+
 <!-- About Section -->
 <section>
   <div class="container">
@@ -206,27 +228,14 @@
   </div>
 </section>
 
-  <section>
-    <div class="container">
-      <h2>Our Solutions</h2>
-      <p style="text-align:center; max-width:700px; margin:auto;">
-        We deliver innovative technologies in IoT, robotics, coatings, and smart education.
-        Explore our portfolio to see how we bring ideas to life for businesses and universities worldwide.
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <h2>Why Choose NC Smart Tech</h2>
-      <p style="text-align:center; max-width:700px; margin:auto;">
-        Trusted by global clients for advanced R&amp;D, precision engineering, and world-class teaching innovation.
-      </p>
-    </div>
-  </section>
-
   <footer class="footer">
     &copy; 2025 NC Smart Tech. Smart Solution for Smart Future.
   </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/601112515077" class="whatsapp-btn" target="_blank">
+    <img src="images/whatsapp.png" alt="WhatsApp">
+  </a>
+
 </body>
 </html>
