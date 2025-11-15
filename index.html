@@ -1,251 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NC Smart Tech — Smart Solutions for a Smart Future</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", Arial, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NC Smart Tech — Smart Solutions for a Smart Future</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Arial, sans-serif; }
+  body { background-color: #ffffff; color: #222; line-height: 1.6; scroll-behavior: smooth; }
+  header { background-color: #f9fbff; border-bottom: 2px solid #e0e6f0; padding: 1.5rem 0; }
+  .container { width: 90%; max-width: 1200px; margin: auto; }
+  .nav { display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand img { width: 80px; height: 80px; object-fit: contain; }
+  .brand-name { font-size: 1.8rem; font-weight: 700; color: #0056d2; }
+  nav a { margin: 0 10px; text-decoration: none; color: #333; font-weight: 500; font-size: 1.5rem; }
+  nav a:hover { color: #0056d2; }
+  .hero { text-align: center; padding: 4rem 1rem; background: linear-gradient(to bottom right, #e8f1ff, #ffffff); }
+  .hero h1 { font-size: 2.8rem; color: #003d99; margin-bottom: 1rem; }
+  .hero p { font-size: 1.3rem; color: #555; margin-bottom: 2rem; }
+  .cta { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+  .cta a { padding: 12px 24px; background-color: #0056d2; color: white; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s; }
+  .cta a:hover { background-color: #003d99; }
+  section { padding: 3rem 0; }
+  h2 { text-align: center; font-size: 2rem; color: #003d99; margin-bottom: 1.5rem; }
+  .footer { background-color: #f2f5fa; text-align: center; padding: 1.5rem 0; font-size: 0.9rem; color: #555; }
+  .whatsapp-btn { position: fixed; bottom: 90px; right: 20px; background: #25D366; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999; }
+  .whatsapp-btn img { width: 32px; height: 32px; }
+  #langSelector { position: fixed; bottom: 160px; right: 20px; padding: 6px 10px; border-radius: 6px; font-size: 14px; z-index: 9999; }
 
-    body {
-      background-color: #ffffff;
-      color: #222;
-      line-height: 1.6;
-    }
-
-    header {
-      background-color: #f9fbff;
-      border-bottom: 2px solid #e0e6f0;
-      padding: 1.5rem 0;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand img {
-      width: 400px;
-      height: 400px;
-      object-fit: contain;
-    }
-
-    .brand-name {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #0056d2;
-    }
-
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      font-size: 1.50rem;
-    }
-
-    nav a:hover {
-      color: #0056d2;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 4rem 1rem;
-      background: linear-gradient(to bottom right, #e8f1ff, #ffffff);
-    }
-
-    .hero h1 {
-      font-size: 2.8rem;
-      color: #003d99;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      color: #555;
-      margin-bottom: 2rem;
-    }
-
-    .cta {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .cta a {
-      padding: 12px 24px;
-      background-color: #0056d2;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s;
-    }
-
-    .cta a:hover {
-      background-color: #003d99;
-    }
-
-    section {
-      padding: 3rem 0;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-      color: #003d99;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer {
-      background-color: #f2f5fa;
-      text-align: center;
-      padding: 1.5rem 0;
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    /* WhatsApp Floating Button */
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      background: #25D366;
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      z-index: 999;
-    }
-    .whatsapp-btn img {
-      width: 32px;
-      height: 32px;
-    }
-
-    /* MOBILE SETTINGS */
-    @media (max-width: 768px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-      }
-
-      .brand img {
-        width: 80px;
-        height: 80px;
-      }
-
-      .brand-name {
-        font-size: 1.6rem;
-      }
-
-      nav {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      nav a {
-        font-size: 1rem;
-        padding: 6px 0;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .hero p {
-        font-size: 1.1rem;
-      }
-
-      .cta a {
-        width: 100%;
-        text-align: center;
-      }
-    }
-  </style>
+  /* MOBILE SETTINGS */
+  @media (max-width: 768px) {
+    .nav { flex-direction: column; align-items: flex-start; gap: 15px; }
+    nav { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; }
+    nav a { font-size: 1rem; padding: 6px 0; }
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 1.1rem; }
+    .cta a { width: 100%; text-align: center; }
+  }
+</style>
 </head>
-
 <body>
 
 <header>
   <div class="container nav">
     <div class="brand">
-      <img src="images/logo.png" alt="NC Smart Tech Logo" />
-      <div class="brand-name">NC Smart Tech</div>
+      <img src="images/logo.png" alt="NC Smart Tech Logo">
+      <div class="brand-name" id="brandName">NC Smart Tech</div>
     </div>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">Solutions</a>
-      <a href="#">Education</a>
-      <a href="#">Research</a>
-      <a href="#">Contact</a>
+      <a href="#" id="navHome">Home</a>
+      <a href="#" id="navSolutions">Solutions</a>
+      <a href="#" id="navEducation">Education</a>
+      <a href="#" id="navResearch">Research</a>
+      <a href="#" id="navContact">Contact</a>
     </nav>
   </div>
 </header>
 
+<main>
 <section class="hero">
-  <h1>Smart Solutions for a Smart Future</h1>
-  <p>IoT, robotics, coatings, and education — end-to-end design, prototyping, and deployment for industry and academia.</p>
+  <h1 id="heroTitle">Smart Solutions for a Smart Future</h1>
+  <p id="heroText">IoT, robotics, coatings, and education — end-to-end design, prototyping, and deployment for industry and academia.</p>
   <div class="cta">
-    <a href="#">Request Demo</a>
-    <a href="#">View Products</a>
-    <a href="#">Hire Us</a>
+    <a href="#" id="ctaDemo">Request Demo</a>
+    <a href="#" id="ctaProducts">View Products</a>
+    <a href="#" id="ctaHire">Hire Us</a>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <h2>About NC Smart Tech</h2>
-    <p style="text-align:center; max-width:700px; margin:auto;">
-      NC Smart Tech is a leading provider of IoT, robotics, coatings, and engineering education solutions.
-      Our mission is to bridge innovation and practical deployment for industry and academia.
+    <h2 id="aboutTitle">About NC Smart Tech</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;" id="aboutText">
+      NC Smart Tech is a leading provider of IoT, robotics, coatings, and engineering education solutions. Our mission is to bridge innovation and practical deployment for industry and academia.
     </p>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <h2>Our Products & Solutions</h2>
+    <h2 id="productsTitle">Our Products & Solutions</h2>
     <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-top:20px;">
       <div style="background:#f9fbff; padding:20px; border-radius:12px; width:280px; text-align:center; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
-        <h3>Smart Devices & IoT</h3>
-        <p>Connected devices and platforms for real-time monitoring and analytics.</p>
+        <h3 id="prodIoT">Smart Devices & IoT</h3>
+        <p id="prodIoTText">Connected devices and platforms for real-time monitoring and analytics.</p>
       </div>
       <div style="background:#f9fbff; padding:20px; border-radius:12px; width:280px; text-align:center; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
-        <h3>Robotics & Autonomy</h3>
-        <p>Industrial robots and autonomous systems for precise, safe operations.</p>
+        <h3 id="prodRobotics">Robotics & Autonomy</h3>
+        <p id="prodRoboticsText">Industrial robots and autonomous systems for precise, safe operations.</p>
       </div>
       <div style="background:#f9fbff; padding:20px; border-radius:12px; width:280px; text-align:center; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
-        <h3>Coatings & Materials</h3>
-        <p>Custom formulations, testing, and certified materials for various industries.</p>
+        <h3 id="prodCoatings">Coatings & Materials</h3>
+        <p id="prodCoatingsText">Custom formulations, testing, and certified materials for various industries.</p>
       </div>
       <div style="background:#f9fbff; padding:20px; border-radius:12px; width:280px; text-align:center; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
-        <h3>Education & Training</h3>
-        <p>Online courses, workshops, and mentoring for students and corporate teams.</p>
+        <h3 id="prodEducation">Education & Training</h3>
+        <p id="prodEducationText">Online courses, workshops, and mentoring for students and corporate teams.</p>
       </div>
     </div>
   </div>
@@ -253,8 +103,8 @@
 
 <section>
   <div class="container">
-    <h2>Clients & Partners</h2>
-    <p style="text-align:center; max-width:700px; margin:auto;">
+    <h2 id="clientsTitle">Clients & Partners</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;" id="clientsText">
       We collaborate with universities, research institutions, and leading industrial partners to deliver high-quality solutions worldwide.
     </p>
   </div>
@@ -262,14 +112,15 @@
 
 <section>
   <div class="container">
-    <h2>Contact Us</h2>
-    <p style="text-align:center; max-width:700px; margin:auto;">
+    <h2 id="contactTitle">Contact Us</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;" id="contactText">
       Have a project in mind? Reach out to schedule a demo or discuss your requirements.
     </p>
   </div>
 </section>
+</main>
 
-<footer class="footer">
+<footer class="footer" id="footerText">
   &copy; 2025 NC Smart Tech. Smart Solution for Smart Future.
 </footer>
 
@@ -277,54 +128,83 @@
   <img src="images/whatsapp.jpg" alt="WhatsApp">
 </a>
 
-<!-- =========================== -->
-<!-- DUAL LANGUAGE SELECTOR -->
-<!-- =========================== -->
-<select id="langSelector"
-  style="
-      position: fixed;
-      bottom: 160px;
-      right: 20px;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 14px;
-      z-index: 9999;
-  ">
+<select id="langSelector">
   <option value="en">English</option>
   <option value="ms">Bahasa Melayu</option>
 </select>
 
-<!-- LANGUAGE SYSTEM -->
 <script>
-  const langData = {
-    en: {
-      bubbleText: "Chat with us",
-      greeting: "Hello! How can I help you today?",
-      title: "Assistant",
-      subtitle: "We're here to help."
-    },
-    ms: {
-      bubbleText: "Sembang dengan kami",
-      greeting: "Hai! Ada apa yang boleh saya bantu hari ini?",
-      title: "Pembantu",
-      subtitle: "Kami sedia membantu."
-    }
-  };
+// ------------------ WEBSITE TEXT ------------------
+const translations = {
+  en: {
+    brandName: "NC Smart Tech",
+    navHome: "Home", navSolutions: "Solutions", navEducation: "Education", navResearch: "Research", navContact: "Contact",
+    heroTitle: "Smart Solutions for a Smart Future",
+    heroText: "IoT, robotics, coatings, and education — end-to-end design, prototyping, and deployment for industry and academia.",
+    ctaDemo: "Request Demo", ctaProducts: "View Products", ctaHire: "Hire Us",
+    aboutTitle: "About NC Smart Tech",
+    aboutText: "NC Smart Tech is a leading provider of IoT, robotics, coatings, and engineering education solutions. Our mission is to bridge innovation and practical deployment for industry and academia.",
+    productsTitle: "Our Products & Solutions",
+    prodIoT: "Smart Devices & IoT", prodIoTText: "Connected devices and platforms for real-time monitoring and analytics.",
+    prodRobotics: "Robotics & Autonomy", prodRoboticsText: "Industrial robots and autonomous systems for precise, safe operations.",
+    prodCoatings: "Coatings & Materials", prodCoatingsText: "Custom formulations, testing, and certified materials for various industries.",
+    prodEducation: "Education & Training", prodEducationText: "Online courses, workshops, and mentoring for students and corporate teams.",
+    clientsTitle: "Clients & Partners", clientsText: "We collaborate with universities, research institutions, and leading industrial partners to deliver high-quality solutions worldwide.",
+    contactTitle: "Contact Us", contactText: "Have a project in mind? Reach out to schedule a demo or discuss your requirements.",
+    footerText: "&copy; 2025 NC Smart Tech. Smart Solution for Smart Future."
+  },
+  ms: {
+    brandName: "NC Smart Tech",
+    navHome: "Laman Utama", navSolutions: "Penyelesaian", navEducation: "Pendidikan", navResearch: "Penyelidikan", navContact: "Hubungi",
+    heroTitle: "Penyelesaian Pintar untuk Masa Depan Pintar",
+    heroText: "IoT, robotik, salutan, dan pendidikan — reka bentuk, prototaip, dan pelaksanaan menyeluruh untuk industri dan akademik.",
+    ctaDemo: "Minta Demo", ctaProducts: "Lihat Produk", ctaHire: "Sewa Kami",
+    aboutTitle: "Mengenai NC Smart Tech",
+    aboutText: "NC Smart Tech adalah penyedia utama IoT, robotik, salutan, dan penyelesaian pendidikan kejuruteraan. Misi kami adalah untuk menghubungkan inovasi dan pelaksanaan praktikal untuk industri dan akademik.",
+    productsTitle: "Produk & Penyelesaian Kami",
+    prodIoT: "Peranti Pintar & IoT", prodIoTText: "Peranti dan platform berhubung untuk pemantauan dan analitik masa nyata.",
+    prodRobotics: "Robotik & Autonomi", prodRoboticsText: "Robot industri dan sistem autonomi untuk operasi tepat dan selamat.",
+    prodCoatings: "Salutan & Bahan", prodCoatingsText: "Formulasi khusus, ujian, dan bahan bersijil untuk pelbagai industri.",
+    prodEducation: "Pendidikan & Latihan", prodEducationText: "Kursus atas talian, bengkel, dan bimbingan untuk pelajar dan pasukan korporat.",
+    clientsTitle: "Pelanggan & Rakan Kongsi", clientsText: "Kami bekerjasama dengan universiti, institusi penyelidikan, dan rakan industri terkemuka untuk menyediakan penyelesaian berkualiti tinggi di seluruh dunia.",
+    contactTitle: "Hubungi Kami", contactText: "Ada projek dalam fikiran? Hubungi kami untuk menjadualkan demo atau membincangkan keperluan anda.",
+    footerText: "&copy; 2025 NC Smart Tech. Penyelesaian Pintar untuk Masa Depan Pintar."
+  }
+};
 
-  function updateChatLanguage(lang) {
+function setLanguage(lang) {
+  for(const id in translations[lang]) {
+    if(document.getElementById(id)) {
+      document.getElementById(id).innerHTML = translations[lang][id];
+    }
+  }
+  // Update Chatbase as well
+  updateChatLanguage(lang);
+}
+
+document.getElementById("langSelector").addEventListener("change", function() {
+  setLanguage(this.value);
+});
+
+// ------------------ CHATBOT ------------------
+const chatLangData = {
+  en: { bubbleText: "Chat with us", greeting: "Hello! How can I help you today?", title: "Assistant", subtitle: "We're here to help." },
+  ms: { bubbleText: "Sembang dengan kami", greeting: "Hai! Ada apa yang boleh saya bantu hari ini?", title: "Pembantu", subtitle: "Kami sedia membantu." }
+};
+
+function updateChatLanguage(lang) {
+  if(window.chatbase && window.chatbase("getState") === "initialized") {
     window.chatbase("config", {
-      prompt_input_initial: langData[lang].greeting,
-      prompt_text: langData[lang].bubbleText,
-      title: langData[lang].title,
-      subtitle: langData[lang].subtitle
+      prompt_input_initial: chatLangData[lang].greeting,
+      prompt_text: chatLangData[lang].bubbleText,
+      title: chatLangData[lang].title,
+      subtitle: chatLangData[lang].subtitle
     });
   }
+}
 
-  document.getElementById("langSelector").addEventListener("change", function () {
-    updateChatLanguage(this.value);
-  });
-
-  updateChatLanguage("en");
+// Initialize default language
+window.addEventListener('load', function() { setLanguage('en'); });
 </script>
 
 <!-- =========================== -->
@@ -333,16 +213,8 @@
 <script>
 (function(){
     if(!window.chatbase || window.chatbase("getState") !== "initialized"){
-        window.chatbase = (...arguments)=>{
-            if(!window.chatbase.q){ window.chatbase.q = []; }
-            window.chatbase.q.push(arguments);
-        };
-        window.chatbase = new Proxy(window.chatbase,{
-            get(target, prop){
-                if(prop === "q"){ return target.q; }
-                return (...args)=>target(prop, ...args);
-            }
-        });
+        window.chatbase = (...arguments)=>{ if(!window.chatbase.q){ window.chatbase.q = []; } window.chatbase.q.push(arguments); };
+        window.chatbase = new Proxy(window.chatbase,{ get(target, prop){ if(prop === "q"){ return target.q; } return (...args)=>target(prop, ...args); } });
     }
     const onLoad = function(){
         const script = document.createElement("script");
