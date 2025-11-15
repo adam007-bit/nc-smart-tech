@@ -26,31 +26,50 @@
   .footer { background-color: #f2f5fa; text-align: center; padding: 1.5rem 0; font-size: 0.9rem; color: #555; }
   .whatsapp-btn { position: fixed; bottom: 90px; right: 20px; background: #25D366; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999; }
   .whatsapp-btn img { width: 32px; height: 32px; }
+#langSelector {
+  -webkit-appearance: none; /* remove default dropdown style for Chrome/Safari */
+  -moz-appearance: none;    /* remove default style for Firefox */
+  appearance: none;         /* remove default style for others */
+  
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9fbff;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-left: auto; /* top-right alignment in header */
+  position: relative;
+}
 
- #langSelector {
-      padding: 6px 12px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-      background-color: #f9fbff;
-      cursor: pointer;
-      transition: all 0.3s;
-      margin-left: auto; /* push it to the far right in header */
-    }
+#langSelector:hover {
+  border-color: #0056d2;
+  background-color: #ffffff;
+}
 
-    #langSelector:hover {
-      border-color: #0056d2;
-      background-color: #ffffff;
-    }
+/* Add a custom arrow on the right */
+#langSelector::after {
+  content: "▼";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 10px;
+  color: #555;
+}
 
-    /* MOBILE SETTINGS */
-    @media (max-width: 768px) {
-      #langSelector {
-        width: 100px;
-        font-size: 12px;
-        margin-left: 0;
-      }
-    }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #langSelector {
+    width: 110px;
+    font-size: 12px;
+    margin-left: 0;
+  }
+}
+
   </style>
 </head>
 <body>
