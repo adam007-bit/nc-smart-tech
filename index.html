@@ -26,51 +26,92 @@
   .footer { background-color: #f2f5fa; text-align: center; padding: 1.5rem 0; font-size: 0.9rem; color: #555; }
   .whatsapp-btn { position: fixed; bottom: 90px; right: 20px; background: #25D366; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999; }
   .whatsapp-btn img { width: 32px; height: 32px; }
-#langSelector {
-  -webkit-appearance: none; /* remove default dropdown style for Chrome/Safari */
-  -moz-appearance: none;    /* remove default style for Firefox */
-  appearance: none;         /* remove default style for others */
-  
-  padding: 8px 14px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  background-color: #f9fbff;
-  color: #333;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s;
-  margin-left: auto; /* top-right alignment in header */
-  position: relative;
-}
 
-#langSelector:hover {
-  border-color: #0056d2;
-  background-color: #ffffff;
-}
-
-/* Add a custom arrow on the right */
-#langSelector::after {
-  content: "▼";
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  font-size: 10px;
-  color: #555;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
   #langSelector {
-    width: 110px;
-    font-size: 12px;
-    margin-left: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f9fbff;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-left: auto;
+    position: relative;
   }
-}
 
-  </style>
+  #langSelector:hover {
+    border-color: #0056d2;
+    background-color: #ffffff;
+  }
+
+  #langSelector::after {
+    content: "▼";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 10px;
+    color: #555;
+  }
+
+  /* Solutions Section */
+  .solutions-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .solution-card {
+    background: #f9fbff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .solution-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  }
+
+  .solution-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 12px;
+  }
+
+  .solution-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background-color: #0056d2;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s;
+  }
+
+  .solution-btn:hover {
+    background-color: #003d99;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    #langSelector { width: 110px; font-size: 12px; margin-left: 0; }
+    .solution-card { width: 90%; }
+  }
+</style>
 </head>
 <body>
 
@@ -87,22 +128,12 @@
       <a href="#" id="navResearch">Research</a>
       <a href="#" id="navContact">Contact</a>
     </nav>
-    <!-- Professional Language Switcher -->
-    <select id="langSelector" style="
-        padding: 6px 12px;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-        font-size: 14px;
-        background-color: #f9fbff;
-        cursor: pointer;
-        transition: all 0.3s;
-      ">
+    <select id="langSelector">
       <option value="en">English</option>
       <option value="ms">Bahasa Melayu</option>
     </select>
   </div>
 </header>
-
 
 <main>
 <section class="hero">
@@ -121,6 +152,39 @@
     <p style="text-align:center; max-width:700px; margin:auto;" id="aboutText">
       NC Smart Tech is a leading provider of IoT, robotics, coatings, and engineering education solutions. Our mission is to bridge innovation and practical deployment for industry and academia.
     </p>
+  </div>
+</section>
+
+<!-- ====== Solutions Section ====== -->
+<section id="solutions">
+  <div class="container">
+    <h2 id="solutionsTitle">Our Solutions</h2>
+    <div class="solutions-grid">
+      <div class="solution-card">
+        <img src="images/iot.png" alt="IoT" class="solution-icon">
+        <h3 id="solIoTTitle">Smart Devices & IoT</h3>
+        <p id="solIoTText">We design connected devices and intelligent platforms to monitor, analyze, and optimize processes in real time. Our IoT solutions help businesses increase efficiency, reduce downtime, and make data-driven decisions.</p>
+        <a href="#" class="solution-btn" id="solIoTBtn">Learn More</a>
+      </div>
+      <div class="solution-card">
+        <img src="images/robotics.png" alt="Robotics" class="solution-icon">
+        <h3 id="solRoboticsTitle">Robotics & Autonomy</h3>
+        <p id="solRoboticsText">Our robotics solutions bring automation to industrial and commercial environments. From collaborative robots to fully autonomous systems, we ensure safety, precision, and increased productivity.</p>
+        <a href="#" class="solution-btn" id="solRoboticsBtn">Learn More</a>
+      </div>
+      <div class="solution-card">
+        <img src="images/coatings.png" alt="Coatings" class="solution-icon">
+        <h3 id="solCoatingsTitle">Coatings & Materials</h3>
+        <p id="solCoatingsText">We develop advanced materials and coatings tailored for industry needs. From protective coatings to high-performance materials, we provide testing, certification, and application support.</p>
+        <a href="#" class="solution-btn" id="solCoatingsBtn">Learn More</a>
+      </div>
+      <div class="solution-card">
+        <img src="images/education.png" alt="Education" class="solution-icon">
+        <h3 id="solEducationTitle">Education & Training</h3>
+        <p id="solEducationText">Our education programs bridge the gap between theory and practice. We offer online courses, workshops, and mentorship for students, engineers, and corporate teams to enhance skills and innovation.</p>
+        <a href="#" class="solution-btn" id="solEducationBtn">Learn More</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -191,6 +255,11 @@ const translations = {
     ctaDemo: "Request Demo", ctaProducts: "View Products", ctaHire: "Hire Us",
     aboutTitle: "About NC Smart Tech",
     aboutText: "NC Smart Tech is a leading provider of IoT, robotics, coatings, and engineering education solutions. Our mission is to bridge innovation and practical deployment for industry and academia.",
+    solutionsTitle: "Our Solutions",
+    solIoTTitle: "Smart Devices & IoT", solIoTText: "We design connected devices and intelligent platforms to monitor, analyze, and optimize processes in real time...", solIoTBtn: "Learn More",
+    solRoboticsTitle: "Robotics & Autonomy", solRoboticsText: "Our robotics solutions bring automation to industrial and commercial environments...", solRoboticsBtn: "Learn More",
+    solCoatingsTitle: "Coatings & Materials", solCoatingsText: "We develop advanced materials and coatings tailored for industry needs...", solCoatingsBtn: "Learn More",
+    solEducationTitle: "Education & Training", solEducationText: "Our education programs bridge the gap between theory and practice...", solEducationBtn: "Learn More",
     productsTitle: "Our Products & Solutions",
     prodIoT: "Smart Devices & IoT", prodIoTText: "Connected devices and platforms for real-time monitoring and analytics.",
     prodRobotics: "Robotics & Autonomy", prodRoboticsText: "Industrial robots and autonomous systems for precise, safe operations.",
@@ -208,6 +277,11 @@ const translations = {
     ctaDemo: "Minta Demo", ctaProducts: "Lihat Produk", ctaHire: "Sewa Kami",
     aboutTitle: "Mengenai NC Smart Tech",
     aboutText: "NC Smart Tech adalah penyedia utama IoT, robotik, salutan, dan penyelesaian pendidikan kejuruteraan. Misi kami adalah untuk menghubungkan inovasi dan pelaksanaan praktikal untuk industri dan akademik.",
+    solutionsTitle: "Penyelesaian Kami",
+    solIoTTitle: "Peranti Pintar & IoT", solIoTText: "Kami mereka bentuk peranti berhubung dan platform pintar untuk pemantauan dan analisis masa nyata...", solIoTBtn: "Ketahui Lebih Lanjut",
+    solRoboticsTitle: "Robotik & Autonomi", solRoboticsText: "Penyelesaian robotik kami membawa automasi ke persekitaran industri dan komersial...", solRoboticsBtn: "Ketahui Lebih Lanjut",
+    solCoatingsTitle: "Salutan & Bahan", solCoatingsText: "Kami membangunkan bahan dan salutan maju yang disesuaikan untuk keperluan industri...", solCoatingsBtn: "Ketahui Lebih Lanjut",
+    solEducationTitle: "Pendidikan & Latihan", solEducationText: "Program pendidikan kami menghubungkan jurang antara teori dan praktikal...", solEducationBtn: "Ketahui Lebih Lanjut",
     productsTitle: "Produk & Penyelesaian Kami",
     prodIoT: "Peranti Pintar & IoT", prodIoTText: "Peranti dan platform berhubung untuk pemantauan dan analitik masa nyata.",
     prodRobotics: "Robotik & Autonomi", prodRoboticsText: "Robot industri dan sistem autonomi untuk operasi tepat dan selamat.",
@@ -225,7 +299,6 @@ function setLanguage(lang) {
       document.getElementById(id).innerHTML = translations[lang][id];
     }
   }
-  // Update Chatbase as well
   updateChatLanguage(lang);
 }
 
@@ -233,7 +306,6 @@ document.getElementById("langSelector").addEventListener("change", function() {
   setLanguage(this.value);
 });
 
-// ------------------ CHATBOT ------------------
 const chatLangData = {
   en: { bubbleText: "Chat with us", greeting: "Hello! How can I help you today?", title: "Assistant", subtitle: "We're here to help." },
   ms: { bubbleText: "Sembang dengan kami", greeting: "Hai! Ada apa yang boleh saya bantu hari ini?", title: "Pembantu", subtitle: "Kami sedia membantu." }
@@ -250,13 +322,9 @@ function updateChatLanguage(lang) {
   }
 }
 
-// Initialize default language
 window.addEventListener('load', function() { setLanguage('en'); });
 </script>
 
-<!-- =========================== -->
-<!-- ORIGINAL CHATBASE WIDGET -->
-<!-- =========================== -->
 <script>
 (function(){
     if(!window.chatbase || window.chatbase("getState") !== "initialized"){
