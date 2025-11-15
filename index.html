@@ -54,13 +54,13 @@
       color: #0056d2;
     }
 
-   nav a {
+    nav a {
       margin: 0 10px;
       text-decoration: none;
       color: #333;
       font-weight: 500;
       font-size: 1.50rem;
-}
+    }
 
     nav a:hover {
       color: #0056d2;
@@ -143,138 +143,80 @@
       width: 32px;
       height: 32px;
     }
-  /* MOBILE RESPONSIVE SETTINGS */
-@media (max-width: 768px) {
 
-  .nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
+    /* MOBILE SETTINGS */
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
 
-  .brand img {
-    width: 80px;
-    height: 80px;
-  }
+      .brand img {
+        width: 80px;
+        height: 80px;
+      }
 
-  .brand-name {
-    font-size: 1.6rem;
-  }
+      .brand-name {
+        font-size: 1.6rem;
+      }
 
-  nav {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
+      nav {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
 
-  nav a {
-    font-size: 1rem;
-    padding: 6px 0;
-  }
+      nav a {
+        font-size: 1rem;
+        padding: 6px 0;
+      }
 
-  .hero h1 {
-    font-size: 2rem;
-  }
+      .hero h1 {
+        font-size: 2rem;
+      }
 
-  .hero p {
-    font-size: 1.1rem;
-  }
+      .hero p {
+        font-size: 1.1rem;
+      }
 
-  .cta a {
-    width: 100%;
-    text-align: center;
-  }
-
-}
-    .chatbot-icon {
-  position: fixed;
-  bottom: 90px;
-  right: 90px;
-  background: #0056d2;
-  color: white;
-  width: 55px;
-  height: 55px;
-  font-size: 28px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  z-index: 999;
-}
-
-.chatbot-box {
-  position: fixed;
-  bottom: 160px;
-  right: 20px;
-  width: 300px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  display: none;
-  flex-direction: column;
-  z-index: 1000;
-}
-
-.chatbot-header {
-  background: #0056d2;
-  color: white;
-  padding: 10px;
-  border-radius: 12px 12px 0 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.chatbot-content {
-  height: 250px;
-  overflow-y: auto;
-  padding: 10px;
-  font-size: 14px;
-}
-
-.chatbot-box input {
-  border: none;
-  border-top: 1px solid #ddd;
-  padding: 10px;
-  width: 100%;
-  font-size: 14px;
-  outline: none;
-}
-
-
+      .cta a {
+        width: 100%;
+        text-align: center;
+      }
+    }
   </style>
-
 </head>
+
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <img src="images/logo.png" alt="NC Smart Tech Logo" />
-        <div class="brand-name">NC Smart Tech</div>
-      </div>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">Solutions</a>
-        <a href="#">Education</a>
-        <a href="#">Research</a>
-        <a href="#">Contact</a>
-      </nav>
-    </div>
-  </header>
 
-  <section class="hero">
-    <h1>Smart Solutions for a Smart Future</h1>
-    <p>IoT, robotics, coatings, and education — end-to-end design, prototyping, and deployment for industry and academia.</p>
-    <div class="cta">
-      <a href="#">Request Demo</a>
-      <a href="#">View Products</a>
-      <a href="#">Hire Us</a>
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <img src="images/logo.png" alt="NC Smart Tech Logo" />
+      <div class="brand-name">NC Smart Tech</div>
     </div>
-  </section>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Solutions</a>
+      <a href="#">Education</a>
+      <a href="#">Research</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+</header>
 
-<!-- About Section -->
+<section class="hero">
+  <h1>Smart Solutions for a Smart Future</h1>
+  <p>IoT, robotics, coatings, and education — end-to-end design, prototyping, and deployment for industry and academia.</p>
+  <div class="cta">
+    <a href="#">Request Demo</a>
+    <a href="#">View Products</a>
+    <a href="#">Hire Us</a>
+  </div>
+</section>
+
 <section>
   <div class="container">
     <h2>About NC Smart Tech</h2>
@@ -285,7 +227,6 @@
   </div>
 </section>
 
-<!-- Products / Solutions -->
 <section>
   <div class="container">
     <h2>Our Products & Solutions</h2>
@@ -310,7 +251,6 @@
   </div>
 </section>
 
-<!-- Clients & Partners -->
 <section>
   <div class="container">
     <h2>Clients & Partners</h2>
@@ -320,7 +260,6 @@
   </div>
 </section>
 
-<!-- Contact Section -->
 <section>
   <div class="container">
     <h2>Contact Us</h2>
@@ -330,16 +269,67 @@
   </div>
 </section>
 
-  <footer class="footer">
-    &copy; 2025 NC Smart Tech. Smart Solution for Smart Future.
-  </footer>
+<footer class="footer">
+  &copy; 2025 NC Smart Tech. Smart Solution for Smart Future.
+</footer>
 
-   <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/601158605250" class="whatsapp-btn" target="_blank">
-    <img src="images/whatsapp.jpg" alt="WhatsApp">
-  </a>
+<a href="https://wa.me/601158605250" class="whatsapp-btn" target="_blank">
+  <img src="images/whatsapp.jpg" alt="WhatsApp">
+</a>
 
-<!-- Chatbase Widget -->
+<!-- =========================== -->
+<!-- DUAL LANGUAGE SELECTOR -->
+<!-- =========================== -->
+<select id="langSelector"
+  style="
+      position: fixed;
+      bottom: 160px;
+      right: 20px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      z-index: 9999;
+  ">
+  <option value="en">English</option>
+  <option value="ms">Bahasa Melayu</option>
+</select>
+
+<!-- LANGUAGE SYSTEM -->
+<script>
+  const langData = {
+    en: {
+      bubbleText: "Chat with us",
+      greeting: "Hello! How can I help you today?",
+      title: "Assistant",
+      subtitle: "We're here to help."
+    },
+    ms: {
+      bubbleText: "Sembang dengan kami",
+      greeting: "Hai! Ada apa yang boleh saya bantu hari ini?",
+      title: "Pembantu",
+      subtitle: "Kami sedia membantu."
+    }
+  };
+
+  function updateChatLanguage(lang) {
+    window.chatbase("config", {
+      prompt_input_initial: langData[lang].greeting,
+      prompt_text: langData[lang].bubbleText,
+      title: langData[lang].title,
+      subtitle: langData[lang].subtitle
+    });
+  }
+
+  document.getElementById("langSelector").addEventListener("change", function () {
+    updateChatLanguage(this.value);
+  });
+
+  updateChatLanguage("en");
+</script>
+
+<!-- =========================== -->
+<!-- ORIGINAL CHATBASE WIDGET -->
+<!-- =========================== -->
 <script>
 (function(){
     if(!window.chatbase || window.chatbase("getState") !== "initialized"){
@@ -357,7 +347,7 @@
     const onLoad = function(){
         const script = document.createElement("script");
         script.src = "https://www.chatbase.co/embed.min.js";
-        script.id = "aBUV61zdhX_JDu2BMFFYm";  // Your Chatbase bot ID
+        script.id = "aBUV61zdhX_JDu2BMFFYm";
         script.domain = "www.chatbase.co";
         document.body.appendChild(script);
     };
@@ -368,4 +358,3 @@
 
 </body>
 </html>
-
