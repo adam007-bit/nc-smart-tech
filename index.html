@@ -84,12 +84,16 @@
     box-shadow: 0 6px 15px rgba(0,0,0,0.15);
   }
 
-  .solution-icon {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 12px;
-  }
-
+.solution-icon {
+    width: 180px;  /* increased size */
+    height: 180px; /* increased size */
+    border-radius: 50%; /* fully rounded */
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid #0056d2; /* optional border for premium look */
+    padding: 5px;
+    background-color: #ffffff; /* adds contrast */
+}
   .solution-btn {
     display: inline-block;
     margin-top: 12px;
@@ -102,9 +106,11 @@
     transition: background 0.3s;
   }
 
-  .solution-btn:hover {
-    background-color: #003d99;
-  }
+.solution-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
 
   /* MOBILE */
   @media (max-width: 768px) {
