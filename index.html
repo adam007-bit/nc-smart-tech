@@ -215,6 +215,56 @@
 .carousel-controls { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
 .carousel-controls button { background: rgba(0,86,210,0.7); color: #fff; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 1.5rem; transition: background 0.3s; }
 .carousel-controls button:hover { background: rgba(0,61,153,0.8); }
+.carousel-section { padding: 3rem 0; }
+.carousel { position: relative; overflow: hidden; border-radius: 12px; }
+.carousel-item { 
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition: opacity 1s ease-in-out;
+}
+.carousel-item.active { opacity: 1; position: relative; }
+
+.carousel-item img, .carousel-item video { 
+  width: 100%; 
+  border-radius: 12px; 
+  display: block;
+}
+
+.carousel-btn {
+  position: absolute; top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,86,210,0.7); 
+  color: #fff; 
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 6px; 
+  cursor: pointer; 
+  font-size: 1.5rem; 
+  transition: background 0.3s; 
+  z-index: 10;
+}
+.carousel-btn:hover { background: rgba(0,61,153,0.8); }
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+.carousel-dots {
+  text-align: center;
+  margin-top: 15px;
+}
+.carousel-dots .dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.carousel-dots .dot.active { background-color: #0056d2; }
 
 /* MOBILE */
 @media (max-width: 768px) {
@@ -348,7 +398,7 @@
     <!-- Optional carousel can be added here -->
   </div>
 </section>
-    <section class="carousel-section">
+   <section class="carousel-section">
   <div class="container">
     <h2 style="text-align:center; margin-bottom:20px;">Our Innovations in Action</h2>
     <div class="carousel">
@@ -366,13 +416,22 @@
       <div class="carousel-item">
         <img src="images/hero-tech3.jpg" alt="IoT Sensors" />
       </div>
+
+      <!-- Navigation Buttons -->
+      <button class="carousel-btn prev">&#10094;</button>
+      <button class="carousel-btn next">&#10095;</button>
     </div>
-    <div class="carousel-controls">
-      <button id="prev">&#10094;</button>
-      <button id="next">&#10095;</button>
+
+    <!-- Dots -->
+    <div class="carousel-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
     </div>
   </div>
 </section>
+
 
 
 <section id="contact">
@@ -509,21 +568,35 @@ window.addEventListener('load', function() { setLanguage('en'); });
 })();
 </script>
 <script>
-let currentIndex = 0;
-const items = document.querySelectorAll('.carousel-item');
-const total = items.length;
+let currentSlide = 0;
+const slides = document.querySelectorAll('.carousel-item');
+const dots = document.querySelectorAll('.dot');
 
-document.getElementById('next').addEventListener('click', () => { changeSlide(1); });
-document.getElementById('prev').addEventListener('click', () => { changeSlide(-1); });
-
-function changeSlide(direction) {
-  items[currentIndex].classList.remove('active');
-  currentIndex = (currentIndex + direction + total) % total;
-  items[currentIndex].classList.add('active');
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+    dots[i].classList.toggle('active', i === index);
+  });
+  currentSlide = index;
 }
 
+// Next / Prev Buttons
+document.querySelector('.next').addEventListener('click', () => {
+  showSlide((currentSlide + 1) % slides.length);
+});
+document.querySelector('.prev').addEventListener('click', () => {
+  showSlide((currentSlide - 1 + slides.length) % slides.length);
+});
+
+// Dot Clicks
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => { showSlide(i); });
+});
+
 // Auto-play every 5 seconds
-setInterval(() => { changeSlide(1); }, 5000);
+setInterval(() => {
+  showSlide((currentSlide + 1) % slides.length);
+}, 5000);
 </script>
 
 </body>
