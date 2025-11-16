@@ -346,13 +346,21 @@
 
 <section id="contact">
   <div class="container">
-    <h2>Ready to Build a Smarter Future?</h2>
-    <p>Contact us to request a demo or learn more.</p>
-    <p style="text-align:center; margin-top:20px;">
-      📧 <a href="mailto:eilahchin39@gmail.com" style="color:#0056d2; text-decoration:none; font-weight:600;">
-        Send us an Email
-      </a>
-    </p>
+    <h2>Contact Us</h2>
+    <p>Have questions? We're here to help.</p>
+
+    <form action="https://formspree.io/f/xyzlwqka" method="POST" class="contact-form">
+      <label>Your Name</label>
+      <input type="text" name="name" required>
+
+      <label>Your Email</label>
+      <input type="email" name="email" required>
+
+      <label>Your Message</label>
+      <textarea name="message" rows="5" required></textarea>
+
+      <button type="submit" class="send-btn">Send Message</button>
+    </form>
   </div>
 </section>
 
