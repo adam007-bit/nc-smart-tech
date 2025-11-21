@@ -295,6 +295,39 @@
 
 .carousel-dots .dot.active { background-color: #0056d2; }
 .carousel-dots .dot:hover { transform: scale(1.2); }
+.counter-section {
+  padding: 3rem 0;
+  background: #f9fbff;
+}
+
+.counter-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #003d99;
+  margin-bottom: 2rem;
+}
+
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  text-align: center;
+}
+
+.counter-box {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px solid #e0e6f0;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+}
+
+.counter {
+  font-size: 2.5rem;
+  color: #0056d2;
+  font-weight: bold;
+  display: block;
+}
 
   /* MOBILE */
   @media (max-width: 768px) {
@@ -477,6 +510,33 @@
     </form>
   </div>
 </section>
+<section id="counters" class="counter-section">
+  <div class="container">
+    <h2 class="counter-title">Our Impact</h2>
+
+    <div class="counter-grid">
+      <div class="counter-box">
+        <span class="counter" data-target="500">0</span>
+        <p>Students Trained</p>
+      </div>
+
+      <div class="counter-box">
+        <span class="counter" data-target="50">0</span>
+        <p>IoT Deployments</p>
+      </div>
+
+      <div class="counter-box">
+        <span class="counter" data-target="10">0</span>
+        <p>Robotics Systems Built</p>
+      </div>
+
+      <div class="counter-box">
+        <span class="counter" data-target="25">0</span>
+        <p>Research Projects</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 </main>
 
@@ -621,6 +681,37 @@ dots.forEach((dot, i) => {
 setInterval(() => {
   showSlide((currentSlide + 1) % slides.length);
 }, 5000);
+ // Counter Animation
+const counters = document.querySelectorAll('.counter');
+
+const startCounter = (entry) => {
+  const el = entry.target;
+  const updateCount = () => {
+    const target = +el.getAttribute('data-target');
+    const count = +el.innerText;
+    const speed = 40;
+
+    if (count < target) {
+      el.innerText = Math.ceil(count + target / speed);
+      setTimeout(updateCount, 40);
+    } else {
+      el.innerText = target;
+    }
+  };
+  updateCount();
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      startCounter(entry);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+counters.forEach(counter => observer.observe(counter));
+
 </script>
 
 </body>
