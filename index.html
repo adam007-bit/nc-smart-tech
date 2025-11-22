@@ -498,7 +498,61 @@
     width: 90%;
   }
 }
+.robotics-section {
+padding: 60px 20px;
+background: #fff;
+}
+.robotics-grid {
+display: grid;
+gap: 40px;
+grid-template-columns: 1fr 1fr;
+align-items: center;
+}
+.robotics-image img {
+width: 100%;
+border-radius: 10px;
+}
+.robotics-content h2 {
+font-size: 32px;
+font-weight: 700;
+color: #009ee3;
+}
+.robotics-content p {
+margin: 15px 0 25px;
+line-height: 1.6;
+font-size: 17px;
+}
+.included-btn {
+background: #ffda00;
+padding: 12px 25px;
+border-radius: 10px;
+border: none;
+font-size: 16px;
+font-weight: 600;
+cursor: pointer;
+margin-bottom: 20px;
+}
+.tag-list {
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+}
+.tag {
+padding: 10px 20px;
+background: #e4f3ff;
+border-radius: 12px;
+font-size: 15px;
+color: #009ee3;
+font-weight: 600;
+}
 
+
+@media (max-width: 768px) {
+.robotics-grid {
+grid-template-columns: 1fr;
+text-align: center;
+}
+}
   /* MOBILE */
   @media (max-width: 768px) {
     #langSelector { width: 110px; font-size: 12px; margin-left: 0; }
@@ -638,7 +692,26 @@
     </div>
   </div>
 </section>
-
+<section class="robotics-section">
+<div class="container">
+<div class="robotics-grid">
+<div class="robotics-image">
+<img src="/mnt/data/94a235b4-5f97-4713-a3e1-5d8bb1a884d4.png" alt="Robotics Lab" />
+</div>
+<div class="robotics-content">
+<h2>Robotics Lab for School</h2>
+<p>Interactive AI & Robotics Lab for Schools implementing exclusive education curriculums with latest skill subjects like Artificial Intelligence, Machine Learning, Robotics & Coding!</p>
+<button class="included-btn">What's Included</button>
+<div class="tag-list">
+<span class="tag">Coding</span>
+<span class="tag">Artificial Intelligence</span>
+<span class="tag">Robotics</span>
+<span class="tag">Data Science</span>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section>
   <div class="container">
     <h2 id="projectsTitle">Featured Projects / Products</h2>
