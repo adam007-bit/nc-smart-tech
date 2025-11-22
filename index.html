@@ -421,137 +421,75 @@
 .soft-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 24px rgba(0,150,255,0.55);
-}
-/* Blog / News Section */
-#blog {
-  padding: 60px 20px;
-  background: #f0f4ff;
-}
-
-#blog h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #003d99;
-  margin-bottom: 1rem;
-}
-
-.blog-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.blog-card {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  overflow: hidden;
-  width: 300px;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.blog-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-}
-
-.blog-img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.blog-card h3 {
-  font-size: 1.25rem;
-  color: #0056d2;
-  margin: 15px 10px 10px;
-}
-
-.blog-card p {
-  font-size: 0.95rem;
-  color: #555;
-  margin: 0 10px 15px;
-}
-
-.blog-btn {
-  display: inline-block;
-  margin-bottom: 15px;
-  padding: 8px 16px;
-  background-color: #0056d2;
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background 0.3s;
-}
-
-.blog-btn:hover {
-  background-color: #003d99;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .blog-card {
-    width: 90%;
-  }
-}
-.robotics-section {
-padding: 60px 20px;
-background: #fff;
+}.robotics-section {
+padding: 80px 20px;
+background: #f9fcff;
 }
 .robotics-grid {
-display: grid;
-gap: 40px;
-grid-template-columns: 1fr 1fr;
+display: flex;
 align-items: center;
+gap: 50px;
+flex-direction: row-reverse;
 }
 .robotics-image img {
 width: 100%;
-border-radius: 10px;
+border-radius: 20px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 .robotics-content h2 {
-font-size: 32px;
-font-weight: 700;
+font-size: 36px;
+font-weight: 800;
 color: #009ee3;
+margin-bottom: 15px;
 }
 .robotics-content p {
-margin: 15px 0 25px;
-line-height: 1.6;
-font-size: 17px;
+margin: 10px 0 30px;
+line-height: 1.7;
+font-size: 18px;
+color: #444;
 }
 .included-btn {
 background: #ffda00;
-padding: 12px 25px;
-border-radius: 10px;
+padding: 14px 30px;
+border-radius: 50px;
 border: none;
-font-size: 16px;
-font-weight: 600;
+font-size: 17px;
+font-weight: 700;
 cursor: pointer;
-margin-bottom: 20px;
+margin-bottom: 25px;
+transition: 0.3s ease;
+}
+.included-btn:hover {
+background: #ffe73a;
+transform: translateY(-3px);
 }
 .tag-list {
 display: flex;
 flex-wrap: wrap;
-gap: 12px;
+gap: 14px;
 }
 .tag {
-padding: 10px 20px;
+padding: 12px 22px;
 background: #e4f3ff;
-border-radius: 12px;
+border-radius: 14px;
 font-size: 15px;
 color: #009ee3;
 font-weight: 600;
+transition: 0.3s ease;
+}
+.tag:hover {
+background: #cdecff;
+transform: scale(1.05);
 }
 
 
-@media (max-width: 768px) {
-.robotics-grid {
-grid-template-columns: 1fr;
-text-align: center;
+/* ANIMATIONS */
+.fade-in-left {
+opacity: 0;
+transform: translateX(-40px);
+animation: fadeLeft 1s forwards ease-out;
 }
+.fade-in-right {
 }
   /* MOBILE */
   @media (max-width: 768px) {
@@ -695,13 +633,17 @@ text-align: center;
 <section class="robotics-section">
 <div class="container">
 <div class="robotics-grid">
-<div class="robotics-image">
+<div class="robotics-image fade-in-left">
 <img src="/mnt/data/94a235b4-5f97-4713-a3e1-5d8bb1a884d4.png" alt="Robotics Lab" />
 </div>
-<div class="robotics-content">
+<div class="robotics-content fade-in-right">
 <h2>Robotics Lab for School</h2>
 <p>Interactive AI & Robotics Lab for Schools implementing exclusive education curriculums with latest skill subjects like Artificial Intelligence, Machine Learning, Robotics & Coding!</p>
+
+
 <button class="included-btn">What's Included</button>
+
+
 <div class="tag-list">
 <span class="tag">Coding</span>
 <span class="tag">Artificial Intelligence</span>
