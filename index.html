@@ -422,6 +422,82 @@
   transform: translateY(-3px);
   box-shadow: 0 6px 24px rgba(0,150,255,0.55);
 }
+/* Blog / News Section */
+#blog {
+  padding: 60px 20px;
+  background: #f0f4ff;
+}
+
+#blog h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #003d99;
+  margin-bottom: 1rem;
+}
+
+.blog-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.blog-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.blog-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.blog-card h3 {
+  font-size: 1.25rem;
+  color: #0056d2;
+  margin: 15px 10px 10px;
+}
+
+.blog-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 10px 15px;
+}
+
+.blog-btn {
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 8px 16px;
+  background-color: #0056d2;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.blog-btn:hover {
+  background-color: #003d99;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .blog-card {
+    width: 90%;
+  }
+}
 
   /* MOBILE */
   @media (max-width: 768px) {
@@ -584,6 +660,35 @@
   </div>
 </section>
    
+<section id="blog">
+  <div class="container">
+    <h2 id="blogTitle">Latest News & Updates</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+      Stay informed with our latest projects, product launches, and industry insights.
+    </p>
+
+    <div class="blog-grid">
+      <div class="blog-card">
+        <img src="images/blog1.jpg" alt="Blog 1" class="blog-img">
+        <h3>Introducing Our New Educational Robot Kit</h3>
+        <p>Our latest robot kit helps students learn coding, electronics, and robotics in a hands-on way.</p>
+        <a href="#" class="blog-btn">Read More</a>
+      </div>
+      <div class="blog-card">
+        <img src="images/blog2.jpg" alt="Blog 2" class="blog-img">
+        <h3>Smart IoT Sensors Deployed Nationwide</h3>
+        <p>We have successfully deployed over 50 smart IoT devices across industries to optimize processes.</p>
+        <a href="#" class="blog-btn">Read More</a>
+      </div>
+      <div class="blog-card">
+        <img src="images/blog3.jpg" alt="Blog 3" class="blog-img">
+        <h3>Drone Automation System Enhances Logistics</h3>
+        <p>Our intelligent drones are helping businesses improve efficiency and reduce delivery times.</p>
+        <a href="#" class="blog-btn">Read More</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="contact">
   <div class="container">
