@@ -491,6 +491,78 @@ animation: fadeLeft 1s forwards ease-out;
 }
 .fade-in-right {
 }
+ /* STEM Section */
+.stem-section {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.stem-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0056d2;
+}
+
+.stem-subtitle {
+  font-size: 1.1rem;
+  color: #444;
+  margin-top: 10px;
+  margin-bottom: 2.5rem;
+}
+
+.stem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.stem-card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0, 86, 210, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stem-card img {
+  width: 100%;
+  height: 160px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.stem-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #0056d2;
+}
+
+.stem-card p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.stem-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px rgba(0, 86, 210, 0.25);
+}
+
+/* Simple Fade Animation */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
   /* MOBILE */
   @media (max-width: 768px) {
     #langSelector { width: 110px; font-size: 12px; margin-left: 0; }
@@ -679,7 +751,47 @@ animation: fadeLeft 1s forwards ease-out;
     <!-- Optional carousel can be added here -->
   </div>
 </section>
-   
+   <section class="stem-section">
+  <div class="container">
+    <h2 class="stem-title fade-in-up">STEM & Coding Programs</h2>
+    <p class="stem-subtitle fade-in-up">
+      Hands-on programs designed to build real-world skills in technology, engineering, and digital creativity.
+    </p>
+
+    <div class="stem-grid">
+
+      <!-- Program 1 -->
+      <div class="stem-card fade-in-up">
+        <img src="/mnt/data/a0e0e5f9-07ee-42f6-91bd-9bad731134ee.png" alt="Coding Program">
+        <h3>Coding & Programming</h3>
+        <p>Learn coding foundations using Python, Scratch, and real-world problem solving.</p>
+      </div>
+
+      <!-- Program 2 -->
+      <div class="stem-card fade-in-up">
+        <img src="/mnt/data/94a235b4-5f97-4713-a3e1-5d8bb1a884d4.png" alt="Robotics Program">
+        <h3>Robotics Engineering</h3>
+        <p>Build and program robots using microcontrollers, sensors, and automation.</p>
+      </div>
+
+      <!-- Program 3 -->
+      <div class="stem-card fade-in-up">
+        <img src="/mnt/data/robotics.png" alt="AI Program">
+        <h3>Artificial Intelligence</h3>
+        <p>Discover machine learning, AI logic, and real AI applications for students.</p>
+      </div>
+
+      <!-- Program 4 -->
+      <div class="stem-card fade-in-up">
+        <img src="/mnt/data/iot.png" alt="IoT Program">
+        <h3>IoT & Smart Devices</h3>
+        <p>Learn Internet of Things with sensors, automation, and smart environments.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section id="blog">
   <div class="container">
     <h2 id="blogTitle">Latest News & Updates</h2>
