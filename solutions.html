@@ -5,6 +5,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NC Smart Tech — Solutions</title>
 <link rel="stylesheet" href="style.css">
+<style>
+/* Reset & Base */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+body { background: #f5f7fa; color: #333; line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+/* Header */
+header { background: #0b2545; padding: 15px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+header .container { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: auto; padding: 0 20px; }
+header .brand img { height: 50px; }
+header nav a { margin-left: 25px; font-weight: 600; color: #fff; transition: 0.3s; }
+header nav a:hover, header nav a.active { color: #ff7b00; }
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #0b2545 0%, #1e3c72 100%);
+  color: #fff;
+  text-align: center;
+  padding: 120px 20px 80px;
+}
+.hero h1 { font-size: 48px; margin-bottom: 20px; animation: fadeInDown 1s ease forwards; }
+.hero p { font-size: 20px; max-width: 700px; margin: 0 auto; animation: fadeInUp 1s ease forwards; }
+
+/* Solutions Section */
+#solutions { padding: 80px 20px; background: #fff; }
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+.solution-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.solution-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+.solution-icon { width: 80px; margin-bottom: 20px; transition: transform 0.3s; }
+.solution-card:hover .solution-icon { transform: scale(1.2); }
+.solution-card h3 { font-size: 22px; margin-bottom: 10px; color: #0b2545; }
+.solution-card p { font-size: 16px; color: #555; }
+
+/* Footer */
+footer.footer {
+  text-align: center;
+  padding: 25px 20px;
+  background: #0b2545;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media(max-width: 768px){
+  .hero h1 { font-size: 36px; }
+  .hero p { font-size: 18px; }
+}
+</style>
 </head>
 <body>
 
@@ -15,7 +89,7 @@
     </div>
     <nav>
       <a href="index.html" id="navHome">Home</a>
-      <a href="solutions.html" id="navSolutions">Solutions</a>
+      <a href="solutions.html" id="navSolutions" class="active">Solutions</a>
       <a href="education.html" id="navEducation">Education</a>
       <a href="research.html" id="navResearch">Research</a>
       <a href="contact.html" id="navContact">Contact</a>
@@ -24,40 +98,42 @@
 </header>
 
 <main>
-<section class="hero">
-  <h1>Our Solutions</h1>
-  <p>IoT, Robotics, Automation & Education tools for real-world impact.</p>
-</section>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Our Smart Solutions</h1>
+    <p>IoT, Robotics, Automation, and Educational Tools designed to create real-world impact for industries, schools, and communities.</p>
+  </section>
 
-<section id="solutions">
-  <div class="container solutions-grid">
-    <div class="solution-card">
-      <img src="images/iot.png" alt="IoT" class="solution-icon">
-      <h3>Smart Devices & IoT</h3>
-      <p>Connected devices for homes, schools, and industries.</p>
+  <!-- Solutions Grid -->
+  <section id="solutions">
+    <div class="container solutions-grid">
+      <div class="solution-card" onclick="window.location='iot.html';">
+        <img src="images/iot.png" alt="IoT" class="solution-icon">
+        <h3>Smart Devices & IoT</h3>
+        <p>Connected devices that optimize homes, schools, and industries.</p>
+      </div>
+      <div class="solution-card" onclick="window.location='robotics.html';">
+        <img src="images/robotics.png" alt="Robotics" class="solution-icon">
+        <h3>Robotics & Automation</h3>
+        <p>Educational and industrial robots for learning, innovation, and productivity.</p>
+      </div>
+      <div class="solution-card" onclick="window.location='drones.html';">
+        <img src="images/drones.png" alt="Drones" class="solution-icon">
+        <h3>Drones & Automation</h3>
+        <p>Intelligent drones for logistics, monitoring, and smart operations.</p>
+      </div>
+      <div class="solution-card" onclick="window.location='education.html';">
+        <img src="images/education.png" alt="Education" class="solution-icon">
+        <h3>Educational Tools</h3>
+        <p>Interactive STEM and coding kits that empower students and teachers.</p>
+      </div>
+      <div class="solution-card" onclick="window.location='research.html';">
+        <img src="images/research.png" alt="R&D" class="solution-icon">
+        <h3>Research & Development</h3>
+        <p>Collaborate with universities and institutions to innovate and commercialize solutions.</p>
+      </div>
     </div>
-    <div class="solution-card">
-      <img src="images/robotics.png" alt="Robotics" class="solution-icon">
-      <h3>Robotics & Automation</h3>
-      <p>Industrial and educational robots for learning and productivity.</p>
-    </div>
-    <div class="solution-card">
-      <img src="images/drones.png" alt="Drones" class="solution-icon">
-      <h3>Drones & Automation</h3>
-      <p>Intelligent drones for logistics and smart operations.</p>
-    </div>
-    <div class="solution-card">
-      <img src="images/education.png" alt="Education" class="solution-icon">
-      <h3>Educational Tools</h3>
-      <p>Interactive STEM and coding kits for students and schools.</p>
-    </div>
-    <div class="solution-card">
-      <img src="images/research.png" alt="R&D" class="solution-icon">
-      <h3>Research & Development</h3>
-      <p>Collaborate with universities to innovate and commercialize products.</p>
-    </div>
-  </div>
-</section>
+  </section>
 </main>
 
 <footer class="footer">
