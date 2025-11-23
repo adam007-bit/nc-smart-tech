@@ -53,6 +53,91 @@
   .stem-card p { font-size: 0.95rem; color: #333; }
   .stem-card:hover { transform: translateY(-8px); box-shadow: 0 0 25px rgba(0,86,210,0.25); }
   .stem-link { text-decoration: none; color: inherit; }
+ .carousel-container {
+  position: relative;
+  max-width: 100%;
+  margin: 30px auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.carousel-slide {
+  display: none;
+  position: relative;
+}
+
+.carousel-slide video {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  background: rgba(0,0,0,0.4);
+  padding: 20px;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -25px;
+  padding: 16px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 30px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  user-select: none;
+  transition: 0.3s;
+}
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+.carousel-dots {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+}
+
+.dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fade Animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
 </style>
 </head>
 <body>
@@ -105,26 +190,58 @@
   </div>
 </section>
 
-<section class="robotics-section" id="stem-programs">
-<div class="container">
-<div class="robotics-grid">
-<div class="robotics-image">
-<img src="/mnt/data/94a235b4-5f97-4713-a3e1-5d8bb1a884d4.png" alt="Robotics Lab" />
-</div>
-<div class="robotics-content">
-<h2>Robotics Lab for School</h2>
-<p>Interactive AI & Robotics Lab for Schools implementing exclusive education curriculums with latest skill subjects like AI, ML, Robotics & Coding!</p>
-<button class="included-btn">What's Included</button>
-<div class="tag-list">
-<span class="tag">Coding</span>
-<span class="tag">Artificial Intelligence</span>
-<span class="tag">Robotics</span>
-<span class="tag">Data Science</span>
-</div>
-</div>
-</div>
-</div>
+<section class="video-carousel-section">
+  <div class="carousel-container">
+
+    <!-- Slide 1 -->
+    <div class="carousel-slide fade">
+      <video autoplay muted loop playsinline>
+        <source src="videos/video1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="carousel-caption">
+        <h2>Interactive Coding Workshops</h2>
+        <p>Learn with hands-on projects and fun challenges</p>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="carousel-slide fade">
+      <video autoplay muted loop playsinline>
+        <source src="videos/video2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="carousel-caption">
+        <h2>Robotics in Action</h2>
+        <p>Explore STEM through robotics competitions</p>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-slide fade">
+      <video autoplay muted loop playsinline>
+        <source src="videos/video3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="carousel-caption">
+        <h2>Smart Devices & AI</h2>
+        <p>Discover the future of IoT and AI applications</p>
+      </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <!-- Dots -->
+    <div class="carousel-dots" style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span> 
+      <span class="dot" onclick="currentSlide(2)"></span> 
+      <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
+  </div>
 </section>
+
 
 <section id="projects">
   <div class="container">
@@ -212,6 +329,41 @@ function updateChatLanguage(lang) {
     if(document.readyState === "complete"){ onLoad(); }
     else { window.addEventListener("load", onLoad); }
 })();
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("carousel-slide");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+      slides[i].querySelector("video").pause(); // stop other videos
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  slides[slideIndex-1].querySelector("video").play(); // play current video
+  dots[slideIndex-1].className += " active";
+}
+
+// Auto slideshow
+setInterval(function() {
+  plusSlides(1);
+}, 8000); // 8 seconds per video
+</script>
 
 </script>
 </body>
