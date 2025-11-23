@@ -15,15 +15,25 @@ body { background: #f4f6fb; color: #222; line-height: 1.6; }
   color: #fff;
   text-align: center;
   padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
 }
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 15px;
+  animation: fadeInDown 1s ease forwards;
 }
 .hero p {
   font-size: 1.2rem;
   max-width: 700px;
   margin: auto;
+  animation: fadeInUp 1s ease forwards;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.15);
 }
 
 /* Container */
@@ -67,11 +77,14 @@ body { background: #f4f6fb; color: #222; line-height: 1.6; }
   border-radius: 12px;
   border: 1px solid #dce5ff;
   box-shadow: 0 6px 18px rgba(0, 86, 210, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
 }
 .box:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 25px rgba(0, 86, 210, 0.2);
+  background: #e6f0ff;
 }
 .box strong {
   color: #0056d2;
@@ -82,7 +95,7 @@ body { background: #f4f6fb; color: #222; line-height: 1.6; }
 .btn {
   display: inline-block;
   padding: 15px 35px;
-  background: #0056d2;
+  background: linear-gradient(135deg, #0056d2, #1a75ff);
   color: #fff;
   border-radius: 8px;
   text-decoration: none;
@@ -91,8 +104,22 @@ body { background: #f4f6fb; color: #222; line-height: 1.6; }
   transition: background 0.3s ease, transform 0.3s ease;
 }
 .btn:hover {
-  background: #003bb5;
+  background: linear-gradient(135deg, #003bb5, #0056d2);
   transform: translateY(-3px);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* Responsive */
@@ -139,6 +166,20 @@ body { background: #f4f6fb; color: #222; line-height: 1.6; }
   </div>
 
 </div>
+
+<script>
+// Animate boxes on scroll
+const boxes = document.querySelectorAll('.box');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.style.animation = 'slideUp 0.6s forwards';
+    }
+  });
+},{ threshold: 0.2 });
+
+boxes.forEach(box => observer.observe(box));
+</script>
 
 </body>
 </html>
