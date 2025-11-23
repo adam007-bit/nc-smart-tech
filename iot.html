@@ -2,47 +2,143 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>IoT Program</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IoT Program — NC Smart Tech</title>
 <style>
-body { font-family: Arial; margin:0; padding:0; background:#ffffff; color:#222; }
-.hero { padding:80px 20px; background:#0056d2; color:white; text-align:center; }
-.container { width:90%; max-width:1100px; margin:auto; padding:50px 0; }
+/* Reset & Base */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+body { background: #f4f6fb; color: #222; line-height: 1.6; }
 
-.section h2 { color:#0056d2; margin-bottom:10px; }
-.box { background:#f7f9ff; padding:20px; border-radius:10px; margin-bottom:20px; border:1px solid #dce5ff; }
-.btn { display:inline-block; padding:12px 25px; background:#0056d2; color:white; border-radius:6px; text-decoration:none; }
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #0056d2 0%, #1a75ff 100%);
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+}
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+.hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 60px 0;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 60px;
+}
+.section h2 {
+  color: #0056d2;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  text-align: center;
+  position: relative;
+}
+.section h2::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background: #0056d2;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Boxes Grid */
+.boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+.box {
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 12px;
+  border: 1px solid #dce5ff;
+  box-shadow: 0 6px 18px rgba(0, 86, 210, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 86, 210, 0.2);
+}
+.box strong {
+  color: #0056d2;
+  font-size: 1.1rem;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  padding: 15px 35px;
+  background: #0056d2;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.btn:hover {
+  background: #003bb5;
+  transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero p { font-size: 1rem; }
+}
 </style>
 </head>
 <body>
 
 <div class="hero">
   <h1>Internet of Things (IoT)</h1>
-  <p>Connect sensors, devices, and data to build smart projects.</p>
+  <p>Connect sensors, devices, and data to build smart, real-world projects.</p>
 </div>
 
 <div class="container">
 
-<div class="section">
-  <h2>About This Program</h2>
-  <p>Students build IoT projects using sensors, WiFi modules, and live dashboards.</p>
+  <div class="section">
+    <h2>About This Program</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">Students learn to build IoT projects using sensors, WiFi modules, and real-time dashboards, gaining skills for future smart technologies and competitions.</p>
+  </div>
+
+  <div class="section">
+    <h2>What Students Learn</h2>
+    <div class="boxes">
+      <div class="box"><strong>✔ Sensors</strong><br>Temperature, motion, and humidity sensors for smart projects.</div>
+      <div class="box"><strong>✔ ESP32 / ESP8266</strong><br>Learn programming for IoT boards and wireless devices.</div>
+      <div class="box"><strong>✔ Live Dashboards</strong><br>Send and monitor real-time data on cloud platforms.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Why Choose This Program?</h2>
+    <div class="boxes">
+      <div class="box">Perfect for STEM learning and innovation competitions.</div>
+      <div class="box">Easy to learn with interactive visual dashboards.</div>
+      <div class="box">Teaches future-ready technology and engineering concepts.</div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:40px;">
+    <a class="btn" href="contact.html">Enroll Now</a>
+  </div>
+
 </div>
 
-<div class="section">
-  <h2>What Students Learn</h2>
-  <div class="box"><strong>✔ Sensors</strong><br>Temperature, motion, humidity.</div>
-  <div class="box"><strong>✔ ESP32 / ESP8266</strong><br>Programming IoT boards.</div>
-  <div class="box"><strong>✔ Live Dashboards</strong><br>Send real-time data to cloud.</div>
-</div>
-
-<div class="section">
-  <h2>Why Choose This Program?</h2>
-  <div class="box">Best for STEM and innovation competitions.</div>
-  <div class="box">Simple to learn with visual dashboards.</div>
-  <div class="box">Teaches future tech engineering concepts.</div>
-</div>
-
-<a class="btn" href="contact.html">Enroll Now</a>
-
-</div>
 </body>
 </html>
