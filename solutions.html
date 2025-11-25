@@ -28,31 +28,51 @@ header nav a:hover, header nav a.active { color: #ff7b00; }
 .hero h1 { font-size: 40px; margin-bottom: 20px; animation: fadeInDown 1s ease forwards; }
 .hero p { font-size: 30px; max-width: 700px; margin: 0 auto; animation: fadeInUp 1s ease forwards; }
 
-/* Solutions Section */
-#solutions { padding: 80px 20px; background: #fff; }
-.solutions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: auto;
-}
 .solution-card {
-  background: #f8f9fa;
-  border-radius: 12px;
+  background: #ffffff; /* cleaner card */
+  border-radius: 20px;
   padding: 30px 20px;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
+
 .solution-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
-.solution-icon { width: 80px; margin-bottom: 20px; transition: transform 0.3s; }
-.solution-card:hover .solution-icon { transform: scale(1.2); }
-.solution-card h3 { font-size: 22px; margin-bottom: 10px; color: #0b2545; }
-.solution-card p { font-size: 16px; color: #555; }
+
+.solution-icon {
+  width: 120px; /* larger icon */
+  height: 120px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: linear-gradient(145deg, #f0f4ff, #d9e3ff); /* soft gradient background */
+  border-radius: 50%; /* circle style */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* subtle shadow */
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  object-fit: contain; /* ensures proper scaling */
+}
+
+.solution-card:hover .solution-icon {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  background: linear-gradient(145deg, #e4f0ff, #b8d0ff);
+}
+
+.solution-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #0b2545;
+  font-weight: 600;
+}
+
+.solution-card p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
 
 /* Footer */
 footer.footer {
