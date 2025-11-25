@@ -4,39 +4,74 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Robotics Program — NC Smart Tech</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 /* Reset & Base */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
-body { background: #f4f6fb; color: #222; line-height: 1.6; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+  background: #f4f6fb; 
+  color: #222; 
+  line-height: 1.6; 
+  font-family: "Poppins", sans-serif;
+}
+
+/* Top Navigation with Logo */
+header {
+  background: #ffffff;
+  padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.nav-container {
+  width: 90%; max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-container img {
+  height: 55px;
+}
+.nav-links a {
+  margin-left: 22px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.nav-links a:hover {
+  color: #0056d2;
+}
 
 /* Hero Section */
 .hero {
   background: linear-gradient(135deg, #0056d2 0%, #1a75ff 100%);
   color: #fff;
   text-align: center;
-  padding: 100px 20px;
+  padding: 110px 20px;
   position: relative;
   overflow: hidden;
 }
 .hero h1 {
-  font-size: 9rem;
-  margin-bottom: 15px;
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
   animation: fadeInDown 1s ease forwards;
 }
 .hero p {
-  font-size: 9rem;
+  font-size: 1.2rem;
   max-width: 700px;
   margin: auto;
   animation: fadeInUp 1s ease forwards;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.15);
+  opacity: 0.95;
 }
 
-/* Container */
+/* Main Container */
 .container {
   width: 90%;
   max-width: 1200px;
@@ -44,64 +79,60 @@ body { background: #f4f6fb; color: #222; line-height: 1.6; }
   padding: 60px 0;
 }
 
-/* Sections */
-.section {
-  margin-bottom: 60px;
-}
+/* Section Titles */
+.section { margin-bottom: 60px; }
 .section h2 {
   color: #0056d2;
   margin-bottom: 25px;
-  font-size: 2rem;
+  font-size: 2.3rem;
   text-align: center;
-  position: relative;
 }
 .section h2::after {
   content: '';
-  width: 60px;
-  height: 4px;
+  width: 60px; height: 4px;
   background: #0056d2;
   display: block;
   margin: 10px auto 0;
   border-radius: 2px;
 }
 
-/* Boxes Grid */
+/* Boxes */
 .boxes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
 }
 .box {
   background: #fff;
   padding: 25px 20px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid #dce5ff;
-  box-shadow: 0 6px 18px rgba(0, 86, 210, 0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  box-shadow: 0 6px 18px rgba(0, 86, 210, 0.08);
+  transition: 0.45s ease;
+  transform: translateY(25px);
   opacity: 0;
-  transform: translateY(30px);
 }
 .box:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0, 86, 210, 0.2);
-  background: #e6f0ff;
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0, 86, 210, 0.22);
+  background: #e8f1ff;
 }
 .box strong {
   color: #0056d2;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
 }
 
-/* Button */
+/* Enroll Button */
 .btn {
   display: inline-block;
-  padding: 15px 35px;
+  padding: 15px 38px;
   background: linear-gradient(135deg, #0056d2, #1a75ff);
   color: #fff;
-  border-radius: 8px;
+  border-radius: 10px;
   text-decoration: none;
-  font-weight: bold;
-  text-align: center;
-  transition: background 0.3s ease, transform 0.3s ease;
+  font-weight: 600;
+  transition: 0.3s ease;
+  font-size: 1.1rem;
 }
 .btn:hover {
   background: linear-gradient(135deg, #003bb5, #0056d2);
@@ -110,45 +141,86 @@ body { background: #f4f6fb; color: #222; line-height: 1.6; }
 
 /* Animations */
 @keyframes fadeInDown {
-  0% { opacity: 0; transform: translateY(-40px); }
-  100% { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(40px); }
-  100% { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 @keyframes slideUp {
-  0% { opacity: 0; transform: translateY(30px); }
-  100% { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 999;
+  background: #25D366;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+.whatsapp-float img {
+  width: 36px;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .hero h1 { font-size: 2.2rem; }
+  .hero h1 { font-size: 2.1rem; }
   .hero p { font-size: 1rem; }
 }
 </style>
 </head>
 <body>
 
+<!-- Navigation with Logo -->
+<header>
+  <div class="nav-container">
+    <img src="images/logo.png" alt="NC Smart Tech Logo">
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="education.html">Education</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
 <div class="hero">
   <h1>Robotics Program</h1>
   <p>Build, code, and control real robots in a fun, hands-on learning environment.</p>
 </div>
 
+<!-- Main Content -->
 <div class="container">
 
   <div class="section">
     <h2>About This Program</h2>
-    <p style="text-align:center; max-width:700px; margin:auto;">Students assemble and program robots using sensors, motors, and microcontrollers to solve real-world challenges while having fun and learning teamwork.</p>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+      Students assemble and program robots using sensors, motors, and microcontrollers
+      to solve real-world challenges while learning teamwork and engineering.
+    </p>
   </div>
 
   <div class="section">
     <h2>What Students Learn</h2>
     <div class="boxes">
-      <div class="box"><strong>✔ Robotics Basics</strong><br>Learn about motors, sensors, and gears to make robots move.</div>
-      <div class="box"><strong>✔ Microcontrollers</strong><br>Program Arduino to control robots intelligently.</div>
-      <div class="box"><strong>✔ Robot Challenges</strong><br>Engage in line-following, obstacle avoidance, and fun competitions.</div>
+      <div class="box"><strong>✔ Robotics Basics</strong><br>Motors, sensors, gears, and mechanical movement.</div>
+      <div class="box"><strong>✔ Microcontrollers</strong><br>Arduino coding to control robots intelligently.</div>
+      <div class="box"><strong>✔ Robot Challenges</strong><br>Line-following, obstacle avoidance & robotics missions.</div>
     </div>
   </div>
 
@@ -156,30 +228,35 @@ body { background: #f4f6fb; color: #222; line-height: 1.6; }
     <h2>Why Choose This Program?</h2>
     <div class="boxes">
       <div class="box">Boost engineering thinking and problem-solving skills.</div>
-      <div class="box">Hands-on projects that bring coding and electronics to life.</div>
-      <div class="box">Fun team challenges and competitions to enhance collaboration.</div>
+      <div class="box">Hands-on robotics projects that make learning exciting.</div>
+      <div class="box">Fun team competitions to build creativity & collaboration.</div>
     </div>
   </div>
 
-  <div style="text-align:center; margin-top:40px;">
+  <div style="text-align:center; margin-top:45px;">
     <a class="btn" href="contact.html">Enroll Now</a>
   </div>
 
 </div>
 
+<!-- Animate boxes on scroll -->
 <script>
-// Animate boxes on scroll
 const boxes = document.querySelectorAll('.box');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
-      entry.target.style.animation = 'slideUp 0.6s forwards';
+      entry.target.style.animation = 'slideUp 0.7s forwards';
     }
   });
 },{ threshold: 0.2 });
 
 boxes.forEach(box => observer.observe(box));
 </script>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/60123456789" target="_blank" class="whatsapp-float">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
 
 </body>
 </html>
