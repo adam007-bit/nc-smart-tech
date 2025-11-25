@@ -133,6 +133,31 @@
     color: #555;
     border-top: 1px solid #eaeaea;
   }
+.youtube-btn {
+  position: fixed;
+  bottom: 90px;       /* adjust distance from bottom */
+  right: 90px;        /* adjust distance from right */
+  width: 60px;
+  height: 60px;
+  background: #FF0000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.youtube-btn img {
+  width: 35px;  /* icon size */
+  height: 35px;
+}
+
+.youtube-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
 
   /* ANIMATION */
   @keyframes fadeIn {
@@ -245,6 +270,10 @@
 }
 </style>
 
+<!-- YouTube Floating Button -->
+<a href="https://www.youtube.com/@ARDUINOPLATFORM" target="_blank" class="youtube-btn">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
+</a>
 
 </body>
 </html>
