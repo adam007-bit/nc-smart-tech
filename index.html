@@ -56,15 +56,16 @@
 .video-carousel-section {
   margin: 40px auto;
   width: 90%;
-  max-width: 900px;
+  max-width: 800px; /* smaller overall width */
 }
 
 .carousel-container {
   position: relative;
+  width: 100%;
+  height: 250px; /* smaller height */
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  height: 300px; /* smaller but full video fill */
 }
 
 .carousel-slide {
@@ -76,55 +77,43 @@
 .carousel-slide video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* video fills container fully */
-  border-radius: 20px;
+  object-fit: cover; /* fills container fully */
 }
 
 .carousel-caption {
   position: absolute;
   bottom: 10px;
   left: 15px;
-  background: rgba(0,0,0,0.45);
-  padding: 8px 15px;
-  border-radius: 10px;
-  color: white;
-}
-
-.carousel-caption h2 {
-  font-size: 18px;
-  margin: 0;
-  font-weight: 600;
-}
-
-.carousel-caption p {
-  font-size: 13px;
-  margin: 2px 0 0;
+  background: rgba(0,0,0,0.5);
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
 }
 
 .prev, .next {
   cursor: pointer;
   position: absolute;
   top: 45%;
-  padding: 8px;
-  color: white;
-  font-size: 20px;
+  padding: 6px;
+  color: #fff;
+  font-size: 18px;
   font-weight: bold;
-  user-select: none;
   background: rgba(0,0,0,0.3);
   border-radius: 50%;
   transition: 0.2s;
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
-
 .prev:hover, .next:hover {
   background: rgba(0,0,0,0.6);
 }
 
+.prev { left: 10px; }
+.next { right: 10px; }
+
 .carousel-dots {
   text-align: center;
-  padding: 8px 0;
+  padding: 6px 0;
 }
 
 .dot {
