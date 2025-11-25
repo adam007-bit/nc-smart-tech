@@ -273,11 +273,10 @@
     <div class="carousel-slide fade">
       <video autoplay muted loop playsinline>
         <source src="videos/video1.mp4" type="video/mp4">
-        Your browser does not support the video tag.
       </video>
       <div class="carousel-caption">
-        <h2>Interactive Coding Workshops</h2>
-        <p>Learn with hands-on projects and fun challenges</p>
+        <h2>Coding Workshop</h2>
+        <p>Learn coding with hands-on projects</p>
       </div>
     </div>
 
@@ -285,11 +284,10 @@
     <div class="carousel-slide fade">
       <video autoplay muted loop playsinline>
         <source src="videos/video2.mp4" type="video/mp4">
-        Your browser does not support the video tag.
       </video>
       <div class="carousel-caption">
         <h2>Robotics in Action</h2>
-        <p>Explore STEM through robotics competitions</p>
+        <p>STEM robotics for all levels</p>
       </div>
     </div>
 
@@ -297,43 +295,25 @@
     <div class="carousel-slide fade">
       <video autoplay muted loop playsinline>
         <source src="videos/video3.mp4" type="video/mp4">
-        Your browser does not support the video tag.
       </video>
       <div class="carousel-caption">
-        <h2>Smart Devices & AI</h2>
-        <p>Discover the future of IoT and AI applications</p>
+        <h2>Smart IoT + AI</h2>
+        <p>Future technology learning</p>
       </div>
     </div>
 
-    <!-- Navigation Arrows -->
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-    <!-- Dots -->
     <div class="carousel-dots" style="text-align:center">
-      <span class="dot" onclick="currentSlide(1)"></span> 
-      <span class="dot" onclick="currentSlide(2)"></span> 
-      <span class="dot" onclick="currentSlide(3)"></span> 
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
     </div>
+
   </div>
 </section>
 
-
-<section id="projects">
-  <div class="container">
-    <h2 id="projectsTitle">Featured Projects / Products</h2>
-    <div class="products-grid">
-      <div class="product-card">
-        <h3>Educational Robot Kits</h3>
-        <p>Used by 500+ students nationwide.</p>
-      </div>
-      <div class="product-card">
-        <h3>Smart IoT Sensors</h3>
-        <p>Deployed in 50+ industrial sites.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section id="contact">
   <div class="container">
@@ -439,6 +419,44 @@ function showSlides(n) {
 setInterval(function() {
   plusSlides(1);
 }, 8000); // 8 seconds per video
+</script>
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("carousel-slide");
+  let dots = document.getElementsByClassName("dot");
+
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
+
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    slides[i].querySelector("video").pause();
+  }
+
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+
+  slides[slideIndex - 1].style.display = "block";
+  slides[slideIndex - 1].querySelector("video").play();
+  dots[slideIndex - 1].className += " active";
+}
+
+setInterval(function () {
+  plusSlides(1);
+}, 8000);
 </script>
 
 </script>
