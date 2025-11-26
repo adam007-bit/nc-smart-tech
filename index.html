@@ -493,5 +493,85 @@ setInterval(function () {
 </script>
 
 </script>
+ <script>
+// LANGUAGE DATA
+const langData = {
+  en: {
+    navHome: "Home",
+    navSolutions: "Solutions",
+    navEducation: "Education",
+    navResearch: "Research",
+    navContact: "Contact",
+
+    heroTitle: "Empowering Innovation with Smart Technology",
+    heroText: "Smart solutions for education, industry, and everyday life",
+    ctaDemo: "Explore Our Solutions",
+
+    solutionsTitle: "Our Services / Solutions",
+    solIoTTitle: "Smart Devices",
+    solIoTText: "IoT gadgets for homes, schools, and industry.",
+    solRoboticsTitle: "Robotics",
+    solRoboticsText: "Educational and industrial robots.",
+
+    contactTitle: "Ready to Build a Smarter Future?",
+    contactText: "Contact us to request a demo or learn more.",
+    sendBtn: "Send Message"
+  },
+
+  ms: {
+    navHome: "Laman Utama",
+    navSolutions: "Penyelesaian",
+    navEducation: "Pendidikan",
+    navResearch: "Penyelidikan",
+    navContact: "Hubungi",
+
+    heroTitle: "Memperkasa Inovasi dengan Teknologi Pintar",
+    heroText: "Penyelesaian pintar untuk pendidikan, industri dan kehidupan harian",
+    ctaDemo: "Terokai Penyelesaian Kami",
+
+    solutionsTitle: "Perkhidmatan / Penyelesaian Kami",
+    solIoTTitle: "Peranti Pintar",
+    solIoTText: "Gajet IoT untuk rumah, sekolah dan industri.",
+    solRoboticsTitle: "Robotik",
+    solRoboticsText: "Robot pendidikan dan industri.",
+
+    contactTitle: "Sedia Membina Masa Depan Lebih Pintar?",
+    contactText: "Hubungi kami untuk demo atau maklumat lanjut.",
+    sendBtn: "Hantar Mesej"
+  }
+};
+
+// UPDATE TEXT FUNCTION
+function updateLanguage(lang) {
+  document.getElementById("navHome").innerText = langData[lang].navHome;
+  document.getElementById("navSolutions").innerText = langData[lang].navSolutions;
+  document.getElementById("navEducation").innerText = langData[lang].navEducation;
+  document.getElementById("navResearch").innerText = langData[lang].navResearch;
+  document.getElementById("navContact").innerText = langData[lang].navContact;
+
+  document.getElementById("heroTitle").innerText = langData[lang].heroTitle;
+  document.getElementById("heroText").innerText = langData[lang].heroText;
+  document.getElementById("ctaDemo").innerText = langData[lang].ctaDemo;
+
+  document.getElementById("solutionsTitle").innerText = langData[lang].solutionsTitle;
+  document.getElementById("solIoTTitle").innerText = langData[lang].solIoTTitle;
+  document.getElementById("solIoTText").innerText = langData[lang].solIoTText;
+  document.getElementById("solRoboticsTitle").innerText = langData[lang].solRoboticsTitle;
+  document.getElementById("solRoboticsText").innerText = langData[lang].solRoboticsText;
+
+  document.querySelector("#contact h2").innerText = langData[lang].contactTitle;
+  document.querySelector("#contact p").innerText = langData[lang].contactText;
+  document.querySelector(".send-btn").innerText = langData[lang].sendBtn;
+
+  // Update Chatbase language too
+  updateChatLanguage(lang);
+}
+
+// EVENT LISTENER FOR DROPDOWN
+document.getElementById("langSelector").addEventListener("change", function () {
+  updateLanguage(this.value);
+});
+</script>
+
 </body>
 </html>
