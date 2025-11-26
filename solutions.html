@@ -149,36 +149,47 @@ footer.footer {
     <p>IoT, Robotics, Automation, and Educational Tools designed to create real-world impact for industries, schools, and communities.</p>
   </section>
 
-  <!-- Solutions Grid -->
-  <section id="solutions">
-    <div class="container solutions-grid">
-      <div class="solution-card" onclick="window.location='iot.html';">
-        <img src="images/iot.png" alt="IoT" class="solution-icon">
-        <h3>Smart Devices & IoT</h3>
-        <p>Connected devices that optimize homes, schools, and industries.</p>
-      </div>
-      <div class="solution-card" onclick="window.location='robotics.html';">
-        <img src="images/robotics.png" alt="Robotics" class="solution-icon">
-        <h3>Robotics & Automation</h3>
-        <p>Educational and industrial robots for learning, innovation, and productivity.</p>
-      </div>
-      <div class="solution-card" onclick="window.location='drones.html';">
-        <img src="images/drones.png" alt="Drones" class="solution-icon">
-        <h3>Drones & Automation</h3>
-        <p>Intelligent drones for logistics, monitoring, and smart operations.</p>
-      </div>
-      <div class="solution-card" onclick="window.location='education.html';">
-        <img src="images/education.png" alt="Education" class="solution-icon">
-        <h3>Educational Tools</h3>
-        <p>Interactive STEM and coding kits that empower students and teachers.</p>
-      </div>
-      <div class="solution-card" onclick="window.location='research.html';">
-        <img src="images/research.png" alt="R&D" class="solution-icon">
-        <h3>Research & Development</h3>
-        <p>Collaborate with universities and institutions to innovate and commercialize solutions.</p>
-      </div>
+ <section class="hero">
+  <h1 id="heroTitle">Our Smart Solutions</h1>
+  <p id="heroText">IoT, Robotics, Automation, and Educational Tools designed to create real-world impact for industries, schools, and communities.</p>
+</section>
+
+<section id="solutions">
+  <div class="container solutions-grid">
+
+    <div class="solution-card" onclick="window.location='iot.html';">
+      <img src="images/iot.png" class="solution-icon">
+      <h3 id="sol1Title">Smart Devices & IoT</h3>
+      <p id="sol1Text">Connected devices that optimize homes, schools, and industries.</p>
     </div>
-  </section>
+
+    <div class="solution-card" onclick="window.location='robotics.html';">
+      <img src="images/robotics.png" class="solution-icon">
+      <h3 id="sol2Title">Robotics & Automation</h3>
+      <p id="sol2Text">Educational and industrial robots for learning, innovation, and productivity.</p>
+    </div>
+
+    <div class="solution-card" onclick="window.location='drones.html';">
+      <img src="images/drones.png" class="solution-icon">
+      <h3 id="sol3Title">Drones & Automation</h3>
+      <p id="sol3Text">Intelligent drones for logistics, monitoring, and smart operations.</p>
+    </div>
+
+    <div class="solution-card" onclick="window.location='education.html';">
+      <img src="images/education.png" class="solution-icon">
+      <h3 id="sol4Title">Educational Tools</h3>
+      <p id="sol4Text">Interactive STEM and coding kits that empower students and teachers.</p>
+    </div>
+
+    <div class="solution-card" onclick="window.location='research.html';">
+      <img src="images/research.png" class="solution-icon">
+      <h3 id="sol5Title">Research & Development</h3>
+      <p id="sol5Text">Collaborate with universities and institutions to innovate and commercialize solutions.</p>
+    </div>
+
+  </div>
+</section>
+
 </main>
 
 <footer class="footer">
@@ -188,6 +199,91 @@ footer.footer {
 <a href="https://www.youtube.com/@ARDUINOPLATFORM" target="_blank" class="youtube-btn">
   <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
 </a>
+<script>
+const langData = {
+  en: {
+    navHome: "Home",
+    navSolutions: "Solutions",
+    navEducation: "Education",
+    navResearch: "Research",
+    navContact: "Contact",
+
+    heroTitle: "Our Smart Solutions",
+    heroText: "IoT, Robotics, Automation, and Educational Tools designed to create real-world impact for industries, schools, and communities.",
+
+    sol1Title: "Smart Devices & IoT",
+    sol1Text: "Connected devices that optimize homes, schools, and industries.",
+
+    sol2Title: "Robotics & Automation",
+    sol2Text: "Educational and industrial robots for learning, innovation, and productivity.",
+
+    sol3Title: "Drones & Automation",
+    sol3Text: "Intelligent drones for logistics, monitoring, and smart operations.",
+
+    sol4Title: "Educational Tools",
+    sol4Text: "Interactive STEM and coding kits that empower students and teachers.",
+
+    sol5Title: "Research & Development",
+    sol5Text: "Collaborate with universities and institutions to innovate and commercialize solutions."
+  },
+
+  ms: {
+    navHome: "Laman Utama",
+    navSolutions: "Penyelesaian",
+    navEducation: "Pendidikan",
+    navResearch: "Penyelidikan",
+    navContact: "Hubungi",
+
+    heroTitle: "Penyelesaian Teknologi Pintar Kami",
+    heroText: "IoT, Robotik, Automasi dan alat pendidikan untuk memberi impak sebenar kepada industri, sekolah dan komuniti.",
+
+    sol1Title: "Peranti Pintar & IoT",
+    sol1Text: "Peranti berhubung untuk mengoptimumkan rumah, sekolah dan industri.",
+
+    sol2Title: "Robotik & Automasi",
+    sol2Text: "Robot pendidikan dan industri untuk pembelajaran dan produktiviti.",
+
+    sol3Title: "Dron & Automasi",
+    sol3Text: "Dron pintar untuk logistik, pemantauan dan operasi pintar.",
+
+    sol4Title: "Alat Pendidikan",
+    sol4Text: "Kit STEM dan pengkodan interaktif untuk pelajar dan guru.",
+
+    sol5Title: "Penyelidikan & Pembangunan",
+    sol5Text: "Bekerjasama dengan universiti untuk inovasi dan pengkomersialan."
+  }
+};
+
+function updateLanguage(lang) {
+  document.getElementById("navHome").innerText = langData[lang].navHome;
+  document.getElementById("navSolutions").innerText = langData[lang].navSolutions;
+  document.getElementById("navEducation").innerText = langData[lang].navEducation;
+  document.getElementById("navResearch").innerText = langData[lang].navResearch;
+  document.getElementById("navContact").innerText = langData[lang].navContact;
+
+  document.getElementById("heroTitle").innerText = langData[lang].heroTitle;
+  document.getElementById("heroText").innerText = langData[lang].heroText;
+
+  document.getElementById("sol1Title").innerText = langData[lang].sol1Title;
+  document.getElementById("sol1Text").innerText = langData[lang].sol1Text;
+
+  document.getElementById("sol2Title").innerText = langData[lang].sol2Title;
+  document.getElementById("sol2Text").innerText = langData[lang].sol2Text;
+
+  document.getElementById("sol3Title").innerText = langData[lang].sol3Title;
+  document.getElementById("sol3Text").innerText = langData[lang].sol3Text;
+
+  document.getElementById("sol4Title").innerText = langData[lang].sol4Title;
+  document.getElementById("sol4Text").innerText = langData[lang].sol4Text;
+
+  document.getElementById("sol5Title").innerText = langData[lang].sol5Title;
+  document.getElementById("sol5Text").innerText = langData[lang].sol5Text;
+}
+
+document.getElementById("langSelector").addEventListener("change", function () {
+  updateLanguage(this.value);
+});
+</script>
 
 </body>
 </html>
