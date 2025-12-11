@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kids Zone — NC Smart Tech</title>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Arial, sans-serif; }
+  body { background: #f0f7ff; }
+
+  header { background: #ffffff; padding: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 999; }
+  .container { width: 90%; max-width: 1200px; margin: auto; }
+  .nav { display: flex; justify-content: space-between; align-items: center; }
+  .brand img { width: 220px; }
+
+  nav a { margin: 0 12px; font-weight: 600; color: #333; transition: 0.3s; }
+  nav a:hover { color: #0056d2; }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: linear-gradient(to bottom, #cfe4ff, #ffffff);
+  }
+  .hero h1 {
+    font-size: 3rem;
+    color: #0056d2;
+    font-weight: 900;
+  }
+  .hero p {
+    font-size: 1.2rem;
+    color: #444;
+    margin-top: 10px;
+  }
+
+  /* CARDS */
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 3rem;
+    color: #003d99;
+    font-weight: 800;
+  }
+
+  .grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem 3rem;
+  }
+
+  .card {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  }
+  .card img {
+    width: 120px;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+  .card h3 {
+    color: #0056d2;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  .card p {
+    color: #444;
+    font-size: 1rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #003d99;
+    color: #fff;
+    text-align: center;
+    padding: 1.4rem 0;
+    margin-top: 3rem;
+    font-size: 0.95rem;
+  }
+
+  /* LANG BUTTON */
+  .lang-select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <img src="images/logo.png" alt="Logo">
+    </div>
+
+    <nav>
+      <a id="navHome" href="index.html">Home</a>
+      <a id="navEducation" href="education.html">Education</a>
+      <a id="navKids" href="kids-zone.html">Kids Zone</a>
+
+      <select id="langSelector" class="lang-select">
+        <option value="en">English</option>
+        <option value="ms">Malay</option>
+      </select>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1 id="heroTitle">Kids Zone</h1>
+  <p id="heroDesc">Fun learning activities for kids — coding, science, logic & creativity!</p>
+</section>
+
+<h2 class="section-title" id="miniGamesTitle">🧩 Mini Games (Arduino & Circuits)</h2>
+<div class="grid">
+
+  <div class="card">
+    <img src="images/arduino.png" alt="">
+    <h3 id="game1Title">Arduino Button Game</h3>
+    <p id="game1Desc">Learn how buttons work using a simple Arduino mini-game.</p>
+  </div>
+
+  <div class="card">
+    <img src="images/circuit.png" alt="">
+    <h3 id="game2Title">Simple Circuits Lab</h3>
+    <p id="game2Desc">Turn on bulbs, motors, and buzzers in fun drag-and-drop circuits.</p>
+  </div>
+
+</div>
+
+<h2 class="section-title" id="scienceTitle">🌍 Basic Science</h2>
+<div class="grid">
+
+  <div class="card">
+    <img src="images/science.png" alt="">
+    <h3 id="science1Title">Forces & Motion</h3>
+    <p id="science1Desc">Experiment with push, pull, gravity and friction in interactive demos.</p>
+  </div>
+
+  <div class="card">
+    <img src="images/water.png" alt="">
+    <h3 id="science2Title">States of Water</h3>
+    <p id="science2Desc">See how water freezes, melts & evaporates using simple animations.</p>
+  </div>
+
+</div>
+
+<h2 class="section-title" id="lessonsTitle">📘 Interactive Lessons</h2>
+<div class="grid">
+
+  <div class="card">
+    <img src="images/lesson.png" alt="">
+    <h3 id="lesson1Title">Beginner Arduino</h3>
+    <p id="lesson1Desc">Learn what Arduino is with easy explanations and videos.</p>
+  </div>
+
+  <div class="card">
+    <img src="images/coding.png" alt="">
+    <h3 id="lesson2Title">Block Coding</h3>
+    <p id="lesson2Desc">Drag-and-drop blocks to create your first program.</p>
+  </div>
+
+</div>
+
+<h2 class="section-title" id="logicTitle">🎮 Logic Games</h2>
+<div class="grid">
+
+  <div class="card">
+    <img src="images/puzzle.png" alt="">
+    <h3 id="logic1Title">Pattern Puzzle</h3>
+    <p id="logic1Desc">Find the missing shapes using logic and patterns.</p>
+  </div>
+
+  <div class="card">
+    <img src="images/maze.png" alt="">
+    <h3 id="logic2Title">Robot Maze</h3>
+    <p id="logic2Desc">Guide the robot through the maze using logic commands.</p>
+  </div>
+
+</div>
+
+<footer>
+  <span id="footerText">© 2025 NC Smart Tech. All rights reserved.</span>
+</footer>
+
+<!-- LANGUAGE SYSTEM -->
+<script>
+const langKids = {
+  en: {
+    navHome: "Home",
+    navEducation: "Education",
+    navKids: "Kids Zone",
+
+    heroTitle: "Kids Zone",
+    heroDesc: "Fun learning activities for kids — coding, science, logic & creativity!",
+
+    miniGamesTitle: "🧩 Mini Games (Arduino & Circuits)",
+    game1Title: "Arduino Button Game",
+    game1Desc: "Learn how buttons work using a simple Arduino mini-game.",
+    game2Title: "Simple Circuits Lab",
+    game2Desc: "Turn on bulbs, motors, and buzzers in fun drag-and-drop circuits.",
+
+    scienceTitle: "🌍 Basic Science",
+    science1Title: "Forces & Motion",
+    science1Desc: "Experiment with push, pull, gravity and friction.",
+    science2Title: "States of Water",
+    science2Desc: "See how water melts, freezes & evaporates.",
+
+    lessonsTitle: "📘 Interactive Lessons",
+    lesson1Title: "Beginner Arduino",
+    lesson1Desc: "Learn what Arduino is with easy step-by-step lessons.",
+    lesson2Title: "Block Coding",
+    lesson2Desc: "Create your first program using drag-and-drop blocks.",
+
+    logicTitle: "🎮 Logic Games",
+    logic1Title: "Pattern Puzzle",
+    logic1Desc: "Find the missing shape using logic patterns.",
+    logic2Title: "Robot Maze",
+    logic2Desc: "Guide the robot through a maze using logic instructions.",
+
+    footerText: "© 2025 NC Smart Tech. All rights reserved."
+  },
+
+  ms: {
+    navHome: "Laman Utama",
+    navEducation: "Pendidikan",
+    navKids: "Zon Kanak-Kanak",
+
+    heroTitle: "Zon Kanak-Kanak",
+    heroDesc: "Aktiviti pembelajaran menyeronokkan — coding, sains, logik & kreativiti!",
+
+    miniGamesTitle: "🧩 Permainan Mini (Arduino & Litar Mudah)",
+    game1Title: "Permainan Butang Arduino",
+    game1Desc: "Belajar bagaimana butang berfungsi melalui mini game Arduino.",
+    game2Title: "Makmal Litar Mudah",
+    game2Desc: "Hidupkan mentol, motor & buzzer dalam litar interaktif.",
+
+    scienceTitle: "🌍 Sains Asas",
+    science1Title: "Daya & Gerakan",
+    science1Desc: "Uji daya tolak, tarik, graviti dan geseran.",
+    science2Title: "Keadaan Air",
+    science2Desc: "Lihat bagaimana air membeku, mencair & menyejat.",
+
+    lessonsTitle: "📘 Pembelajaran Interaktif",
+    lesson1Title: "Arduino Untuk Pemula",
+    lesson1Desc: "Ketahui apa itu Arduino langkah demi langkah.",
+    lesson2Title: "Kod Blok",
+    lesson2Desc: "Buat program pertama menggunakan blok.",
+
+    logicTitle: "🎮 Permainan Logik",
+    logic1Title: "Teka Corak",
+    logic1Desc: "Cari bentuk yang hilang menggunakan logik.",
+    logic2Title: "Robot Maze",
+    logic2Desc: "Bantu robot keluar dari maze dengan arahan logik.",
+
+    footerText: "© 2025 NC Smart Tech. Hak cipta terpelihara."
+  }
+};
+
+document.getElementById("langSelector").addEventListener("change", function() {
+  const lang = this.value;
+  for (let key in langKids[lang]) {
+    let el = document.getElementById(key);
+    if (el) el.innerText = langKids[lang][key];
+  }
+});
+</script>
+
+</body>
+</html>
