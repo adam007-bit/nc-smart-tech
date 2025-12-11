@@ -1,285 +1,588 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kids Zone — NC Smart Tech</title>
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Kids Zone — NC Smart Tech (Games)</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Arial, sans-serif; }
-  body { background: #f0f7ff; }
+  :root{
+    --bg:#f0f9ff; --card:#fff; --accent:#0b63d6; --accent-dark:#0047a3; --muted:#546;
+  }
+  *{box-sizing:border-box;font-family: "Segoe UI",system-ui, -apple-system, Arial, sans-serif}
+  body{margin:0;background:var(--bg);color:#123;padding-bottom:60px}
+  header{background:#fff;padding:12px 18px;position:sticky;top:0;box-shadow:0 6px 18px rgba(10,20,40,0.06);z-index:50}
+  .container{max-width:1100px;margin:0 auto}
+  .nav{display:flex;align-items:center;gap:14px;justify-content:space-between}
+  .left{display:flex;gap:12px;align-items:center}
+  .logo{height:44px}
+  nav a{color:#123;font-weight:600}
+  .lang-select{padding:6px 8px;border-radius:8px;border:1px solid #ddd;background:#fff}
+  main{max-width:1100px;margin:18px auto;padding:0 16px}
+  .hero{background:linear-gradient(180deg,#dff0ff,#fff);padding:28px;border-radius:16px;display:flex;gap:18px;align-items:center}
+  .hero h1{margin:0;color:var(--accent);font-size:1.8rem}
+  .hero p{margin:0;color:#345;opacity:.9}
 
-  header { background: #ffffff; padding: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 999; }
-  .container { width: 90%; max-width: 1200px; margin: auto; }
-  .nav { display: flex; justify-content: space-between; align-items: center; }
-  .brand img { width: 220px; }
+  /* section */
+  .section{margin-top:20px}
+  .section-title{display:flex;align-items:center;gap:10px;margin-bottom:12px;color:var(--accent-dark);font-weight:800;font-size:1.15rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
 
-  nav a { margin: 0 12px; font-weight: 600; color: #333; transition: 0.3s; }
-  nav a:hover { color: #0056d2; }
+  .card{background:var(--card);padding:12px;border-radius:14px;box-shadow:0 10px 30px rgba(12,30,60,0.06)}
+  .card h3{margin:0 0 8px 0;color:var(--accent)}
+  .small{font-size:.95rem;color:#445}
+  canvas{background:#f7fbff;border-radius:10px;display:block;width:100%;height:auto}
 
-  /* HERO */
-  .hero {
-    text-align: center;
-    padding: 4rem 1rem;
-    background: linear-gradient(to bottom, #cfe4ff, #ffffff);
-  }
-  .hero h1 {
-    font-size: 3rem;
-    color: #0056d2;
-    font-weight: 900;
-  }
-  .hero p {
-    font-size: 1.2rem;
-    color: #444;
-    margin-top: 10px;
-  }
+  /* controls */
+  .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  button{appearance:none;border:0;background:var(--accent);color:#fff;padding:8px 12px;border-radius:8px;font-weight:700;cursor:pointer}
+  button.ghost{background:transparent;color:var(--accent);border:1px solid #e0e7ff}
+  .muted{background:#eee;color:#444}
+  .led{width:18px;height:18px;border-radius:50%;display:inline-block;margin-left:8px;background:#420}
 
-  /* CARDS */
-  .section-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-top: 3rem;
-    color: #003d99;
-    font-weight: 800;
-  }
-
-  .grid {
-    margin-top: 2rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-    padding: 0 1rem 3rem;
-  }
-
-  .card {
-    background: #ffffff;
-    padding: 1.5rem;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    transition: 0.3s ease;
-    cursor: pointer;
-  }
-  .card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-  }
-  .card img {
-    width: 120px;
-    margin: auto;
-    margin-bottom: 1rem;
-  }
-  .card h3 {
-    color: #0056d2;
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-  }
-  .card p {
-    color: #444;
-    font-size: 1rem;
-  }
-
-  /* FOOTER */
-  footer {
-    background: #003d99;
-    color: #fff;
-    text-align: center;
-    padding: 1.4rem 0;
-    margin-top: 3rem;
-    font-size: 0.95rem;
-  }
-
-  /* LANG BUTTON */
-  .lang-select {
-    padding: 6px 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    margin-left: 10px;
-  }
-
+  footer{max-width:1100px;margin:28px auto;padding:18px;background:var(--accent-dark);color:#fff;border-radius:12px;text-align:center}
+  .hint{font-size:.9rem;color:#334;margin-top:8px}
+  /* small responsive tweaks */
+  @media (max-width:520px){.hero{flex-direction:column;text-align:center}}
 </style>
 </head>
 <body>
-
 <header>
   <div class="container nav">
-    <div class="brand">
-      <img src="images/logo.png" alt="Logo">
+    <div class="left">
+      <img class="logo" src="images/logo.png" alt="logo (placeholder)">
+      <nav>
+        <a id="navHome" href="index.html">Home</a> |
+        <a id="navEducation" href="education.html">Education</a> |
+        <a id="navKids" href="kids-zone.html">Kids Zone</a>
+      </nav>
     </div>
 
-    <nav>
-      <a id="navHome" href="index.html">Home</a>
-      <a id="navEducation" href="education.html">Education</a>
-      <a id="navKids" href="kids-zone.html">Kids Zone</a>
-
-      <select id="langSelector" class="lang-select">
+    <div>
+      <select id="langSelector" class="lang-select" aria-label="Language">
         <option value="en">English</option>
         <option value="ms">Malay</option>
       </select>
-    </nav>
+    </div>
   </div>
 </header>
 
-<section class="hero">
-  <h1 id="heroTitle">Kids Zone</h1>
-  <p id="heroDesc">Fun learning activities for kids — coding, science, logic & creativity!</p>
-</section>
+<main>
+  <section class="hero container">
+    <div>
+      <h1 id="heroTitle">Kids Zone — Games & Activities</h1>
+      <p id="heroDesc">Play safe, learn tech! Arduino, circuits, science demos and logic games built with canvas and JavaScript.</p>
+    </div>
+    <div style="margin-left:auto;text-align:right">
+      <div style="font-weight:800;color:var(--accent-dark)">Try: Advanced (Canvas) Games</div>
+      <div class="hint">Use arrow keys for the Robot Maze. Drag connectors in Circuits. Build a small code sequence for Arduino.</div>
+    </div>
+  </section>
 
-<h2 class="section-title" id="miniGamesTitle">🧩 Mini Games (Arduino & Circuits)</h2>
-<div class="grid">
+  <!-- GRID: Robot Maze + Pattern Puzzle -->
+  <section class="section container">
+    <div class="section-title">🧭 Robot Maze (Use arrow keys)</div>
+    <div class="grid">
+      <div class="card">
+        <h3 id="mazeTitle">Robot Maze</h3>
+        <div class="small">Guide the robot to the goal while avoiding walls. Collect the star for bonus points.</div>
+        <canvas id="mazeCanvas" width="640" height="420"></canvas>
+        <div class="controls" style="margin-top:8px">
+          <button id="mazeReset">Reset</button>
+          <button id="mazeAuto" class="ghost">Auto Solve (demo)</button>
+          <div style="margin-left:auto;align-self:center">Moves: <span id="mazeMoves">0</span></div>
+        </div>
+      </div>
 
-  <div class="card">
-    <img src="images/arduino.png" alt="">
-    <h3 id="game1Title">Arduino Button Game</h3>
-    <p id="game1Desc">Learn how buttons work using a simple Arduino mini-game.</p>
-  </div>
+      <div class="card">
+        <h3 id="patternTitle">Pattern Puzzle</h3>
+        <div class="small">Watch the sequence, then repeat it by clicking shapes.</div>
+        <canvas id="patternCanvas" width="520" height="420"></canvas>
+        <div class="controls">
+          <button id="patternStart">Start</button>
+          <button id="patternStrict" class="ghost">Strict Mode: Off</button>
+          <div style="margin-left:auto">Score: <span id="patternScore">0</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="card">
-    <img src="images/circuit.png" alt="">
-    <h3 id="game2Title">Simple Circuits Lab</h3>
-    <p id="game2Desc">Turn on bulbs, motors, and buzzers in fun drag-and-drop circuits.</p>
-  </div>
+  <!-- GRID: Simple Circuits + Arduino Mini -->
+  <section class="section container">
+    <div class="section-title">🔌 Simple Circuits & 🤖 Arduino Mini</div>
+    <div class="grid">
+      <div class="card">
+        <h3 id="circuitTitle">Simple Circuits (Drag to connect)</h3>
+        <div class="small">Drag the wire ends to connect Battery → LED. Close the loop to light the LED.</div>
+        <canvas id="circuitCanvas" width="640" height="400"></canvas>
+        <div class="controls">
+          <button id="circuitReset">Reset</button>
+          <div style="margin-left:auto" class="small">Status: <span id="circuitStatus">Open</span> <span id="circuitLed" class="led" style="background:#420"></span></div>
+        </div>
+      </div>
 
-</div>
+      <div class="card">
+        <h3 id="arduinoTitle">Arduino Mini — Block Runner</h3>
+        <div class="small">Assemble commands (LED ON / WAIT / LED OFF). Run the sequence to toggle the virtual LED.</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+          <div>
+            <div style="margin-bottom:8px;font-weight:700">Commands</div>
+            <div id="blocks" style="display:flex;gap:8px">
+              <button class="blockBtn" data-cmd="ON">LED ON</button>
+              <button class="blockBtn" data-cmd="WAIT">WAIT</button>
+              <button class="blockBtn" data-cmd="OFF">LED OFF</button>
+            </div>
+          </div>
 
-<h2 class="section-title" id="scienceTitle">🌍 Basic Science</h2>
-<div class="grid">
+          <div style="flex:1">
+            <div style="margin-bottom:8px;font-weight:700">Sequence</div>
+            <div id="sequence" style="min-height:48px;padding:8px;border-radius:10px;background:#f5faff;border:1px dashed #d7eaff"></div>
+            <div class="controls" style="margin-top:8px">
+              <button id="seqRun">Run</button>
+              <button id="seqClear" class="ghost">Clear</button>
+              <button id="seqRemove" class="ghost">Remove Last</button>
+              <div style="margin-left:auto;align-self:center">LED: <span id="arduinoLed" class="led" style="background:#420"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="hint" style="margin-top:8px">Tip: Add <strong>ON</strong> then <strong>WAIT</strong> then <strong>OFF</strong> to blink once.</div>
+      </div>
+    </div>
+  </section>
 
-  <div class="card">
-    <img src="images/science.png" alt="">
-    <h3 id="science1Title">Forces & Motion</h3>
-    <p id="science1Desc">Experiment with push, pull, gravity and friction in interactive demos.</p>
-  </div>
+  <footer>
+    <div>© 2025 NC Smart Tech — Kids Zone. Built for learning.</div>
+  </footer>
+</main>
 
-  <div class="card">
-    <img src="images/water.png" alt="">
-    <h3 id="science2Title">States of Water</h3>
-    <p id="science2Desc">See how water freezes, melts & evaporates using simple animations.</p>
-  </div>
-
-</div>
-
-<h2 class="section-title" id="lessonsTitle">📘 Interactive Lessons</h2>
-<div class="grid">
-
-  <div class="card">
-    <img src="images/lesson.png" alt="">
-    <h3 id="lesson1Title">Beginner Arduino</h3>
-    <p id="lesson1Desc">Learn what Arduino is with easy explanations and videos.</p>
-  </div>
-
-  <div class="card">
-    <img src="images/coding.png" alt="">
-    <h3 id="lesson2Title">Block Coding</h3>
-    <p id="lesson2Desc">Drag-and-drop blocks to create your first program.</p>
-  </div>
-
-</div>
-
-<h2 class="section-title" id="logicTitle">🎮 Logic Games</h2>
-<div class="grid">
-
-  <div class="card">
-    <img src="images/puzzle.png" alt="">
-    <h3 id="logic1Title">Pattern Puzzle</h3>
-    <p id="logic1Desc">Find the missing shapes using logic and patterns.</p>
-  </div>
-
-  <div class="card">
-    <img src="images/maze.png" alt="">
-    <h3 id="logic2Title">Robot Maze</h3>
-    <p id="logic2Desc">Guide the robot through the maze using logic commands.</p>
-  </div>
-
-</div>
-
-<footer>
-  <span id="footerText">© 2025 NC Smart Tech. All rights reserved.</span>
-</footer>
-
-<!-- LANGUAGE SYSTEM -->
 <script>
-const langKids = {
+/* -----------------------------
+   Language system (EN / MS)
+   ----------------------------- */
+const L = {
   en: {
-    navHome: "Home",
-    navEducation: "Education",
-    navKids: "Kids Zone",
-
-    heroTitle: "Kids Zone",
-    heroDesc: "Fun learning activities for kids — coding, science, logic & creativity!",
-
-    miniGamesTitle: "🧩 Mini Games (Arduino & Circuits)",
-    game1Title: "Arduino Button Game",
-    game1Desc: "Learn how buttons work using a simple Arduino mini-game.",
-    game2Title: "Simple Circuits Lab",
-    game2Desc: "Turn on bulbs, motors, and buzzers in fun drag-and-drop circuits.",
-
-    scienceTitle: "🌍 Basic Science",
-    science1Title: "Forces & Motion",
-    science1Desc: "Experiment with push, pull, gravity and friction.",
-    science2Title: "States of Water",
-    science2Desc: "See how water melts, freezes & evaporates.",
-
-    lessonsTitle: "📘 Interactive Lessons",
-    lesson1Title: "Beginner Arduino",
-    lesson1Desc: "Learn what Arduino is with easy step-by-step lessons.",
-    lesson2Title: "Block Coding",
-    lesson2Desc: "Create your first program using drag-and-drop blocks.",
-
-    logicTitle: "🎮 Logic Games",
-    logic1Title: "Pattern Puzzle",
-    logic1Desc: "Find the missing shape using logic patterns.",
-    logic2Title: "Robot Maze",
-    logic2Desc: "Guide the robot through a maze using logic instructions.",
-
-    footerText: "© 2025 NC Smart Tech. All rights reserved."
+    heroTitle: "Kids Zone — Games & Activities",
+    heroDesc: "Play safe, learn tech! Arduino, circuits, science demos and logic games built with canvas and JavaScript.",
+    mazeTitle: "Robot Maze",
+    patternTitle: "Pattern Puzzle",
+    circuitTitle: "Simple Circuits (Drag to connect)",
+    arduinoTitle: "Arduino Mini — Block Runner",
+    mazeReset: "Reset",
+    mazeAuto: "Auto Solve (demo)",
+    patternStart: "Start",
+    patternStrict: "Strict Mode: Off",
+    circuitReset: "Reset",
+    seqRun: "Run",
+    seqClear: "Clear",
+    seqRemove: "Remove Last"
   },
-
   ms: {
-    navHome: "Laman Utama",
-    navEducation: "Pendidikan",
-    navKids: "Zon Kanak-Kanak",
-
-    heroTitle: "Zon Kanak-Kanak",
-    heroDesc: "Aktiviti pembelajaran menyeronokkan — coding, sains, logik & kreativiti!",
-
-    miniGamesTitle: "🧩 Permainan Mini (Arduino & Litar Mudah)",
-    game1Title: "Permainan Butang Arduino",
-    game1Desc: "Belajar bagaimana butang berfungsi melalui mini game Arduino.",
-    game2Title: "Makmal Litar Mudah",
-    game2Desc: "Hidupkan mentol, motor & buzzer dalam litar interaktif.",
-
-    scienceTitle: "🌍 Sains Asas",
-    science1Title: "Daya & Gerakan",
-    science1Desc: "Uji daya tolak, tarik, graviti dan geseran.",
-    science2Title: "Keadaan Air",
-    science2Desc: "Lihat bagaimana air membeku, mencair & menyejat.",
-
-    lessonsTitle: "📘 Pembelajaran Interaktif",
-    lesson1Title: "Arduino Untuk Pemula",
-    lesson1Desc: "Ketahui apa itu Arduino langkah demi langkah.",
-    lesson2Title: "Kod Blok",
-    lesson2Desc: "Buat program pertama menggunakan blok.",
-
-    logicTitle: "🎮 Permainan Logik",
-    logic1Title: "Teka Corak",
-    logic1Desc: "Cari bentuk yang hilang menggunakan logik.",
-    logic2Title: "Robot Maze",
-    logic2Desc: "Bantu robot keluar dari maze dengan arahan logik.",
-
-    footerText: "© 2025 NC Smart Tech. Hak cipta terpelihara."
+    heroTitle: "Zon Kanak-Kanak — Permainan & Aktiviti",
+    heroDesc: "Belajar teknologi dengan selamat! Arduino, litar, sains dan permainan logik menggunakan canvas dan JavaScript.",
+    mazeTitle: "Maze Robot",
+    patternTitle: "Teka Corak",
+    circuitTitle: "Litar Mudah (Seret untuk sambung)",
+    arduinoTitle: "Arduino Mini — Pelari Blok",
+    mazeReset: "Mula Semula",
+    mazeAuto: "Selesaikan Auto (demo)",
+    patternStart: "Mula",
+    patternStrict: "Mod Ketat: Mati",
+    circuitReset: "Mula Semula",
+    seqRun: "Jalankan",
+    seqClear: "Kosong",
+    seqRemove: "Buang Terakhir"
   }
 };
 
-document.getElementById("langSelector").addEventListener("change", function() {
-  const lang = this.value;
-  for (let key in langKids[lang]) {
-    let el = document.getElementById(key);
-    if (el) el.innerText = langKids[lang][key];
-  }
-});
-</script>
+function updateLang(lang){
+  document.getElementById('heroTitle').innerText = L[lang].heroTitle;
+  document.getElementById('heroDesc').innerText = L[lang].heroDesc;
+  document.getElementById('mazeTitle').innerText = L[lang].mazeTitle;
+  document.getElementById('patternTitle').innerText = L[lang].patternTitle;
+  document.getElementById('circuitTitle').innerText = L[lang].circuitTitle;
+  document.getElementById('arduinoTitle').innerText = L[lang].arduinoTitle;
+  document.getElementById('mazeReset').innerText = L[lang].mazeReset;
+  document.getElementById('mazeAuto').innerText = L[lang].mazeAuto;
+  document.getElementById('patternStart').innerText = L[lang].patternStart;
+  document.getElementById('patternStrict').innerText = L[lang].patternStrict;
+  document.getElementById('circuitReset').innerText = L[lang].circuitReset;
+  document.getElementById('seqRun').innerText = L[lang].seqRun;
+  document.getElementById('seqClear').innerText = L[lang].seqClear;
+  document.getElementById('seqRemove').innerText = L[lang].seqRemove;
+}
+document.getElementById('langSelector').addEventListener('change', (e)=> updateLang(e.target.value));
+updateLang('en');
 
+/* -----------------------------
+   Robot Maze (canvas)
+   ----------------------------- */
+(function(){
+  const canvas = document.getElementById('mazeCanvas');
+  const ctx = canvas.getContext('2d');
+  const cols = 16, rows = 12;
+  const cellW = Math.floor(canvas.width/cols);
+  const cellH = Math.floor(canvas.height/rows);
+  let maze = []; // 0 floor, 1 wall
+  let player = {x:1,y:1};
+  let goal = {x:cols-2,y:rows-2};
+  let star = {x:cols-3,y:2,got:false};
+  let moves = 0;
+
+  function genMaze(){
+    maze = Array(rows).fill().map(()=>Array(cols).fill(0));
+    // border walls
+    for(let r=0;r<rows;r++){maze[r][0]=1; maze[r][cols-1]=1;}
+    for(let c=0;c<cols;c++){maze[0][c]=1; maze[rows-1][c]=1;}
+    // some random walls
+    for(let i=0;i<60;i++){
+      const r = 1 + Math.floor(Math.random()*(rows-2));
+      const c = 1 + Math.floor(Math.random()*(cols-2));
+      if((r===player.y && c===player.x) || (r===goal.y && c===goal.x)) continue;
+      maze[r][c] = 1;
+    }
+    // clear around start and goal
+    for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++){
+      if(maze[player.y+dy]) maze[player.y+dy][player.x+dx]=0;
+      if(maze[goal.y+dy]) maze[goal.y+dy][goal.x+dx]=0;
+    }
+    moves = 0; document.getElementById('mazeMoves').innerText = moves;
+    star.got = false;
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    // draw grid
+    for(let r=0;r<rows;r++){
+      for(let c=0;c<cols;c++){
+        if(maze[r][c]===1){
+          ctx.fillStyle = '#2b3b4a';
+          ctx.fillRect(c*cellW, r*cellH, cellW, cellH);
+        } else {
+          ctx.fillStyle = '#eaf6ff';
+          ctx.fillRect(c*cellW, r*cellH, cellW, cellH);
+        }
+      }
+    }
+    // star
+    if(!star.got){
+      ctx.fillStyle = '#ffcc00';
+      const cx = star.x*cellW + cellW/2;
+      const cy = star.y*cellH + cellH/2;
+      ctx.beginPath();
+      for(let i=0;i<5;i++){
+        ctx.lineTo(cx + Math.cos((18+72*i)/180*Math.PI)*cellW*0.22, cy - Math.sin((18+72*i)/180*Math.PI)*cellH*0.22);
+        ctx.lineTo(cx + Math.cos((54+72*i)/180*Math.PI)*cellW*0.08, cy - Math.sin((54+72*i)/180*Math.PI)*cellH*0.08);
+      }
+      ctx.closePath(); ctx.fill();
+    }
+    // goal
+    ctx.fillStyle = '#66cc88';
+    ctx.fillRect(goal.x*cellW+cellW*0.15, goal.y*cellH+cellH*0.15, cellW*0.7, cellH*0.7);
+
+    // player (robot)
+    ctx.fillStyle = '#ff6b6b';
+    ctx.beginPath();
+    ctx.arc(player.x*cellW+cellW/2, player.y*cellH+cellH/2, Math.min(cellW,cellH)*0.28, 0, Math.PI*2);
+    ctx.fill();
+
+    // overlay grid lines lightly
+    ctx.strokeStyle = 'rgba(10,20,40,0.05)';
+    for(let c=0;c<=cols;c++){ctx.beginPath();ctx.moveTo(c*cellW,0);ctx.lineTo(c*cellW,canvas.height);ctx.stroke();}
+    for(let r=0;r<=rows;r++){ctx.beginPath();ctx.moveTo(0,r*cellH);ctx.lineTo(canvas.width,r*cellH);ctx.stroke();}
+  }
+
+  function canMove(nx,ny){ if(nx<0||ny<0||nx>=cols||ny>=rows) return false; return maze[ny][nx]===0; }
+
+  document.addEventListener('keydown', (e)=>{
+    const key = e.key;
+    let moved=false;
+    if(key==='ArrowUp' && canMove(player.x, player.y-1)){ player.y--; moved=true; }
+    if(key==='ArrowDown' && canMove(player.x, player.y+1)){ player.y++; moved=true; }
+    if(key==='ArrowLeft' && canMove(player.x-1, player.y)){ player.x--; moved=true; }
+    if(key==='ArrowRight' && canMove(player.x+1, player.y)){ player.x++; moved=true; }
+    if(moved){ moves++; document.getElementById('mazeMoves').innerText = moves; checkEvents(); draw();}
+  });
+
+  function checkEvents(){
+    if(player.x===star.x && player.y===star.y && !star.got){
+      star.got=true;
+      // small flash
+      alertText('Star collected! +5 points');
+    }
+    if(player.x===goal.x && player.y===goal.y){
+      // win
+      alertText('You reached the goal! Moves: ' + moves);
+      genMaze(); player = {x:1,y:1}; draw();
+    }
+  }
+
+  function alertText(msg){ // simple ephemeral toast via alert - minimal
+    // for kids keep it friendly - use window.alert for now (safe)
+    setTimeout(()=>{ alert(msg); }, 50);
+  }
+
+  document.getElementById('mazeReset').addEventListener('click', ()=>{
+    genMaze(); player={x:1,y:1}; draw();
+  });
+
+  document.getElementById('mazeAuto').addEventListener('click', ()=>{
+    // dummy auto-solver: random walk until goal (for demo)
+    let steps=0;
+    const interval = setInterval(()=>{
+      const dirs = [{dx:1,dy:0},{dx:-1,dy:0},{dx:0,dy:1},{dx:0,dy:-1}];
+      const aval = dirs.filter(d=>canMove(player.x+d.dx, player.y+d.dy));
+      if(aval.length===0){ clearInterval(interval); return;}
+      const choice = aval[Math.floor(Math.random()*aval.length)];
+      player.x+=choice.dx; player.y+=choice.dy; steps++; document.getElementById('mazeMoves').innerText = ++moves;
+      draw();
+      if(player.x===goal.x && player.y===goal.y){ clearInterval(interval); alertText('Auto reached goal!'); }
+      if(steps>600){ clearInterval(interval); }
+    }, 60);
+  });
+
+  // init
+  genMaze(); player={x:1,y:1}; draw();
+})();
+
+/* -----------------------------
+   Pattern Puzzle (Simon-like)
+   ----------------------------- */
+(function(){
+  const canvas = document.getElementById('patternCanvas');
+  const ctx = canvas.getContext('2d');
+  const shapes = [
+    {x:120,y:120, r:60, color:'#ff6b6b', id:'circle'},
+    {x:400,y:120, r:60, color:'#ffd166', id:'square'},
+    {x:120,y:300, r:60, color:'#4ecdc4', id:'triangle'},
+    {x:400,y:300, r:60, color:'#6a89cc', id:'star'}
+  ];
+  let sequence = []; let playerSeq = []; let playing=false; let strict=false; let score=0;
+  const drawShapes = (highlight=null)=>{
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    shapes.forEach(s=>{
+      ctx.save();
+      if(s.id===highlight) ctx.shadowBlur=20, ctx.shadowColor='rgba(0,0,0,0.2)';
+      // draw shape
+      ctx.fillStyle = s.color;
+      if(s.id==='circle') ctx.beginPath(), ctx.arc(s.x,s.y,s.r,0,Math.PI*2), ctx.fill();
+      if(s.id==='square') ctx.fillRect(s.x-s.r, s.y-s.r, s.r*2, s.r*2);
+      if(s.id==='triangle'){ ctx.beginPath(); ctx.moveTo(s.x, s.y-s.r); ctx.lineTo(s.x-s.r, s.y+s.r); ctx.lineTo(s.x+s.r, s.y+s.r); ctx.closePath(); ctx.fill(); }
+      if(s.id==='star'){ ctx.beginPath();
+        for(let i=0;i<5;i++){ ctx.lineTo(s.x + Math.cos((18+72*i)/180*Math.PI)*s.r, s.y - Math.sin((18+72*i)/180*Math.PI)*s.r);
+                           ctx.lineTo(s.x + Math.cos((54+72*i)/180*Math.PI)*s.r*0.45, s.y - Math.sin((54+72*i)/180*Math.PI)*s.r*0.45); }
+        ctx.closePath(); ctx.fill();
+      }
+      ctx.restore();
+    });
+  };
+
+  function addStep(){ const pick = shapes[Math.floor(Math.random()*shapes.length)].id; sequence.push(pick); playSequence(); }
+  function playSequence(){
+    playing=true; playerSeq=[]; let i=0;
+    const iv = setInterval(()=>{
+      drawShapes(sequence[i]);
+      i++;
+      if(i>sequence.length){ clearInterval(iv); setTimeout(()=>{ drawShapes(); playing=false; }, 400); }
+    }, 600);
+  }
+  function hitShape(mx,my){
+    for(const s of shapes){
+      // simple collision: circle radius or square bounding box or triangle bounding box
+      if(Math.hypot(mx-s.x,my-s.y) < s.r + 6) return s.id;
+      if(s.id==='square' && mx >= s.x-s.r && mx <= s.x+s.r && my >= s.y-s.r && my <= s.y+s.r) return s.id;
+    }
+    return null;
+  }
+
+  canvas.addEventListener('click', (e)=>{
+    if(playing) return;
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+    const id = hitShape(mx,my);
+    if(!id) return;
+    playerSeq.push(id);
+    // flash clicked
+    drawShapes(id);
+    setTimeout(()=>drawShapes(), 220);
+
+    // check sequence
+    const idx = playerSeq.length - 1;
+    if(playerSeq[idx] !== sequence[idx]){
+      // wrong
+      if(strict){ sequence=[]; score=0; document.getElementById('patternScore').innerText = score; alert('Wrong! Sequence reset (strict).'); }
+      else { alert('Wrong, try again!'); playSequence(); playerSeq=[]; }
+    } else {
+      // correct so far
+      if(playerSeq.length === sequence.length){
+        score += 10;
+        document.getElementById('patternScore').innerText = score;
+        // small success
+        setTimeout(()=>{ addStep(); }, 600);
+      }
+    }
+  });
+
+  document.getElementById('patternStart').addEventListener('click', ()=>{
+    sequence=[]; score=0; document.getElementById('patternScore').innerText = score; addStep();
+  });
+  document.getElementById('patternStrict').addEventListener('click', (e)=>{
+    strict = !strict;
+    e.target.innerText = strict ? 'Strict Mode: On' : 'Strict Mode: Off';
+  });
+
+  // initial draw
+  drawShapes();
+})();
+
+/* -----------------------------
+   Simple Circuits (drag connectors)
+   ----------------------------- */
+(function(){
+  const canvas = document.getElementById('circuitCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.clientWidth;
+  canvas.height = 400;
+  // define nodes
+  const nodes = {
+    batteryPos: {x:80,y:200, r:18, tag:'battery'},
+    ledPos: {x:560,y:200, r:18, tag:'led'},
+    midA: {x:300,y:120, r:12, tag:'node'},
+    midB: {x:300,y:280, r:12, tag:'node'}
+  };
+  // wires represented as pair of endpoints (each endpoint references a node)
+  let wire = {a:{node:'batteryPos',x:nodes.batteryPos.x,y:nodes.batteryPos.y}, b:{node:null,x:200,y:200}, dragging:null};
+  let connected=false;
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    // draw battery (simple rectangle)
+    ctx.fillStyle='#ffd166';
+    ctx.fillRect(nodes.batteryPos.x-28, nodes.batteryPos.y-22, 56, 44);
+    ctx.fillStyle='#000'; ctx.fillText('BAT', nodes.batteryPos.x-14, nodes.batteryPos.y+6);
+
+    // draw LED (circle + label)
+    ctx.beginPath(); ctx.fillStyle = connected ? '#ff6b6b' : '#222'; ctx.arc(nodes.ledPos.x, nodes.ledPos.y, 16,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='#fff'; ctx.fillText('LED', nodes.ledPos.x-10, nodes.ledPos.y+5);
+
+    // draw mid nodes
+    for (const k of ['midA','midB']){
+      ctx.fillStyle = '#6a89cc'; ctx.beginPath(); ctx.arc(nodes[k].x, nodes[k].y, nodes[k].r,0,Math.PI*2); ctx.fill();
+    }
+
+    // draw wire (curve)
+    ctx.strokeStyle = '#222'; ctx.lineWidth=6; ctx.lineCap='round';
+    ctx.beginPath();
+    ctx.moveTo(wire.a.x, wire.a.y);
+    // if b node present, draw to that; else draw to b.x/y
+    ctx.quadraticCurveTo((wire.a.x + wire.b.x)/2, wire.a.y-40, wire.b.x, wire.b.y);
+    ctx.stroke();
+
+    // small nodes visual
+    ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(wire.a.x, wire.a.y, 6,0,Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(wire.b.x, wire.b.y, 6,0,Math.PI*2); ctx.fill();
+
+    // status text
+    document.getElementById('circuitStatus').innerText = connected ? 'Closed' : 'Open';
+    document.getElementById('circuitLed').style.background = connected ? '#ff6b6b' : '#420';
+  }
+
+  // hit test for nodes
+  function hitNode(mx,my){
+    for(const k in nodes){
+      const n = nodes[k];
+      if(Math.hypot(mx - n.x, my - n.y) <= (n.r + 6)) return k;
+    }
+    return null;
+  }
+
+  canvas.addEventListener('mousedown', (e)=>{
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX-rect.left, my = e.clientY-rect.top;
+    // check if near wire endpoints
+    if(Math.hypot(mx-wire.b.x,my-wire.b.y) < 16){ wire.dragging = 'b'; }
+    if(Math.hypot(mx-wire.a.x,my-wire.a.y) < 16){ wire.dragging = 'a'; }
+    // otherwise if clicked node, snap endpoint
+    const hit = hitNode(mx,my);
+    if(hit){
+      // if clicked a node, move closest endpoint to that node
+      const da = Math.hypot(mx-wire.a.x,my-wire.a.y);
+      const db = Math.hypot(mx-wire.b.x,my-wire.b.y);
+      const which = da < db ? 'a' : 'b';
+      wire[which] = {node: hit, x:nodes[hit].x, y:nodes[hit].y};
+    }
+    draw();
+  });
+  window.addEventListener('mousemove', (e)=>{
+    if(!wire.dragging) return;
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX-rect.left, my = e.clientY-rect.top;
+    wire[wire.dragging].node = null;
+    wire[wire.dragging].x = mx; wire[wire.dragging].y = my;
+    draw();
+  });
+  window.addEventListener('mouseup', (e)=>{
+    if(!wire.dragging) return;
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX-rect.left, my = e.clientY-rect.top;
+    const hit = hitNode(mx,my);
+    if(hit){ wire[wire.dragging] = {node:hit, x:nodes[hit].x, y:nodes[hit].y}; }
+    wire.dragging = null;
+    // detect if wire endpoints connect battery -> mid -> led (closed loop)
+    connected = (wire.a.node === 'batteryPos' && wire.b.node === 'ledPos') || (wire.b.node === 'batteryPos' && wire.a.node === 'ledPos');
+    // allow multi-node connection: battery->midA and midB->led and midA-midB conceptual closed loop: we'll accept if both battery and led are connected in chain
+    const connectedNodes = new Set();
+    if(wire.a.node) connectedNodes.add(wire.a.node);
+    if(wire.b.node) connectedNodes.add(wire.b.node);
+    if(connectedNodes.has('batteryPos') && connectedNodes.has('ledPos')) connected = true;
+    draw();
+  });
+
+  document.getElementById('circuitReset').addEventListener('click', ()=>{
+    wire = {a:{node:'batteryPos',x:nodes.batteryPos.x,y:nodes.batteryPos.y}, b:{node:null,x:200,y:200}, dragging:null};
+    connected=false; draw();
+  });
+
+  // initial
+  draw();
+})();
+
+/* -----------------------------
+   Arduino Mini — Block runner
+   ----------------------------- */
+(function(){
+  const seqEl = document.getElementById('sequence');
+  const blocks = document.querySelectorAll('.blockBtn');
+  const seq = [];
+  function renderSequence(){
+    seqEl.innerHTML = seq.map((s,i)=>`<span style="display:inline-block;padding:6px 8px;margin-right:6px;background:#e8f6ff;border-radius:6px;font-weight:700">${s}</span>`).join('');
+  }
+  blocks.forEach(b=>{
+    b.addEventListener('click', ()=>{ seq.push(b.dataset.cmd); renderSequence(); });
+  });
+  document.getElementById('seqClear').addEventListener('click', ()=>{ seq.length=0; renderSequence(); });
+  document.getElementById('seqRemove').addEventListener('click', ()=>{ seq.pop(); renderSequence(); });
+
+  const ledEl = document.getElementById('arduinoLed');
+  function setLed(on){
+    ledEl.style.background = on ? '#ff6b6b' : '#420';
+  }
+  document.getElementById('seqRun').addEventListener('click', async ()=>{
+    // run commands sequentially
+    if(seq.length===0){ alert('Sequence empty!'); return;}
+    setLed(false);
+    for(const c of seq){
+      if(c==='ON'){ setLed(true); await sleep(600); }
+      else if(c==='OFF'){ setLed(false); await sleep(600); }
+      else if(c==='WAIT'){ await sleep(700); }
+    }
+  });
+  function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
+})();
+
+/* -----------------------------
+   Small helpers
+   ----------------------------- */
+function $(id){ return document.getElementById(id); }
+</script>
 </body>
 </html>
