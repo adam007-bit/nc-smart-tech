@@ -10,6 +10,8 @@
     --card: #fff;
     --accent: #0b63d6;
     --accent-dark: #0047a3;
+    --success:#16a34a;
+    --danger:#dc2626;
   }
   * { box-sizing: border-box; font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif }
   body { margin: 0; background: var(--bg); color: #123; padding-bottom: 60px }
@@ -18,20 +20,30 @@
   .nav { display:flex; align-items:center; gap:14px; justify-content:space-between }
   .logo { height:44px }
   nav a { color:#123; font-weight:600; margin-right:12px; text-decoration:none }
-  .lang-select { padding:6px 8px; border-radius:8px; border:1px solid #ddd; background:#fff }
 
   main { max-width: 900px; margin: 20px auto; padding:0 16px }
 
   .hero { background: linear-gradient(180deg,#dff0ff,#fff); padding:28px; border-radius:16px; text-align:center; margin-bottom:20px }
   .hero h1 { margin:0; color: var(--accent); font-size:1.8rem }
-  .hero p { margin:0; color:#345; opacity:.9 }
+  .hero p { margin:6px 0 0; color:#345 }
+
+  .info { background:#fff; border-radius:14px; padding:18px; margin-bottom:20px; box-shadow:0 10px 30px rgba(12,30,60,0.06) }
+  .info h2 { margin-top:0; color:var(--accent) }
+  .info ul { padding-left:18px }
 
   .card { background: var(--card); padding:16px; border-radius:14px; box-shadow:0 10px 30px rgba(12,30,60,0.06); margin-bottom:20px }
   .card h3 { margin:0 0 12px 0; color: var(--accent) }
-  .options { display:flex; flex-direction:column; gap:10px; margin-top:8px }
-  .options button { padding:10px 14px; border-radius:8px; border:none; background:#e8f6ff; color:#123; font-weight:600; cursor:pointer; transition:0.2s }
-  .options button:hover { background: var(--accent); color:#fff }
-  .score { margin-top:12px; font-weight:700; color:var(--accent-dark) }
+  .options { display:flex; flex-direction:column; gap:10px }
+  .options button { padding:10px 14px; border-radius:8px; border:none; background:#e8f6ff; font-weight:600; cursor:pointer }
+
+  .feedback { margin-top:10px; font-weight:700 }
+  .correct { color:var(--success) }
+  .wrong { color:var(--danger) }
+
+  .progress { height:12px; background:#e5e7eb; border-radius:999px; overflow:hidden; margin:16px 0 }
+  .progress-bar { height:100%; width:0%; background:var(--accent); transition:.3s }
+
+  .score { font-weight:800; text-align:center; color:var(--accent-dark) }
 
   footer { max-width:1100px; margin:28px auto; padding:18px; background:var(--accent-dark); color:#fff; border-radius:12px; text-align:center }
 </style>
@@ -40,7 +52,7 @@
 
 <header>
   <div class="container nav">
-    <div class="left">
+    <div>
       <img class="logo" src="images/logo.png" alt="logo">
       <nav>
         <a href="index.html">Home</a>
@@ -48,101 +60,105 @@
         <a href="kids-zone.html">Kids Zone</a>
       </nav>
     </div>
-    <div>
-      <select id="langSelector" class="lang-select" aria-label="Language">
-        <option value="en">English</option>
-        <option value="ms">Malay</option>
-      </select>
-    </div>
   </div>
 </header>
 
 <main>
-  <section class="hero container">
-    <h1 id="heroTitle">Arduino & Electronics Quiz</h1>
-    <p id="heroDesc">Test your Arduino and electronics knowledge! Answer the questions below.</p>
+  <section class="hero">
+    <h1>Arduino & Electronics Quiz</h1>
+    <p>Learn Arduino basics and play a fun quiz 🎮</p>
   </section>
 
+  <!-- Arduino info for kids -->
+  <section class="info">
+    <h2>🤖 What is Arduino?</h2>
+    <p>Arduino is a small computer board that helps kids learn how to build cool projects using electronics and coding.</p>
+    <ul>
+      <li>💡 Turn ON LEDs</li>
+      <li>🔊 Make sounds with a buzzer</li>
+      <li>🚦 Build traffic lights</li>
+      <li>📟 Read sensors like light and buttons</li>
+    </ul>
+    <p><strong>Fun fact:</strong> Arduino uses simple code, so kids can learn step by step!</p>
+  </section>
+
+  <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+
   <div id="quizContainer"></div>
-  <div class="score" id="quizScore">Score: 0 / 0</div>
+  <div class="score" id="quizScore">Score: 0</div>
 </main>
 
 <footer>
-  <div>© 2025 NC Smart Tech — Arduino Quiz</div>
+  <div>© 2025 NC Smart Tech — Kids Zone</div>
 </footer>
 
 <script>
 const quizData = [
-  { question: "What does LED stand for?", options: ["Light Emitting Diode","Low Energy Device","Linear Electronic Device","Light Energy Device"], answer: 0 },
-  { question: "Which pin type is used for analog input on Arduino?", options: ["A0-A5","D0-D13","PWM","GND"], answer: 0 },
-  { question: "What voltage does a typical Arduino board use?", options: ["5V","3.3V","12V","1.5V"], answer: 0 },
-  { question: "Which function initializes the Arduino program?", options: ["setup()","loop()","main()","start()"], answer: 0 },
-  { question: "Which function runs repeatedly after setup()?", options: ["loop()","main()","start()","init()"], answer: 0 },
-  { question: "Which component stores energy in a circuit?", options: ["Capacitor","Resistor","LED","Diode"], answer: 0 },
-  { question: "What does PWM stand for?", options: ["Pulse Width Modulation","Power Wire Mode","Parallel Wiring Method","Programming With Microcontroller"], answer: 0 },
-  { question: "Which Arduino pin type can output HIGH or LOW digital signals?", options: ["Digital","Analog","PWM","GND"], answer: 0 },
-  { question: "Which tool is used to write Arduino code?", options: ["Arduino IDE","Python IDE","Visual Studio Code","Eagle"], answer: 0 },
-  { question: "Which resistor limits current to an LED?", options: ["Series Resistor","Parallel Resistor","Capacitor","Diode"], answer: 0 },
-  { question: "Which command turns on an LED in Arduino?", options: ["digitalWrite(pin,HIGH)","analogRead(pin)","delay(ms)","pinMode(pin,INPUT)"], answer: 0 },
-  { question: "Which is a common Arduino board?", options: ["Arduino Uno","Arduino Max","Arduino Ultra","Arduino Nano Plus"], answer: 0 },
-  { question: "What is GND pin used for?", options: ["Ground connection","Power supply","Digital output","PWM signal"], answer: 0 },
-  { question: "Which library helps control LCD screens?", options: ["LiquidCrystal","Servo","Wire","EEPROM"], answer: 0 },
-  { question: "Which sensor detects light?", options: ["Photoresistor","Potentiometer","Buzzer","Button"], answer: 0 },
-  { question: "Which component converts AC to DC?", options: ["Diode","Resistor","LED","Capacitor"], answer: 0 },
-  { question: "Which command reads analog voltage?", options: ["analogRead(pin)","digitalRead(pin)","analogWrite(pin,value)","digitalWrite(pin,HIGH)"], answer: 0 },
-  { question: "Which command sets pin as input?", options: ["pinMode(pin,INPUT)","digitalWrite(pin,HIGH)","analogRead(pin)","delay(ms)"], answer: 0 },
-  { question: "Which command sets pin as output?", options: ["pinMode(pin,OUTPUT)","analogRead(pin)","digitalRead(pin)","delay(ms)"], answer: 0 },
-  { question: "Which component makes a sound?", options: ["Buzzer","LED","Resistor","Capacitor"], answer: 0 }
+  { q:"What does LED stand for?", o:["Light Emitting Diode","Low Energy Device","Light Energy Device"], a:0 },
+  { q:"Which pin is used for analog input?", o:["A0-A5","D0-D13","GND"], a:0 },
+  { q:"Which function runs again and again?", o:["loop()","setup()","start()"], a:0 },
+  { q:"Which part makes sound?", o:["Buzzer","LED","Resistor"], a:0 },
+  { q:"What board is most popular?", o:["Arduino Uno","Arduino Max","Arduino Ultra"], a:0 }
 ];
 
+let index = 0;
 let score = 0;
-let total = quizData.length;
 
-function loadQuiz(){
-  const container = document.getElementById('quizContainer');
-  container.innerHTML = '';
-  quizData.forEach((q, idx)=>{
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `<h3>Q${idx+1}: ${q.question}</h3>`;
-    const optionsDiv = document.createElement('div');
-    optionsDiv.className = 'options';
-    q.options.forEach((opt,optIdx)=>{
-      const btn = document.createElement('button');
-      btn.innerText = opt;
-      btn.addEventListener('click', ()=>{
-        if(optIdx === q.answer){ 
-          score++; 
-          btn.style.background='green'; 
-          btn.style.color='#fff'; 
-        } else { 
-          btn.style.background='red'; 
-          btn.style.color='#fff'; 
-        }
-        Array.from(optionsDiv.children).forEach(b=>b.disabled=true);
-        document.getElementById('quizScore').innerText = `Score: ${score} / ${total}`;
-      });
-      optionsDiv.appendChild(btn);
-    });
-    card.appendChild(optionsDiv);
-    container.appendChild(card);
+function loadQuestion(){
+  const c = document.getElementById('quizContainer');
+  c.innerHTML = '';
+
+  if(index >= quizData.length){
+    c.innerHTML = `<div class='card'><h3>🎉 Quiz Finished!</h3><p>Your score: ${score} / ${quizData.length}</p></div>`;
+    return;
+  }
+
+  const q = quizData[index];
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `<h3>Q${index+1}: ${q.q}</h3>`;
+
+  const optDiv = document.createElement('div');
+  optDiv.className = 'options';
+
+  q.o.forEach((text,i)=>{
+    const b = document.createElement('button');
+    b.innerText = text;
+    b.onclick = ()=>checkAnswer(i,b,card);
+    optDiv.appendChild(b);
   });
+
+  card.appendChild(optDiv);
+  c.appendChild(card);
+  updateProgress();
 }
 
-// init
-loadQuiz();
+function checkAnswer(i,btn,card){
+  const q = quizData[index];
+  const fb = document.createElement('div');
+  fb.className = 'feedback';
 
-// Language system
-const L = {
-  en: { heroTitle:"Arduino & Electronics Quiz", heroDesc:"Test your Arduino and electronics knowledge! Answer the questions below." },
-  ms: { heroTitle:"Kuiz Arduino & Elektronik", heroDesc:"Uji pengetahuan Arduino dan elektronik anda! Jawab soalan di bawah." }
-};
+  if(i === q.a){
+    score++;
+    fb.innerText = '✅ Correct!';
+    fb.classList.add('correct');
+  } else {
+    fb.innerText = '❌ Oops! Try again next time.';
+    fb.classList.add('wrong');
+  }
 
-document.getElementById('langSelector').addEventListener('change',(e)=>{
-  const lang = e.target.value;
-  document.getElementById('heroTitle').innerText = L[lang].heroTitle;
-  document.getElementById('heroDesc').innerText = L[lang].heroDesc;
-});
+  card.appendChild(fb);
+  document.getElementById('quizScore').innerText = `Score: ${score}`;
+
+  setTimeout(()=>{ index++; loadQuestion(); }, 1200);
+}
+
+function updateProgress(){
+  const p = ((index)/quizData.length)*100;
+  document.getElementById('progressBar').style.width = p + '%';
+}
+
+loadQuestion();
 </script>
 
 </body>
