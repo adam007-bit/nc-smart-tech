@@ -11,7 +11,6 @@
 <!-- GLOBAL STYLE -->
 <link rel="stylesheet" href="css/style.css">
 
-<!-- PAGE-SPECIFIC STYLE -->
 <style>
 /* Boxes Grid */
 .boxes {
@@ -37,7 +36,6 @@
   box-shadow: 0 12px 25px rgba(0, 86, 210, 0.22);
 }
 
-/* Box Images */
 .box img {
   width: 100px;
   height: 100px;
@@ -45,7 +43,6 @@
   margin-bottom: 12px;
 }
 
-/* Box Text */
 .box strong {
   display: block;
   color: #0056d2;
@@ -59,30 +56,108 @@
   line-height: 1.5;
 }
 
-/* Clickable Box Cursor */
 .box[onclick] {
   cursor: pointer;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .boxes {
-    grid-template-columns: 1fr 1fr;
-  }
-  .box img {
-    width: 80px;
-    height: 80px;
-  }
+/* NAVBAR */
+header {
+  background:#fff;
+  padding:15px 0;
+  box-shadow:0 2px 8px rgba(0,0,0,0.07);
+  position: sticky;
+  top:0;
+  z-index:999;
+}
+.nav-container {
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.nav-links {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.nav-links a {
+  font-weight:500;
+  color:#333;
+  text-decoration:none;
+  transition:0.3s;
+}
+.nav-links a:hover {
+  color:#0056d2;
+}
+.nav-links a.active {
+  color:#0056d2;
+  font-weight:600;
+}
+.lang-select {
+  padding:6px 10px;
+  border-radius:6px;
+  border:1px solid #ccc;
 }
 
-@media (max-width: 480px) {
-  .boxes {
-    grid-template-columns: 1fr;
-  }
-  .box img {
-    width: 60px;
-    height: 60px;
-  }
+/* HERO */
+.hero {
+  padding:100px 20px;
+  background:#0056d2;
+  color:white;
+  text-align:center;
+}
+.hero h1 { font-size:40px; font-weight:700; margin-bottom:10px; }
+.hero p { font-size:18px; max-width:700px; margin:auto; }
+
+/* FOOTER */
+footer {
+  text-align:center;
+  padding:20px 0;
+  background:#f5f8ff;
+  color:#333;
+}
+
+/* FLOATING BUTTONS */
+.floating-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  z-index:999;
+}
+.floating-btn a {
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.floating-btn a img {
+  width:35px;
+  height:35px;
+}
+.floating-btn a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+.floating-btn .whatsapp { background:#25D366; }
+.floating-btn .youtube { background:#FF0000; }
+
+/* Responsive */
+@media (max-width:768px) {
+  .boxes { grid-template-columns: 1fr 1fr; }
+  .box img { width:80px; height:80px; }
+}
+@media (max-width:480px) {
+  .boxes { grid-template-columns: 1fr; }
+  .box img { width:60px; height:60px; }
 }
 </style>
 </head>
@@ -91,83 +166,59 @@
 
 <!-- HEADER -->
 <header>
-  <div class="container nav">
-    <div class="brand">
-      <img src="images/logo.png" alt="NC Smart Tech Logo">
-    </div>
-   <nav>
-
+  <div class="nav-container">
+    <img src="images/logo.png" alt="NC Smart Tech Logo" style="width:180px;">
+    <div class="nav-links">
       <a id="navHome" href="index.html">Home</a>
-      <a id="navProjects" href="drone.html">Solutions</a>
-      <a id="navEducation" href="education.html" 
+      <a id="navSolutions" href="drone.html">Solutions</a>
+      <a id="navEducation" href="education.html" class="active">Education</a>
       <a id="navResearch" href="research.html">Research</a>
       <a id="navContact" href="contact.html">Contact</a>
       <a id="navKids" href="kids-zone.html">Kids Zone</a>
-
-
-    <select id="langSelector">
-      <option value="en">English</option>
-      <option value="ms">Bahasa Melayu</option>
-    </select>
+      <select id="langSelector">
+        <option value="en">EN</option>
+        <option value="ms">BM</option>
+      </select>
+    </div>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
   <h1 id="heroTitle">STEM & Coding Programs</h1>
-  <p id="heroDesc">
-    Hands-on programs designed to develop real-world skills in technology and engineering.
-  </p>
+  <p id="heroDesc">Hands-on programs designed to develop real-world skills in technology and engineering.</p>
 </section>
 
 <!-- CONTENT -->
 <div class="container">
   <section class="section">
-    <h2>Our Programs</h2>
-
+    <h2 id="programsTitle">Our Programs</h2>
     <div class="boxes">
-
       <div class="box">
         <img src="images/coding.png" alt="Coding Program">
         <strong id="card1Title">Coding & Programming</strong>
-        <p id="card1Desc">
-          Learn Python, Scratch, and problem-solving skills through engaging projects.
-        </p>
+        <p id="card1Desc">Learn Python, Scratch, and problem-solving skills through engaging projects.</p>
       </div>
-
       <div class="box">
         <img src="images/robotics.png" alt="Robotics Program">
         <strong id="card2Title">Robotics Engineering</strong>
-        <p id="card2Desc">
-          Build and program robots with sensors for real-life challenges.
-        </p>
+        <p id="card2Desc">Build and program robots with sensors for real-life challenges.</p>
       </div>
-
       <div class="box">
         <img src="images/ai.png" alt="AI Program">
         <strong id="card3Title">Artificial Intelligence</strong>
-        <p id="card3Desc">
-          Discover AI concepts and complete real-world machine learning projects.
-        </p>
+        <p id="card3Desc">Discover AI concepts and complete real-world machine learning projects.</p>
       </div>
-
       <div class="box">
         <img src="images/iot.png" alt="IoT Program">
         <strong id="card4Title">IoT & Smart Devices</strong>
-        <p id="card4Desc">
-          Learn IoT using sensors, automation, and smart environments.
-        </p>
+        <p id="card4Desc">Learn IoT using sensors, automation, and smart environments.</p>
       </div>
-
-      <!-- KIDS ZONE -->
       <div class="box" onclick="window.location.href='kids-zone.html'">
         <img src="images/kids.png" alt="Kids Zone">
         <strong id="card5Title">Kids Zone</strong>
-        <p id="card5Desc">
-          Fun STEM lessons and creative activities for young learners.
-        </p>
+        <p id="card5Desc">Fun STEM lessons and creative activities for young learners.</p>
       </div>
-
     </div>
   </section>
 </div>
@@ -177,81 +228,73 @@
   <span id="footerText">© 2026 NC Smart Tech. All Rights Reserved.</span>
 </footer>
 
-<!-- YOUTUBE FLOAT -->
-<a href="https://www.youtube.com/@ARDUINOPLATFORM" target="_blank" class="youtube-btn">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg">
-</a>
+<!-- FLOATING BUTTONS -->
+<div class="floating-btn">
+  <a href="https://wa.me/601158605250" target="_blank" class="whatsapp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+  <a href="https://www.youtube.com/@ARDUINOPLATFORM" target="_blank" class="youtube">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
+  </a>
+</div>
 
 <!-- LANGUAGE SCRIPT -->
 <script>
 const langData = {
   en: {
-    navHome: "Home",
-    navSolutions: "Solutions",
-    navEducation: "Education",
-    navResearch: "Research",
-    navContact: "Contact",
-    navKids: "Kids Zone",
-
-    heroTitle: "STEM & Coding Programs",
-    heroDesc: "Hands-on programs designed to develop real-world skills in technology and engineering.",
-
-    card1Title: "Coding & Programming",
-    card1Desc: "Learn Python, Scratch, and problem-solving skills through engaging projects.",
-
-    card2Title: "Robotics Engineering",
-    card2Desc: "Build and program robots with sensors for real-life challenges.",
-
-    card3Title: "Artificial Intelligence",
-    card3Desc: "Discover AI concepts and complete real-world machine learning projects.",
-
-    card4Title: "IoT & Smart Devices",
-    card4Desc: "Learn IoT using sensors, automation, and smart environments.",
-
-    card5Title: "Kids Zone",
-    card5Desc: "Fun STEM lessons and creative activities for young learners.",
-
-    footerText: "© 2026 NC Smart Tech. All Rights Reserved."
+    navHome:"Home",
+    navSolutions:"Solutions",
+    navEducation:"Education",
+    navResearch:"Research",
+    navContact:"Contact",
+    navKids:"Kids Zone",
+    heroTitle:"STEM & Coding Programs",
+    heroDesc:"Hands-on programs designed to develop real-world skills in technology and engineering.",
+    programsTitle:"Our Programs",
+    card1Title:"Coding & Programming",
+    card1Desc:"Learn Python, Scratch, and problem-solving skills through engaging projects.",
+    card2Title:"Robotics Engineering",
+    card2Desc:"Build and program robots with sensors for real-life challenges.",
+    card3Title:"Artificial Intelligence",
+    card3Desc:"Discover AI concepts and complete real-world machine learning projects.",
+    card4Title:"IoT & Smart Devices",
+    card4Desc:"Learn IoT using sensors, automation, and smart environments.",
+    card5Title:"Kids Zone",
+    card5Desc:"Fun STEM lessons and creative activities for young learners.",
+    footerText:"© 2026 NC Smart Tech. All Rights Reserved."
   },
-
   ms: {
-    navHome: "Laman Utama",
-    navSolutions: "Penyelesaian",
-    navEducation: "Pendidikan",
-    navResearch: "Penyelidikan",
-    navContact: "Hubungi",
-    navKids: "Zon Kanak-Kanak",
-
-    heroTitle: "Program STEM & Pengaturcaraan",
-    heroDesc: "Program praktikal yang membina kemahiran sebenar dalam teknologi dan kejuruteraan.",
-
-    card1Title: "Pengaturcaraan & Kod",
-    card1Desc: "Belajar Python, Scratch, dan kemahiran penyelesaian masalah.",
-
-    card2Title: "Kejuruteraan Robotik",
-    card2Desc: "Bina dan program robot dengan sensor untuk cabaran dunia sebenar.",
-
-    card3Title: "Kecerdasan Buatan",
-    card3Desc: "Terokai AI dan siapkan projek pembelajaran mesin dunia sebenar.",
-
-    card4Title: "IoT & Peranti Pintar",
-    card4Desc: "Belajar IoT dengan sensor, automasi, dan persekitaran pintar.",
-
-    card5Title: "Zon Kanak-Kanak",
-    card5Desc: "Aktiviti STEM menyeronokkan untuk kanak-kanak.",
-
-    footerText: "© 2026 NC Smart Tech. Hak cipta terpelihara."
+    navHome:"Laman Utama",
+    navSolutions:"Penyelesaian",
+    navEducation:"Pendidikan",
+    navResearch:"Penyelidikan",
+    navContact:"Hubungi",
+    navKids:"Zon Kanak-Kanak",
+    heroTitle:"Program STEM & Pengaturcaraan",
+    heroDesc:"Program praktikal yang membina kemahiran sebenar dalam teknologi dan kejuruteraan.",
+    programsTitle:"Program Kami",
+    card1Title:"Pengaturcaraan & Kod",
+    card1Desc:"Belajar Python, Scratch, dan kemahiran penyelesaian masalah.",
+    card2Title:"Kejuruteraan Robotik",
+    card2Desc:"Bina dan program robot dengan sensor untuk cabaran dunia sebenar.",
+    card3Title:"Kecerdasan Buatan",
+    card3Desc:"Terokai AI dan siapkan projek pembelajaran mesin dunia sebenar.",
+    card4Title:"IoT & Peranti Pintar",
+    card4Desc:"Belajar IoT dengan sensor, automasi, dan persekitaran pintar.",
+    card5Title:"Zon Kanak-Kanak",
+    card5Desc:"Aktiviti STEM menyeronokkan untuk kanak-kanak.",
+    footerText:"© 2026 NC Smart Tech. Hak cipta terpelihara."
   }
 };
 
 function updateLanguage(lang) {
-  for (let key in langData[lang]) {
+  for(let key in langData[lang]){
     const el = document.getElementById(key);
-    if (el) el.innerText = langData[lang][key];
+    if(el) el.innerText = langData[lang][key];
   }
 }
 
-document.getElementById("langSelector").addEventListener("change", function () {
+document.getElementById("langSelector").addEventListener("change", function(){
   updateLanguage(this.value);
 });
 </script>
