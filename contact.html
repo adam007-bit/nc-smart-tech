@@ -107,7 +107,6 @@
 
 .floating-btn .whatsapp { background: #25D366; }
 .floating-btn .youtube { background: #FF0000; }
-
 </style>
 </head>
 
@@ -125,6 +124,7 @@
       <a id="navContact" href="contact.html" class="active">Contact</a>
       <a id="navKids" href="kids-zone.html">Kids Zone</a>
 
+      <!-- Language Selector -->
       <select id="langSelector" class="lang-select">
         <option value="en">EN</option>
         <option value="ms">BM</option>
@@ -135,27 +135,27 @@
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Contact Us</h1>
-  <p>Get in touch for demos, inquiries, or collaboration opportunities.</p>
+  <h1 id="heroTitle">Contact Us</h1>
+  <p id="heroDesc">Get in touch for demos, inquiries, or collaboration opportunities.</p>
 </section>
 
 <!-- CONTENT -->
 <div class="container">
   <section class="section">
-    <h2>Send Us a Message</h2>
+    <h2 id="formTitle">Send Us a Message</h2>
 
     <form action="https://formspree.io/f/xyzlwqka" method="POST" class="contact-form">
-      <label>Your Name</label>
+      <label id="labelName">Your Name</label>
       <input type="text" name="name" required>
 
-      <label>Your Email</label>
+      <label id="labelEmail">Your Email</label>
       <input type="email" name="email" required>
 
-      <label>Your Message</label>
+      <label id="labelMessage">Your Message</label>
       <textarea name="message" rows="5" required></textarea>
 
       <div class="center">
-        <button type="submit" class="btn">Send Message</button>
+        <button type="submit" id="btnSubmit" class="btn">Send Message</button>
       </div>
     </form>
   </section>
@@ -163,7 +163,7 @@
 
 <!-- FOOTER -->
 <footer>
-  © 2026 NC Smart Tech. All Rights Reserved.
+  <span id="footerText">© 2026 NC Smart Tech. All Rights Reserved.</span>
 </footer>
 
 <!-- CHATBOT -->
@@ -200,6 +200,56 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
   </a>
 </div>
+
+<!-- LANGUAGE SCRIPT -->
+<script>
+const langData = {
+  en: {
+    navHome: "Home",
+    navProjects: "Solutions",
+    navEducation: "Education",
+    navResearch: "Research",
+    navContact: "Contact",
+    navKids: "Kids Zone",
+    heroTitle: "Contact Us",
+    heroDesc: "Get in touch for demos, inquiries, or collaboration opportunities.",
+    formTitle: "Send Us a Message",
+    labelName: "Your Name",
+    labelEmail: "Your Email",
+    labelMessage: "Your Message",
+    btnSubmit: "Send Message",
+    footerText: "© 2026 NC Smart Tech. All Rights Reserved."
+  },
+  ms: {
+    navHome: "Laman Utama",
+    navProjects: "Penyelesaian",
+    navEducation: "Pendidikan",
+    navResearch: "Penyelidikan",
+    navContact: "Hubungi",
+    navKids: "Zon Kanak-Kanak",
+    heroTitle: "Hubungi Kami",
+    heroDesc: "Hubungi kami untuk demo, pertanyaan, atau peluang kerjasama.",
+    formTitle: "Hantar Mesej Anda",
+    labelName: "Nama Anda",
+    labelEmail: "Emel Anda",
+    labelMessage: "Mesej Anda",
+    btnSubmit: "Hantar Mesej",
+    footerText: "© 2026 NC Smart Tech. Hak Cipta Terpelihara."
+  }
+};
+
+function updateLanguage(lang) {
+  for (let key in langData[lang]) {
+    const el = document.getElementById(key);
+    if(el) el.innerText = langData[lang][key];
+  }
+}
+
+// Listen for language selector change
+document.getElementById("langSelector").addEventListener("change", function() {
+  updateLanguage(this.value);
+});
+</script>
 
 </body>
 </html>
