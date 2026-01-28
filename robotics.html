@@ -136,7 +136,174 @@ body { background: #f5f7fa; color: #333; line-height: 1.6; }
 
   <div style="text-align:center; margin-top:40px;">
     <a class="btn" href="contact.html">Enroll Now</a>
+  </div><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IoT Program — NC Smart Tech</title>
+
+<!-- MAIN GLOBAL STYLE -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- PAGE-SPECIFIC STYLE -->
+<style>
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 5rem 1.5rem;
+}
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+.hero p {
+  font-size: 1.2rem;
+  max-width: 720px;
+  margin: auto;
+  opacity: 0.95;
+}
+
+/* Sections */
+.section {
+  padding: 3.5rem 0;
+}
+.section h2 {
+  text-align: center;
+  font-size: 2.1rem;
+  color: var(--primary-dark);
+  margin-bottom: 1.5rem;
+}
+.section h2::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background: var(--primary);
+  display: block;
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+/* Boxes */
+.boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.box {
+  background: #ffffff;
+  padding: 1.6rem;
+  border-radius: 14px;
+  border: 1px solid #e1e8ff;
+  box-shadow: 0 6px 18px rgba(0, 86, 210, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 86, 210, 0.25);
+}
+.box strong {
+  color: var(--primary);
+  font-size: 1.05rem;
+}
+
+/* CTA */
+.cta-center {
+  text-align: center;
+  margin-top: 3rem;
+}
+.btn {
+  padding: 14px 36px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: 0.3s ease;
+}
+.btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero p { font-size: 1rem; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SAME HEADER AS MAIN SITE -->
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <img src="images/logo.png" alt="NC Smart Tech Logo">
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="solutions.html" class="active">Solutions</a>
+      <a href="education.html">Education</a>
+      <a href="research.html">Research</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Internet of Things (IoT)</h1>
+  <p>Connect sensors, devices, and data to build smart, real-world projects.</p>
+</section>
+
+<main class="container">
+
+  <section class="section">
+    <h2>About This Program</h2>
+    <p style="text-align:center; max-width:720px; margin:auto;">
+      Students learn to build IoT projects using sensors, WiFi modules, and real-time dashboards,
+      gaining future-ready skills for smart technology and competitions.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>What Students Learn</h2>
+    <div class="boxes">
+      <div class="box"><strong>✔ Sensors</strong><br>Temperature, motion, and humidity sensors for smart projects.</div>
+      <div class="box"><strong>✔ ESP32 / ESP8266</strong><br>Programming IoT boards and wireless devices.</div>
+      <div class="box"><strong>✔ Live Dashboards</strong><br>Monitor real-time data using cloud platforms.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Why Choose This Program?</h2>
+    <div class="boxes">
+      <div class="box">Perfect for STEM learning and innovation competitions.</div>
+      <div class="box">Hands-on learning with visual dashboards.</div>
+      <div class="box">Builds future-ready engineering skills.</div>
+    </div>
+  </section>
+
+  <div class="cta-center">
+    <a class="btn" href="contact.html">Enroll Now</a>
+  </div>
+
+</main>
+
+<!-- SAME FOOTER -->
+<footer class="footer">
+  &copy; 2025 NC Smart Tech. Smart Solution for Smart Future.
+</footer>
+
+</body>
+</html>
+
 
 </div>
 
