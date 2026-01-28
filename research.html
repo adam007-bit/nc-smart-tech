@@ -9,218 +9,134 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* Reset & Base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { 
-  background: #f5f7fa; 
-  color: #333; 
-  line-height: 1.6; 
+body {
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
   font-family: "Poppins", sans-serif;
 }
 
-/* Top Navigation with Logo */
+/* Header */
 header {
-  background: #ffffff;
+  background: #fff;
   padding: 15px 0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 10px rgba(0,0,0,.07);
   position: sticky;
   top: 0;
   z-index: 999;
 }
 .nav-container {
-  width: 90%; max-width: 1200px;
+  width: 90%;
+  max-width: 1200px;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.nav-container img {
-  height: 200px;
-}
+.nav-container img { height: 70px; }
 .nav-links a {
-  margin-left: 22px;
+  margin-left: 20px;
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  transition: 0.3s;
 }
-.nav-links a:hover {
-  color: #0056d2;
-}
+.nav-links a:hover { color: #0056d2; }
+.lang-select { margin-left: 15px; }
 
-/* Hero Section */
+/* Hero */
 .hero {
-  background: linear-gradient(135deg, #0056d2 0%, #1a75ff 100%);
+  background: linear-gradient(135deg,#0056d2,#1a75ff);
   color: #fff;
   text-align: center;
-  padding: 110px 20px;
-  position: relative;
-  overflow: hidden;
+  padding: 100px 20px;
 }
-.hero h1 {
-  font-size: 3.2rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  animation: fadeInDown 1s ease forwards;
-}
-.hero p {
-  font-size: 1.2rem;
-  max-width: 700px;
-  margin: auto;
-  animation: fadeInUp 1s ease forwards;
-  opacity: 0.95;
-}
+.hero h1 { font-size: 3rem; }
+.hero p { max-width: 700px; margin: auto; }
 
-/* Main Container */
+/* Layout */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: auto;
   padding: 60px 0;
 }
-
-/* Section Titles */
 .section { margin-bottom: 60px; }
 .section h2 {
+  text-align: center;
   color: #0056d2;
   margin-bottom: 25px;
-  font-size: 2.3rem;
-  text-align: center;
-}
-.section h2::after {
-  content: '';
-  width: 60px; height: 4px;
-  background: #0056d2;
-  display: block;
-  margin: 10px auto 0;
-  border-radius: 2px;
 }
 
 /* Boxes */
 .boxes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
   gap: 25px;
 }
 .box {
   background: #fff;
-  padding: 25px 20px;
+  padding: 25px;
   border-radius: 14px;
   border: 1px solid #dce5ff;
-  box-shadow: 0 6px 18px rgba(0, 86, 210, 0.08);
-  transition: 0.45s ease;
-  transform: translateY(25px);
-  opacity: 0;
+  box-shadow: 0 6px 18px rgba(0,86,210,.08);
+  transition: .3s;
 }
 .box:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 25px rgba(0, 86, 210, 0.22);
+  transform: translateY(-8px);
   background: #e8f1ff;
 }
-.box strong {
-  color: #0056d2;
-  font-size: 1.15rem;
-}
 
-/* Enroll Button */
+/* Button */
 .btn {
   display: inline-block;
-  padding: 15px 38px;
-  background: linear-gradient(135deg, #0056d2, #1a75ff);
+  padding: 15px 40px;
+  background: linear-gradient(135deg,#0056d2,#1a75ff);
   color: #fff;
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
-  transition: 0.3s ease;
-  font-size: 1.1rem;
 }
-.btn:hover {
-  background: linear-gradient(135deg, #003bb5, #0056d2);
-  transform: translateY(-3px);
+.btn:hover { background: #003bb5; }
+
+/* Floating Buttons */
+.whatsapp-float, .youtube-btn {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.whatsapp-float {
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
 }
 .youtube-btn {
-  position: fixed;
-  bottom: 90px;       /* adjust distance from bottom */
-  right: 90px;        /* adjust distance from right */
-  width: 60px;
-  height: 60px;
+  bottom: 90px;
+  right: 20px;
   background: #FF0000;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  z-index: 999;
-  transition: transform 0.3s, box-shadow 0.3s;
 }
-
-.youtube-btn img {
-  width: 35px;  /* icon size */
-  height: 35px;
-}
-
-.youtube-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-}
-
-/* Animations */
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(25px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* WhatsApp Floating Button */
-.whatsapp-float {
-  position: fixed;
-  bottom: 22px;
-  right: 22px;
-  z-index: 999;
-  background: #25D366;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: 0.3s;
-}
-.whatsapp-float img {
-  width: 36px;
-}
-.whatsapp-float:hover {
-  transform: scale(1.1);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero h1 { font-size: 2.1rem; }
-  .hero p { font-size: 1rem; }
-}
+.whatsapp-float img,
+.youtube-btn img { width: 34px; }
 </style>
 </head>
+
 <body>
 
-<!-- Navigation with Logo -->
 <header>
   <div class="nav-container">
-    <img src="images/logo.png" alt="NC Smart Tech Logo">
+    <img src="images/logo.png" alt="NC Smart Tech">
     <div class="nav-links">
-      <a id="navHome" href="index.html">Home</a>
-      <a id="navProjects" href="drone.html">Solutions</a>
-      <a id="navEducation" href="education.html" class="active">Education</a>
-      <a id="navResearch" href="research.html">Research</a>
-      <a id="navContact" href="contact.html">Contact</a>
-      <a id="navKids" href="kids-zone.html">Kids Zone</a>
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="drone.html" data-i18n="nav_solutions">Solutions</a>
+      <a href="education.html" data-i18n="nav_edu">Education</a>
+      <a href="research.html" data-i18n="nav_research">Research</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
+      <a href="kids-zone.html" data-i18n="nav_kids">Kids Zone</a>
 
       <select id="langSelector" class="lang-select">
         <option value="en">EN</option>
@@ -232,67 +148,104 @@ header {
 
 <!-- Hero -->
 <div class="hero">
-  <h1>Robotics Program</h1>
-  <p>Build, code, and control real robots in a fun, hands-on learning environment.</p>
+  <h1 data-i18n="hero_title">Robotics Program</h1>
+  <p data-i18n="hero_desc">
+    Build, code, and control real robots in a fun, hands-on learning environment.
+  </p>
 </div>
 
-<!-- Main Content -->
 <div class="container">
 
   <div class="section">
-    <h2>About This Program</h2>
-    <p style="text-align:center; max-width:700px; margin:auto;">
-      Students assemble and program robots using sensors, motors, and microcontrollers
-      to solve real-world challenges while learning teamwork and engineering.
+    <h2 data-i18n="about_title">About This Program</h2>
+    <p data-i18n="about_desc" style="text-align:center;max-width:700px;margin:auto;">
+      Students assemble and program robots using sensors, motors, and microcontrollers to solve real-world challenges.
     </p>
   </div>
 
   <div class="section">
-    <h2>What Students Learn</h2>
+    <h2 data-i18n="learn_title">What Students Learn</h2>
     <div class="boxes">
-      <div class="box"><strong>✔ Robotics Basics</strong><br>Motors, sensors, gears, and mechanical movement.</div>
-      <div class="box"><strong>✔ Microcontrollers</strong><br>Arduino coding to control robots intelligently.</div>
-      <div class="box"><strong>✔ Robot Challenges</strong><br>Line-following, obstacle avoidance & robotics missions.</div>
+      <div class="box" data-i18n="learn_1">
+        <strong>✔ Robotics Basics</strong><br>Motors, sensors, gears, and mechanical movement.
+      </div>
+      <div class="box" data-i18n="learn_2">
+        <strong>✔ Microcontrollers</strong><br>Arduino coding to control robots intelligently.
+      </div>
+      <div class="box" data-i18n="learn_3">
+        <strong>✔ Robot Challenges</strong><br>Line-following & obstacle avoidance.
+      </div>
     </div>
   </div>
 
   <div class="section">
-    <h2>Why Choose This Program?</h2>
+    <h2 data-i18n="why_title">Why Choose This Program?</h2>
     <div class="boxes">
-      <div class="box">Boost engineering thinking and problem-solving skills.</div>
-      <div class="box">Hands-on robotics projects that make learning exciting.</div>
-      <div class="box">Fun team competitions to build creativity & collaboration.</div>
+      <div class="box" data-i18n="why_1">Boost engineering and problem-solving skills.</div>
+      <div class="box" data-i18n="why_2">Hands-on robotics projects.</div>
+      <div class="box" data-i18n="why_3">Fun team competitions.</div>
     </div>
   </div>
 
-  <div style="text-align:center; margin-top:45px;">
-    <a class="btn" href="contact.html">Enroll Now</a>
+  <div style="text-align:center;">
+    <a href="contact.html" class="btn" data-i18n="enroll_btn">Enroll Now</a>
   </div>
 
 </div>
 
-<!-- Animate boxes on scroll -->
+<!-- Floating Buttons -->
+<a href="https://wa.me/60123456789" class="whatsapp-float" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
+<a href="https://www.youtube.com/@ARDUINOPLATFORM" class="youtube-btn" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg">
+</a>
+
+<!-- Language Script -->
 <script>
-const boxes = document.querySelectorAll('.box');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.style.animation = 'slideUp 0.7s forwards';
-    }
+const t = {
+  en:{
+    nav_home:"Home",nav_solutions:"Solutions",nav_edu:"Education",
+    nav_research:"Research",nav_contact:"Contact",nav_kids:"Kids Zone",
+    hero_title:"Robotics Program",
+    hero_desc:"Build, code, and control real robots in a fun, hands-on learning environment.",
+    about_title:"About This Program",
+    about_desc:"Students assemble and program robots using sensors, motors, and microcontrollers to solve real-world challenges.",
+    learn_title:"What Students Learn",
+    learn_1:"<strong>✔ Robotics Basics</strong><br>Motors, sensors, gears, and mechanical movement.",
+    learn_2:"<strong>✔ Microcontrollers</strong><br>Arduino coding to control robots intelligently.",
+    learn_3:"<strong>✔ Robot Challenges</strong><br>Line-following & obstacle avoidance.",
+    why_title:"Why Choose This Program?",
+    why_1:"Boost engineering and problem-solving skills.",
+    why_2:"Hands-on robotics projects.",
+    why_3:"Fun team competitions.",
+    enroll_btn:"Enroll Now"
+  },
+  ms:{
+    nav_home:"Laman Utama",nav_solutions:"Penyelesaian",nav_edu:"Pendidikan",
+    nav_research:"Penyelidikan",nav_contact:"Hubungi",nav_kids:"Zon Kanak-Kanak",
+    hero_title:"Program Robotik",
+    hero_desc:"Membina, mengekod dan mengawal robot sebenar dalam pembelajaran yang menyeronokkan.",
+    about_title:"Tentang Program Ini",
+    about_desc:"Pelajar memasang dan memprogram robot menggunakan sensor, motor dan mikropengawal untuk menyelesaikan cabaran dunia sebenar.",
+    learn_title:"Apa Yang Dipelajari",
+    learn_1:"<strong>✔ Asas Robotik</strong><br>Motor, sensor, gear dan pergerakan mekanikal.",
+    learn_2:"<strong>✔ Mikropengawal</strong><br>Pengekodan Arduino untuk kawalan pintar.",
+    learn_3:"<strong>✔ Cabaran Robot</strong><br>Ikut garisan & elak halangan.",
+    why_title:"Kenapa Pilih Program Ini?",
+    why_1:"Meningkatkan kemahiran kejuruteraan.",
+    why_2:"Projek robotik praktikal.",
+    why_3:"Pertandingan berpasukan menyeronokkan.",
+    enroll_btn:"Daftar Sekarang"
+  }
+};
+
+document.getElementById("langSelector").addEventListener("change",e=>{
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    el.innerHTML = t[e.target.value][el.dataset.i18n];
   });
-},{ threshold: 0.2 });
-
-boxes.forEach(box => observer.observe(box));
+});
 </script>
-
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/60123456789" target="_blank" class="whatsapp-float">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-</a>
-<!-- YouTube Floating Button -->
-<a href="https://www.youtube.com/@ARDUINOPLATFORM" target="_blank" class="youtube-btn">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
-</a>
 
 </body>
 </html>
