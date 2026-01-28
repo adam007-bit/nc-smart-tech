@@ -3,297 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NC Smart Tech — Solutions</title>
-<link rel="stylesheet" href="style.css">
+<title>IoT Program — NC Smart Tech</title>
+
+<!-- GLOBAL STYLE (SAME FOR ALL PAGES) -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- PAGE-ONLY STYLE -->
 <style>
-/* Reset & Base */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-body { background: #f5f7fa; color: #333; line-height: 1.6; }
-a { text-decoration: none; color: inherit; }
-
-/* Header */
-header { background: #B2BEB5; padding: 15px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-header .container { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: auto; padding: 0 20px; }
-header .brand img { height: 250px; }
-header nav a { margin-left: 25px; font-weight: 600; color: #0000; transition: 0.3s; }
-header nav a:hover, header nav a.active { color: #ff7b00; }
-
-/* Hero Section */
-.hero {
-  background: linear-gradient(135deg, #0b2545 0%, #ffffff 100%);
+/* Program Hero */
+.program-hero {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
   color: #fff;
   text-align: center;
-  padding: 120px 20px 80px;
+  padding: 5rem 1.5rem;
 }
-.hero h1 { font-size: 40px; margin-bottom: 20px; animation: fadeInDown 1s ease forwards; }
-.hero p { font-size: 30px; max-width: 700px; margin: 0 auto; animation: fadeInUp 1s ease forwards; }
 
-.solution-card {
-  background: #ffffff; /* cleaner card */
-  border-radius: 20px;
-  padding: 30px 20px;
+.program-hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.program-hero p {
+  font-size: 1.2rem;
+  max-width: 720px;
+  margin: auto;
+  opacity: 0.95;
+}
+
+/* Program Sections */
+.program-section {
+  padding: 3.5rem 0;
+}
+
+.program-section h2 {
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-size: 2.1rem;
+  color: var(--primary-dark);
+  margin-bottom: 1.5rem;
 }
 
-.solution-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-.solution-icon {
-  width: 180px; /* larger icon */
-  height: 180px;
-  margin-bottom: 20px;
-  padding: 15px;
-  background: linear-gradient(145deg, #f0f4ff, #d9e3ff); /* soft gradient background */
-  border-radius: 50%; /* circle style */
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* subtle shadow */
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-  object-fit: contain; /* ensures proper scaling */
-}
-
-.solution-card:hover .solution-icon {
-  transform: scale(1.15) rotate(5deg);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  background: linear-gradient(145deg, #e4f0ff, #b8d0ff);
-}
-
-.solution-card h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
-  color: #0b2545;
-  font-weight: 600;
-}
-
-.solution-card p {
-  font-size: 16px;
-  color: #555;
-  line-height: 1.5;
-}
-
-/* Footer */
-footer.footer {
-  text-align: center;
-  padding: 25px 20px;
-  background: #0b2545;
-  color: #fff;
-  font-size: 14px;
-}
-.youtube-btn {
-  position: fixed;
-  bottom: 90px;       /* adjust distance from bottom */
-  right: 90px;        /* adjust distance from right */
+.program-section h2::after {
+  content: '';
   width: 60px;
-  height: 60px;
-  background: #FF0000;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  z-index: 999;
-  transition: transform 0.3s, box-shadow 0.3s;
+  height: 4px;
+  background: var(--primary);
+  display: block;
+  margin: 12px auto 0;
+  border-radius: 2px;
 }
 
-.youtube-btn img {
-  width: 35px;  /* icon size */
-  height: 35px;
+/* Feature Boxes */
+.program-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
 }
 
-.youtube-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+.program-box {
+  background: #fff;
+  padding: 1.6rem;
+  border-radius: 14px;
+  border: 1px solid #e1e8ff;
+  box-shadow: 0 6px 18px rgba(0, 86, 210, 0.12);
+  transition: 0.3s ease;
 }
 
-/* Animations */
-@keyframes fadeInDown {
-  0% { opacity: 0; transform: translateY(-40px); }
-  100% { opacity: 1; transform: translateY(0); }
+.program-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 86, 210, 0.25);
 }
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(40px); }
-  100% { opacity: 1; transform: translateY(0); }
+
+.program-box strong {
+  color: var(--primary);
+}
+
+/* CTA */
+.program-cta {
+  text-align: center;
+  margin-top: 3rem;
 }
 
 /* Responsive */
-@media(max-width: 768px){
-  .hero h1 { font-size: 36px; }
-  .hero p { font-size: 18px; }
+@media (max-width: 768px) {
+  .program-hero h1 { font-size: 2.2rem; }
+  .program-hero p { font-size: 1rem; }
 }
 </style>
 </head>
+
 <body>
 
+<!-- GLOBAL HEADER -->
 <header>
   <div class="container nav">
     <div class="brand">
       <img src="images/logo.png" alt="NC Smart Tech Logo">
     </div>
-    <nav>
-      <a href="index.html" id="navHome">Home</a>
-      <a href="solutions.html" id="navSolutions" class="active">Solutions</a>
-      <a href="education.html" id="navEducation">Education</a>
-      <a href="research.html" id="navResearch">Research</a>
-      <a href="contact.html" id="navContact">Contact</a>
-    </nav>
-    <select id="langSelector" style="
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: none;
-  font-weight: 600;
-  background: #ff7b00;
-  color: #fff;
-  cursor: pointer;
-  margin-left: 20px;
-">
-  <option value="en">EN</option>
-  <option value="ms">BM</option>
-</select>
 
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="solutions.html" class="active">Solutions</a>
+      <a href="education.html">Education</a>
+      <a href="research.html">Research</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </div>
 </header>
 
-<main>
-  <!-- Hero -->
- <section class="hero">
-  <h1 id="heroTitle">Our Smart Solutions</h1>
-  <p id="heroText">IoT, Robotics, Automation, and Educational Tools designed to create real-world impact for industries, schools, and communities.</p>
+<!-- HERO -->
+<section class="program-hero">
+  <h1>Internet of Things (IoT)</h1>
+  <p>Connect sensors, devices, and data to build smart, real-world projects.</p>
 </section>
 
+<!-- CONTENT -->
+<main class="container">
 
-<section id="solutions">
-  <div class="container solutions-grid">
+  <section class="program-section">
+    <h2>About This Program</h2>
+    <p style="text-align:center; max-width:720px; margin:auto;">
+      Students learn to build IoT projects using sensors, WiFi modules, and real-time dashboards,
+      preparing them for future smart technologies and competitions.
+    </p>
+  </section>
 
-    <div class="solution-card" onclick="window.location='iot.html';">
-      <img src="images/iot.png" class="solution-icon">
-      <h3 id="sol1Title">Smart Devices & IoT</h3>
-      <p id="sol1Text">Connected devices that optimize homes, schools, and industries.</p>
+  <section class="program-section">
+    <h2>What Students Learn</h2>
+    <div class="program-boxes">
+      <div class="program-box">
+        <strong>✔ Sensors</strong><br>
+        Temperature, motion, and humidity sensors for smart systems.
+      </div>
+      <div class="program-box">
+        <strong>✔ ESP32 / ESP8266</strong><br>
+        Programming IoT boards and wireless communication.
+      </div>
+      <div class="program-box">
+        <strong>✔ Live Dashboards</strong><br>
+        Real-time data monitoring using cloud platforms.
+      </div>
     </div>
+  </section>
 
-    <div class="solution-card" onclick="window.location='https://arduinoplatform-lab.github.io/arduino/';">
-      <img src="images/robotics.png" class="solution-icon">
-      <h3 id="sol2Title">Robotics & Automation</h3>
-      <p id="sol2Text">Educational and industrial robots for learning, innovation, and productivity.</p>
+  <section class="program-section">
+    <h2>Why Choose This Program?</h2>
+    <div class="program-boxes">
+      <div class="program-box">Ideal for STEM learning & competitions.</div>
+      <div class="program-box">Hands-on projects with visual dashboards.</div>
+      <div class="program-box">Future-ready engineering & IoT skills.</div>
     </div>
+  </section>
 
-    <div class="solution-card" onclick="window.location='drone.html';">
-      <img src="images/drones.png" class="solution-icon">
-      <h3 id="sol3Title">Drones & Automation</h3>
-      <p id="sol3Text">Intelligent drones for logistics, monitoring, and smart operations.</p>
-    </div>
-
-    <div class="solution-card" onclick="window.location='education.html';">
-      <img src="images/education.png" class="solution-icon">
-      <h3 id="sol4Title">Educational Tools</h3>
-      <p id="sol4Text">Interactive STEM and coding kits that empower students and teachers.</p>
-    </div>
-
-    <div class="solution-card" onclick="window.location='research.html';">
-      <img src="images/research.png" class="solution-icon">
-      <h3 id="sol5Title">Research & Development</h3>
-      <p id="sol5Text">Collaborate with universities and institutions to innovate and commercialize solutions.</p>
-    </div>
-
+  <div class="program-cta">
+    <a href="contact.html" class="btn">Enroll Now</a>
   </div>
-</section>
 
 </main>
 
+<!-- GLOBAL FOOTER -->
 <footer class="footer">
-  &copy; 2025 NC Smart Tech. All rights reserved.
+  &copy; 2025 NC Smart Tech. Smart Solution for Smart Future.
 </footer>
-<!-- YouTube Floating Button -->
-<a href="https://www.youtube.com/@ARDUINOPLATFORM" target="_blank" class="youtube-btn">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
-</a>
-<script>
-const langData = {
-  en: {
-    navHome: "Home",
-    navSolutions: "Solutions",
-    navEducation: "Education",
-    navResearch: "Research",
-    navContact: "Contact",
-
-    heroTitle: "Our Smart Solutions",
-    heroText: "IoT, Robotics, Automation, and Educational Tools designed to create real-world impact for industries, schools, and communities.",
-
-    sol1Title: "Smart Devices & IoT",
-    sol1Text: "Connected devices that optimize homes, schools, and industries.",
-
-    sol2Title: "Robotics & Automation",
-    sol2Text: "Educational and industrial robots for learning, innovation, and productivity.",
-
-    sol3Title: "Drones & Automation",
-    sol3Text: "Intelligent drones for logistics, monitoring, and smart operations.",
-
-    sol4Title: "Educational Tools",
-    sol4Text: "Interactive STEM and coding kits that empower students and teachers.",
-
-    sol5Title: "Research & Development",
-    sol5Text: "Collaborate with universities and institutions to innovate and commercialize solutions."
-  },
-
-  ms: {
-    navHome: "Laman Utama",
-    navSolutions: "Penyelesaian",
-    navEducation: "Pendidikan",
-    navResearch: "Penyelidikan",
-    navContact: "Hubungi",
-
-    heroTitle: "Penyelesaian Teknologi Pintar Kami",
-    heroText: "IoT, Robotik, Automasi dan alat pendidikan untuk memberi impak sebenar kepada industri, sekolah dan komuniti.",
-
-    sol1Title: "Peranti Pintar & IoT",
-    sol1Text: "Peranti berhubung untuk mengoptimumkan rumah, sekolah dan industri.",
-
-    sol2Title: "Robotik & Automasi",
-    sol2Text: "Robot pendidikan dan industri untuk pembelajaran dan produktiviti.",
-
-    sol3Title: "Dron & Automasi",
-    sol3Text: "Dron pintar untuk logistik, pemantauan dan operasi pintar.",
-
-    sol4Title: "Alat Pendidikan",
-    sol4Text: "Kit STEM dan pengkodan interaktif untuk pelajar dan guru.",
-
-    sol5Title: "Penyelidikan & Pembangunan",
-    sol5Text: "Bekerjasama dengan universiti untuk inovasi dan pengkomersialan."
-  }
-};
-
-function updateLanguage(lang) {
-  document.getElementById("navHome").innerText = langData[lang].navHome;
-  document.getElementById("navSolutions").innerText = langData[lang].navSolutions;
-  document.getElementById("navEducation").innerText = langData[lang].navEducation;
-  document.getElementById("navResearch").innerText = langData[lang].navResearch;
-  document.getElementById("navContact").innerText = langData[lang].navContact;
-
-  document.getElementById("heroTitle").innerText = langData[lang].heroTitle;
-  document.getElementById("heroText").innerText = langData[lang].heroText;
-
-  document.getElementById("sol1Title").innerText = langData[lang].sol1Title;
-  document.getElementById("sol1Text").innerText = langData[lang].sol1Text;
-
-  document.getElementById("sol2Title").innerText = langData[lang].sol2Title;
-  document.getElementById("sol2Text").innerText = langData[lang].sol2Text;
-
-  document.getElementById("sol3Title").innerText = langData[lang].sol3Title;
-  document.getElementById("sol3Text").innerText = langData[lang].sol3Text;
-
-  document.getElementById("sol4Title").innerText = langData[lang].sol4Title;
-  document.getElementById("sol4Text").innerText = langData[lang].sol4Text;
-
-  document.getElementById("sol5Title").innerText = langData[lang].sol5Title;
-  document.getElementById("sol5Text").innerText = langData[lang].sol5Text;
-}
-
-document.getElementById("langSelector").addEventListener("change", function () {
-  updateLanguage(this.value);
-});
-</script>
 
 </body>
 </html>
