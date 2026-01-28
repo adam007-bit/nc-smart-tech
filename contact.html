@@ -10,21 +10,105 @@
 
 <!-- MAIN GLOBAL STYLE -->
 <link rel="stylesheet" href="css/style.css">
-</head>
 
-<body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — NC Smart Tech</title>
+<style>
+/* Contact Page Custom Styles */
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+}
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+.contact-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
 
-<!-- MAIN GLOBAL STYLE -->
-<link rel="stylesheet" href="css/style.css">
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #005eff;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0,94,255,0.3);
+}
+
+.contact-form .btn {
+  width: 100%;
+  padding: 15px;
+  background: #005eff;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.contact-form .btn:hover {
+  background: #0043c4;
+}
+
+/* HERO SECTION */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(to bottom right, #005eff, #1b8fff);
+  color: white;
+}
+
+.hero h1 { font-size: 48px; margin-bottom: 10px; }
+.hero p { font-size: 18px; opacity: 0.9; }
+
+/* FLOATING BUTTONS STACKED */
+.floating-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 999;
+}
+
+.floating-btn a {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.floating-btn a img {
+  width: 35px;
+  height: 35px;
+}
+
+.floating-btn a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.floating-btn .whatsapp { background: #25D366; }
+.floating-btn .youtube { background: #FF0000; }
+
+</style>
 </head>
 
 <body>
@@ -41,7 +125,6 @@
       <a id="navContact" href="contact.html" class="active">Contact</a>
       <a id="navKids" href="kids-zone.html">Kids Zone</a>
 
-      <!-- Language Selector -->
       <select id="langSelector" class="lang-select">
         <option value="en">EN</option>
         <option value="ms">BM</option>
@@ -58,45 +141,6 @@
 
 <!-- CONTENT -->
 <div class="container">
-
-  <section class="section">
-    <h2>Send Us a Message</h2>
-
-    <form action="https://formspree.io/f/xyzlwqka" method="POST" class="contact-form">
-      <label>Your Name</label>
-      <input type="text" name="name" required>
-
-      <label>Your Email</label>
-      <input typ
-
-<!-- HEADER -->
-<header>
-  <div class="nav-container">
-    <img src="images/logo.png" alt="NC Smart Tech Logo">
-   <div class="nav-links">
-      <a id="navHome" href="index.html">Home</a>
-      <a id="navProjects" href="drone.html">Solutions</a>
-      <a id="navEducation" href="education.html" class="active">Education</a>
-      <a id="navResearch" href="research.html">Research</a>
-      <a id="navContact" href="contact.html">Contact</a>
-      <a id="navKids" href="kids-zone.html">Kids Zone</a>
-
-      <select id="langSelector" class="lang-select">
-        <option value="en">EN</option>
-        <option value="ms">BM</option>
-    </div>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <h1>Contact Us</h1>
-  <p>Get in touch for demos, inquiries, or collaboration opportunities.</p>
-</section>
-
-<!-- CONTENT -->
-<div class="container">
-
   <section class="section">
     <h2>Send Us a Message</h2>
 
@@ -115,7 +159,6 @@
       </div>
     </form>
   </section>
-
 </div>
 
 <!-- FOOTER -->
@@ -148,15 +191,15 @@
 })();
 </script>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/601158605250" target="_blank" class="whatsapp-float">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
-</a>
-
-<!-- YOUTUBE -->
-<a href="https://www.youtube.com/@ARDUINOPLATFORM" target="_blank" class="youtube-btn">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg">
-</a>
+<!-- STACKED FLOATING BUTTONS -->
+<div class="floating-btn">
+  <a href="https://wa.me/601158605250" target="_blank" class="whatsapp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+  <a href="https://www.youtube.com/@ARDUINOPLATFORM" target="_blank" class="youtube">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
+  </a>
+</div>
 
 </body>
 </html>
