@@ -3,147 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NC Smart Tech — Education</title>
+<title>Education — NC Smart Tech</title>
 
-<style>
-  /* ----- GLOBAL ----- */
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Arial, sans-serif; }
-  body { background-color: #f5f7fa; color: #333; line-height: 1.6; scroll-behavior: smooth; }
-  a { text-decoration: none; color: inherit; }
-  img { display: block; max-width: 100%; }
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  /* ----- HEADER ----- */
-  header { background: #B2BEB5; padding: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 999; }
-  .container { width: 90%; max-width: 1200px; margin: auto; }
-  .nav { display: flex; justify-content: space-between; align-items: center; }
-  .brand img { width: 250px; }
-
-  nav a { margin: 0 12px; font-weight: 500; color: #333; position: relative; transition: 0.3s; }
-  nav a:hover { color: #0056d2; }
-
-  /* Language Dropdown */
-  .lang-select {
-    padding: 6px 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    margin-left: 10px;
-  }
-
-  /* ----- HERO ----- */
-  .hero { text-align: center; padding: 5rem 1rem; background: linear-gradient(to bottom, #e8f1ff, #ffffff); }
-  .hero h1 { font-size: 3rem; color: #003d99; margin-bottom: 1rem; font-weight: 800; }
-  .hero p { font-size: 1.2rem; color: #555; max-width: 700px; margin: auto; line-height: 1.7; }
-
-  /* ----- STEM SECTION ----- */
-  .stem-section { padding: 4rem 1rem; text-align: center; }
-  .stem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-  .stem-card { background: #ffffff; border-radius: 20px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
-  .stem-card img { border-radius: 12px; margin-bottom: 1rem; transition: transform 0.3s ease; }
-  .stem-card h3 { color: #0056d2; font-size: 1.4rem; margin-bottom: 0.5rem; font-weight: 700; }
-  .stem-card p { color: #444; font-size: 0.95rem; line-height: 1.5; }
-
-  /* ----- FOOTER ----- */
-  footer { background: #003d99; color: #fff; text-align: center; padding: 1.5rem 0; font-size: 0.95rem; }
-
-  /* YouTube Floating Button */
-  .youtube-btn {
-    position: fixed;
-    bottom: 90px;
-    right: 90px;
-    width: 60px;
-    height: 60px;
-    background: #FF0000;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    z-index: 999;
-  }
-  .youtube-btn img { width: 35px; height: 35px; }
-</style>
+<!-- GLOBAL STYLE -->
+<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
+<!-- HEADER -->
 <header>
-  <div class="container nav">
-    <div class="brand">
-      <img src="images/logo.png" alt="NC Smart Tech Logo">
-    </div>
-
-    <nav>
+  <div class="nav-container">
+    <img src="images/logo.png" alt="NC Smart Tech Logo">
+    <div class="nav-links">
       <a id="navHome" href="index.html">Home</a>
       <a id="navSolutions" href="solutions.html">Solutions</a>
-      <a id="navEducation" href="education.html">Education</a>
+      <a id="navEducation" href="education.html" class="active">Education</a>
       <a id="navResearch" href="research.html">Research</a>
       <a id="navContact" href="contact.html">Contact</a>
-
-      <!-- ⭐ NEW — KIDS ZONE NAVBAR LINK -->
       <a id="navKids" href="kids-zone.html">Kids Zone</a>
 
-      <!-- Language Selector -->
       <select id="langSelector" class="lang-select">
-        <option value="en">English</option>
-        <option value="ms">Malay</option>
+        <option value="en">EN</option>
+        <option value="ms">BM</option>
       </select>
-    </nav>
+    </div>
   </div>
 </header>
 
-<main>
-  <!-- HERO -->
-  <section class="hero">
-    <h1 id="heroTitle">STEM & Coding Programs</h1>
-    <p id="heroDesc">Hands-on programs designed to develop real-world skills in technology and engineering.</p>
-  </section>
+<!-- HERO -->
+<section class="hero">
+  <h1 id="heroTitle">STEM & Coding Programs</h1>
+  <p id="heroDesc">
+    Hands-on programs designed to develop real-world skills in technology and engineering.
+  </p>
+</section>
 
-  <!-- STEM CARDS -->
-  <section class="stem-section">
-    <div class="container stem-grid">
+<!-- CONTENT -->
+<div class="container">
 
-      <div class="stem-card">
+  <section class="section">
+    <h2>Our Programs</h2>
+
+    <div class="boxes">
+
+      <div class="box">
         <img src="images/coding.png" alt="Coding Program">
-        <h3 id="card1Title">Coding & Programming</h3>
-        <p id="card1Desc">Learn Python, Scratch, and problem-solving skills in engaging projects.</p>
+        <strong id="card1Title">Coding & Programming</strong>
+        <p id="card1Desc">
+          Learn Python, Scratch, and problem-solving skills through engaging projects.
+        </p>
       </div>
 
-      <div class="stem-card">
+      <div class="box">
         <img src="images/robotics.png" alt="Robotics Program">
-        <h3 id="card2Title">Robotics Engineering</h3>
-        <p id="card2Desc">Build and program robots with sensors for real-life challenges.</p>
+        <strong id="card2Title">Robotics Engineering</strong>
+        <p id="card2Desc">
+          Build and program robots with sensors for real-life challenges.
+        </p>
       </div>
 
-      <div class="stem-card">
+      <div class="box">
         <img src="images/ai.png" alt="AI Program">
-        <h3 id="card3Title">Artificial Intelligence</h3>
-        <p id="card3Desc">Discover AI and complete real-world machine learning projects.</p>
+        <strong id="card3Title">Artificial Intelligence</strong>
+        <p id="card3Desc">
+          Discover AI concepts and complete real-world machine learning projects.
+        </p>
       </div>
 
-      <div class="stem-card">
+      <div class="box">
         <img src="images/iot.png" alt="IoT Program">
-        <h3 id="card4Title">IoT & Smart Devices</h3>
-        <p id="card4Desc">Learn IoT with sensors, automation, and smart environments.</p>
+        <strong id="card4Title">IoT & Smart Devices</strong>
+        <p id="card4Desc">
+          Learn IoT using sensors, automation, and smart environments.
+        </p>
       </div>
 
-      <!-- ⭐ NEW — KIDS ZONE CARD -->
-     <div class="stem-card" onclick="window.location.href='kids-zone.html'">
-  <img src="images/kids.png" alt="Kids Zone">
-  <h3 id="card5Title">Kids Zone</h3>
-  <p id="card5Desc">Fun STEM lessons and creative activities for young learners.</p>
-</div>
-
+      <!-- KIDS ZONE -->
+      <div class="box" onclick="window.location.href='kids-zone.html'" style="cursor:pointer;">
+        <img src="images/kids.png" alt="Kids Zone">
+        <strong id="card5Title">Kids Zone</strong>
+        <p id="card5Desc">
+          Fun STEM lessons and creative activities for young learners.
+        </p>
+      </div>
 
     </div>
   </section>
-</main>
 
+</div>
+
+<!-- FOOTER -->
 <footer>
-  <span id="footerText">© 2025 NC Smart Tech. All rights reserved.</span>
+  <span id="footerText">© 2026 NC Smart Tech. All Rights Reserved.</span>
 </footer>
 
-<!-- YouTube Floating Button -->
+<!-- YOUTUBE FLOAT -->
 <a href="https://www.youtube.com/@ARDUINOPLATFORM" target="_blank" class="youtube-btn">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg">
 </a>
 
 <!-- LANGUAGE SCRIPT -->
@@ -161,21 +121,21 @@ const langData = {
     heroDesc: "Hands-on programs designed to develop real-world skills in technology and engineering.",
 
     card1Title: "Coding & Programming",
-    card1Desc: "Learn Python, Scratch, and problem-solving skills in engaging projects.",
+    card1Desc: "Learn Python, Scratch, and problem-solving skills through engaging projects.",
 
     card2Title: "Robotics Engineering",
     card2Desc: "Build and program robots with sensors for real-life challenges.",
 
     card3Title: "Artificial Intelligence",
-    card3Desc: "Discover AI and complete real-world machine learning projects.",
+    card3Desc: "Discover AI concepts and complete real-world machine learning projects.",
 
     card4Title: "IoT & Smart Devices",
-    card4Desc: "Learn IoT with sensors, automation, and smart environments.",
+    card4Desc: "Learn IoT using sensors, automation, and smart environments.",
 
     card5Title: "Kids Zone",
     card5Desc: "Fun STEM lessons and creative activities for young learners.",
 
-    footerText: "© 2025 NC Smart Tech. All rights reserved."
+    footerText: "© 2026 NC Smart Tech. All Rights Reserved."
   },
 
   ms: {
@@ -204,18 +164,18 @@ const langData = {
     card5Title: "Zon Kanak-Kanak",
     card5Desc: "Aktiviti STEM menyeronokkan untuk kanak-kanak.",
 
-    footerText: "© 2025 NC Smart Tech. Hak cipta terpelihara."
+    footerText: "© 2026 NC Smart Tech. Hak cipta terpelihara."
   }
 };
 
 function updateLanguage(lang) {
   for (let key in langData[lang]) {
-    let element = document.getElementById(key);
-    if (element) element.innerText = langData[lang][key];
+    const el = document.getElementById(key);
+    if (el) el.innerText = langData[lang][key];
   }
 }
 
-document.getElementById("langSelector").addEventListener("change", function() {
+document.getElementById("langSelector").addEventListener("change", function () {
   updateLanguage(this.value);
 });
 </script>
