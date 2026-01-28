@@ -24,7 +24,7 @@
   main { max-width: 900px; margin: 20px auto; padding:0 16px }
 
   .hero { background: linear-gradient(180deg,#dff0ff,#fff); padding:28px; border-radius:16px; text-align:center; margin-bottom:20px }
-  .hero h1 { margin:0; color: var(--accent); font-size:1.8rem }
+  .hero h1 { margin:0; color: var(--accent) }
   .hero p { margin:6px 0 0; color:#345 }
 
   .info { background:#fff; border-radius:14px; padding:18px; margin-bottom:20px; box-shadow:0 10px 30px rgba(12,30,60,0.06) }
@@ -53,55 +53,52 @@
 <header>
   <div class="container nav">
     <div class="brand">
-      <img src="images/logo.png" alt="NC Smart Tech Logo">
+      <img src="images/logo.png" alt="NC Smart Tech Logo" class="logo">
     </div>
-   <nav>
-
+    <nav class="nav-links">
       <a id="navHome" href="index.html">Home</a>
       <a id="navProjects" href="drone.html">Solutions</a>
-      <a id="navEducation" href="education.html" 
+      <a id="navEducation" href="education.html">Education</a>
       <a id="navResearch" href="research.html">Research</a>
       <a id="navContact" href="contact.html">Contact</a>
-      <a id="navKids" href="kids-zone.html">Kids Zone</a>
-
-
-    <select id="langSelector">
-      <option value="en">English</option>
-      <option value="ms">Bahasa Melayu</option>
-    </select>
+      <a id="navKids" href="kids-zone.html" class="active">Kids Zone</a>
+      <select id="langSelector">
+        <option value="en">English</option>
+        <option value="ms">Bahasa Melayu</option>
+      </select>
+    </nav>
   </div>
 </header>
 
 <main>
   <section class="hero">
-    <h1>Arduino & Electronics Quiz</h1>
-    <p>Learn Arduino basics and play a fun quiz 🎮</p>
+    <h1 id="heroTitle">Arduino & Electronics Quiz</h1>
+    <p id="heroDesc">Learn Arduino basics and play a fun quiz 🎮</p>
   </section>
 
-  <!-- Arduino info for kids -->
   <section class="info">
-    <h2>🤖 What is Arduino?</h2>
-    <p>Arduino is a small computer board that helps kids learn how to build cool projects using electronics and coding.</p>
-    <ul>
+    <h2 id="infoTitle">🤖 What is Arduino?</h2>
+    <p id="infoDesc">Arduino is a small computer board that helps kids learn how to build cool projects using electronics and coding.</p>
+    <ul id="infoList">
       <li>💡 Turn ON LEDs</li>
       <li>🔊 Make sounds with a buzzer</li>
       <li>🚦 Build traffic lights</li>
       <li>📟 Read sensors like light and buttons</li>
     </ul>
-    <p><strong>Fun fact:</strong> Arduino uses simple code, so kids can learn step by step!</p>
+    <p id="infoFun"><strong>Fun fact:</strong> Arduino uses simple code, so kids can learn step by step!</p>
   </section>
 
   <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
-
   <div id="quizContainer"></div>
   <div class="score" id="quizScore">Score: 0</div>
 </main>
 
 <footer>
-  <div>© 2025 NC Smart Tech — Kids Zone</div>
+  <div id="footerText">© 2025 NC Smart Tech — Kids Zone</div>
 </footer>
 
 <script>
+// Quiz Data
 const quizData = [
   { q:"What does LED stand for?", o:["Light Emitting Diode","Low Energy Device","Light Energy Device"], a:0 },
   { q:"Which pin is used for analog input?", o:["A0-A5","D0-D13","GND"], a:0 },
@@ -129,7 +126,138 @@ function loadQuestion(){
 
   const optDiv = document.createElement('div');
   optDiv.className = 'options';
+  q.o.forEach((text,i)=>{
+    const b = document.createElement('button');
+    b.innerText = text;
+    b.onclick = ()=>checkAnswer(i,b,card);
+    optDiv.appendChild(b);<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arduino Quiz — Kids Zone</title>
+<style>
+  :root {
+    --bg: #f0f9ff;
+    --card: #fff;
+    --accent: #0b63d6;
+    --accent-dark: #0047a3;
+    --success:#16a34a;
+    --danger:#dc2626;
+  }
+  * { box-sizing: border-box; font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif }
+  body { margin: 0; background: var(--bg); color: #123; padding-bottom: 60px }
+  header { background:#fff; padding:12px 18px; position:sticky; top:0; box-shadow:0 6px 18px rgba(10,20,40,0.06); z-index:50 }
+  .container { max-width:1100px; margin:0 auto }
+  .nav { display:flex; align-items:center; gap:14px; justify-content:space-between }
+  .logo { height:44px }
+  nav a { color:#123; font-weight:600; margin-right:12px; text-decoration:none }
 
+  main { max-width: 900px; margin: 20px auto; padding:0 16px }
+
+  .hero { background: linear-gradient(180deg,#dff0ff,#fff); padding:28px; border-radius:16px; text-align:center; margin-bottom:20px }
+  .hero h1 { margin:0; color: var(--accent) }
+  .hero p { margin:6px 0 0; color:#345 }
+
+  .info { background:#fff; border-radius:14px; padding:18px; margin-bottom:20px; box-shadow:0 10px 30px rgba(12,30,60,0.06) }
+  .info h2 { margin-top:0; color:var(--accent) }
+  .info ul { padding-left:18px }
+
+  .card { background: var(--card); padding:16px; border-radius:14px; box-shadow:0 10px 30px rgba(12,30,60,0.06); margin-bottom:20px }
+  .card h3 { margin:0 0 12px 0; color: var(--accent) }
+  .options { display:flex; flex-direction:column; gap:10px }
+  .options button { padding:10px 14px; border-radius:8px; border:none; background:#e8f6ff; font-weight:600; cursor:pointer }
+
+  .feedback { margin-top:10px; font-weight:700 }
+  .correct { color:var(--success) }
+  .wrong { color:var(--danger) }
+
+  .progress { height:12px; background:#e5e7eb; border-radius:999px; overflow:hidden; margin:16px 0 }
+  .progress-bar { height:100%; width:0%; background:var(--accent); transition:.3s }
+
+  .score { font-weight:800; text-align:center; color:var(--accent-dark) }
+
+  footer { max-width:1100px; margin:28px auto; padding:18px; background:var(--accent-dark); color:#fff; border-radius:12px; text-align:center }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <img src="images/logo.png" alt="NC Smart Tech Logo" class="logo">
+    </div>
+    <nav class="nav-links">
+      <a id="navHome" href="index.html">Home</a>
+      <a id="navProjects" href="drone.html">Solutions</a>
+      <a id="navEducation" href="education.html">Education</a>
+      <a id="navResearch" href="research.html">Research</a>
+      <a id="navContact" href="contact.html">Contact</a>
+      <a id="navKids" href="kids-zone.html" class="active">Kids Zone</a>
+      <select id="langSelector">
+        <option value="en">English</option>
+        <option value="ms">Bahasa Melayu</option>
+      </select>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1 id="heroTitle">Arduino & Electronics Quiz</h1>
+    <p id="heroDesc">Learn Arduino basics and play a fun quiz 🎮</p>
+  </section>
+
+  <section class="info">
+    <h2 id="infoTitle">🤖 What is Arduino?</h2>
+    <p id="infoDesc">Arduino is a small computer board that helps kids learn how to build cool projects using electronics and coding.</p>
+    <ul id="infoList">
+      <li>💡 Turn ON LEDs</li>
+      <li>🔊 Make sounds with a buzzer</li>
+      <li>🚦 Build traffic lights</li>
+      <li>📟 Read sensors like light and buttons</li>
+    </ul>
+    <p id="infoFun"><strong>Fun fact:</strong> Arduino uses simple code, so kids can learn step by step!</p>
+  </section>
+
+  <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+  <div id="quizContainer"></div>
+  <div class="score" id="quizScore">Score: 0</div>
+</main>
+
+<footer>
+  <div id="footerText">© 2025 NC Smart Tech — Kids Zone</div>
+</footer>
+
+<script>
+// Quiz Data
+const quizData = [
+  { q:"What does LED stand for?", o:["Light Emitting Diode","Low Energy Device","Light Energy Device"], a:0 },
+  { q:"Which pin is used for analog input?", o:["A0-A5","D0-D13","GND"], a:0 },
+  { q:"Which function runs again and again?", o:["loop()","setup()","start()"], a:0 },
+  { q:"Which part makes sound?", o:["Buzzer","LED","Resistor"], a:0 },
+  { q:"What board is most popular?", o:["Arduino Uno","Arduino Max","Arduino Ultra"], a:0 }
+];
+
+let index = 0;
+let score = 0;
+
+function loadQuestion(){
+  const c = document.getElementById('quizContainer');
+  c.innerHTML = '';
+
+  if(index >= quizData.length){
+    c.innerHTML = `<div class='card'><h3>🎉 Quiz Finished!</h3><p>Your score: ${score} / ${quizData.length}</p></div>`;
+    return;
+  }
+
+  const q = quizData[index];
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `<h3>Q${index+1}: ${q.q}</h3>`;
+
+  const optDiv = document.createElement('div');
+  optDiv.className = 'options';
   q.o.forEach((text,i)=>{
     const b = document.createElement('button');
     b.innerText = text;
@@ -158,7 +286,6 @@ function checkAnswer(i,btn,card){
 
   card.appendChild(fb);
   document.getElementById('quizScore').innerText = `Score: ${score}`;
-
   setTimeout(()=>{ index++; loadQuestion(); }, 1200);
 }
 
@@ -168,7 +295,86 @@ function updateProgress(){
 }
 
 loadQuestion();
+
+// LANGUAGE DATA
+const langData = {
+  en:{
+    navHome:"Home",
+    navProjects:"Solutions",
+    navEducation:"Education",
+    navResearch:"Research",
+    navContact:"Contact",
+    navKids:"Kids Zone",
+    heroTitle:"Arduino & Electronics Quiz",
+    heroDesc:"Learn Arduino basics and play a fun quiz 🎮",
+    infoTitle:"🤖 What is Arduino?",
+    infoDesc:"Arduino is a small computer board that helps kids learn how to build cool projects using electronics and coding.",
+    infoList:["💡 Turn ON LEDs","🔊 Make sounds with a buzzer","🚦 Build traffic lights","📟 Read sensors like light and buttons"],
+    infoFun:"Fun fact: Arduino uses simple code, so kids can learn step by step!",
+    footerText:"© 2025 NC Smart Tech — Kids Zone"
+  },
+  ms:{
+    navHome:"Laman Utama",
+    navProjects:"Penyelesaian",
+    navEducation:"Pendidikan",
+    navResearch:"Penyelidikan",
+    navContact:"Hubungi",
+    navKids:"Zon Kanak-Kanak",
+    heroTitle:"Kuiz Arduino & Elektronik",
+    heroDesc:"Belajar asas Arduino dan main kuiz yang menyeronokkan 🎮",
+    infoTitle:"🤖 Apa itu Arduino?",
+    infoDesc:"Arduino ialah papan komputer kecil untuk kanak-kanak belajar membina projek elektronik dan pengaturcaraan.",
+    infoList:["💡 Hidupkan LED","🔊 Buat bunyi dengan buzzer","🚦 Bina lampu isyarat","📟 Baca sensor seperti cahaya dan butang"],
+    infoFun:"Fakta menyeronokkan: Arduino menggunakan kod mudah, jadi kanak-kanak boleh belajar langkah demi langkah!",
+    footerText:"© 2025 NC Smart Tech — Zon Kanak-Kanak"
+  }
+};
+
+// LANGUAGE SWITCH
+function updateLanguage(lang){
+  document.getElementById("navHome").innerText = langData[lang].navHome;
+  document.getElementById("navProjects").innerText = langData[lang].navProjects;
+  document.getElementById("navEducation").innerText = langData[lang].navEducation;
+  document.getElementById("navResearch").innerText = langData[lang].navResearch;
+  document.getElementById("navContact").innerText = langData[lang].navContact;
+  document.getElementById("navKids").innerText = langData[lang].navKids;
+  document.getElementById("heroTitle").innerText = langData[lang].heroTitle;
+  document.getElementById("heroDesc").innerText = langData[lang].heroDesc;
+  document.getElementById("infoTitle").innerText = langData[lang].infoTitle;
+  document.getElementById("infoDesc").innerText = langData[lang].infoDesc;
+  
+  const ul = document.getElementById("infoList");
+  ul.innerHTML = "";
+  langData[lang].infoList.forEach(item=>{
+    const li = document.createElement("li");
+    li.innerText = item;
+    ul.appendChild(li);
+  });
+  
+  document.getElementById("infoFun").innerHTML = langData[lang].infoFun;
+  document.getElementById("footerText").innerText = langData[lang].footerText;
+}
+
+document.getElementById("langSelector").addEventListener("change", function(){
+  updateLanguage(this.value);
+});
 </script>
 
 </body>
 </html>
+
+  });
+
+  card.appendChild(optDiv);
+  c.appendChild(card);
+  updateProgress();
+}
+
+function checkAnswer(i,btn,card){
+  const q = quizData[index];
+  const fb = document.createElement('div');
+  fb.className = 'feedback';
+
+  if(i === q.a){
+    score++;
+    fb.innerTex
