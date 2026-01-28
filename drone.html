@@ -114,4 +114,284 @@ header {
 }
 .card {
   background:#ffffff;
-  bord
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align:center;
+}
+.card:hover {
+  transform:scale(1.03);
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+.card img {
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+.card-text {
+  padding:15px;
+  font-size:16px;
+  color:#333;
+}
+
+/* VIDEO BOX */
+.video-box {
+  margin-top:20px;
+  width:100%;
+  max-width:900px;
+  margin:auto;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+.video-box iframe {
+  width:100%;
+  height:500px;
+  border:none;
+  border-radius:15px;
+}
+
+/* ENROLL BUTTON */
+.btn {
+  display:inline-block;
+  padding:14px 30px;
+  background:#0056d2;
+  color:white;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  margin-top:30px;
+  transition:0.3s;
+}
+.btn:hover {
+  background:#0041a8;
+}
+
+/* FLOATING BUTTONS STACKED */
+.floating-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  z-index:999;
+}
+.floating-btn a {
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.floating-btn a img {
+  width:35px;
+  height:35px;
+}
+.floating-btn a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+.floating-btn .whatsapp { background:#25D366; }
+.floating-btn .youtube { background:#FF0000; }
+
+/* RESPONSIVE */
+@media (max-width:768px) {
+  .hero h1 { font-size:36px; }
+  .hero p { font-size:16px; }
+  .card img { height:150px; }
+  .video-box iframe { height:350px; }
+  .nav-container { flex-direction:column; align-items:flex-start; }
+  .nav-links { margin-top:10px; flex-wrap:wrap; gap:8px; }
+}
+@media (max-width:480px) {
+  .hero h1 { font-size:28px; }
+  .hero p { font-size:14px; }
+  .card img { height:120px; }
+  .video-box iframe { height:250px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER / NAVBAR -->
+<header>
+  <div class="nav-container">
+    <img src="images/logo.png" alt="NC Smart Tech Logo">
+    <div class="nav-links">
+      <a id="navHome" href="index.html">Home</a>
+      <a id="navProjects" href="drone.html">Solutions</a>
+      <a id="navEducation" href="education.html">Education</a>
+      <a id="navResearch" href="research.html">Research</a>
+      <a id="navContact" href="contact.html">Contact</a>
+      <a id="navKids" href="kids-zone.html">Kids Zone</a>
+
+      <select id="langSelector">
+        <option value="en">EN</option>
+        <option value="ms">BM</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <h1 id="heroTitle">Drone Technology Program</h1>
+  <p id="heroDesc">Master flight skills, aerodynamics, drone parts, and real-world missions.</p>
+</div>
+
+<div class="container">
+
+  <!-- ABOUT -->
+  <div class="section">
+    <h2 id="aboutTitle">About This Program</h2>
+    <p id="aboutDesc" style="text-align:center; max-width:800px; margin:auto;">
+      Students learn the fundamentals of drone technology including flight control, safety, aerodynamics, and hands-on simulator training. Perfect for ages 10–18.
+    </p>
+  </div>
+
+  <!-- IMAGE GALLERY -->
+  <div class="section">
+    <h2 id="highlightsTitle">Program Highlights</h2>
+    <div class="gallery">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1508614589041-895b88991e66?auto=format&fit=crop&w=900&q=60" alt="Drone Basics">
+        <div class="card-text" id="card1">Learn drone basics and components.</div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1508873699372-7ae4c3f797e0?auto=format&fit=crop&w=900&q=60" alt="Simulator Practice">
+        <div class="card-text" id="card2">Perfect simulator practice for safe flying.</div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1510733333360-0492b254a874?auto=format&fit=crop&w=900&q=60" alt="Outdoor Flight">
+        <div class="card-text" id="card3">Real outdoor drone flight sessions.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="section">
+    <h2 id="videoTitle">Watch Our Drone Program in Action</h2>
+    <div class="video-box">
+      <iframe 
+        src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+        title="Drone Program Video" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <!-- WHAT STUDENTS LEARN -->
+  <div class="section">
+    <h2 id="learnTitle">What Students Learn</h2>
+    <div class="box" id="learn1"><strong>✔ Drone Components</strong><br>Frame, motors, ESC, controllers, battery.</div>
+    <div class="box" id="learn2"><strong>✔ Aerodynamics</strong><br>How drones move, lift, turn, and stabilize.</div>
+    <div class="box" id="learn3"><strong>✔ Simulator Training</strong><br>Safe practice before real flights.</div>
+    <div class="box" id="learn4"><strong>✔ Real Flight Training</strong><br>Outdoor practice with licensed instructors.</div>
+    <div class="box" id="learn5"><strong>✔ Malaysia Drone Regulations</strong><br>Must-know rules for hobby & commercial use.</div>
+  </div>
+
+  <!-- BENEFITS -->
+  <div class="section">
+    <h2 id="benefitsTitle">Benefits for Students</h2>
+    <div class="box" id="benefit1">Improve confidence and decision-making.</div>
+    <div class="box" id="benefit2">Learn engineering and STEM concepts.</div>
+    <div class="box" id="benefit3">Hands-on learning with real devices.</div>
+  </div>
+
+  <div style="text-align:center;">
+    <a class="btn" id="enrollBtn" href="contact.html">Enroll Now</a>
+  </div>
+
+</div>
+
+<!-- FLOATING BUTTONS -->
+<div class="floating-btn">
+  <a href="https://wa.me/601158605250" target="_blank" class="whatsapp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+  <a href="https://www.youtube.com/@ARDUINOPLATFORM" target="_blank" class="youtube">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
+  </a>
+</div>
+
+<!-- LANGUAGE SCRIPT -->
+<script>
+const langData = {
+  en: {
+    navHome:"Home",
+    navProjects:"Solutions",
+    navEducation:"Education",
+    navResearch:"Research",
+    navContact:"Contact",
+    navKids:"Kids Zone",
+    heroTitle:"Drone Technology Program",
+    heroDesc:"Master flight skills, aerodynamics, drone parts, and real-world missions.",
+    aboutTitle:"About This Program",
+    aboutDesc:"Students learn the fundamentals of drone technology including flight control, safety, aerodynamics, and hands-on simulator training. Perfect for ages 10–18.",
+    highlightsTitle:"Program Highlights",
+    card1:"Learn drone basics and components.",
+    card2:"Perfect simulator practice for safe flying.",
+    card3:"Real outdoor drone flight sessions.",
+    videoTitle:"Watch Our Drone Program in Action",
+    learnTitle:"What Students Learn",
+    learn1:"✔ Drone Components\nFrame, motors, ESC, controllers, battery.",
+    learn2:"✔ Aerodynamics\nHow drones move, lift, turn, and stabilize.",
+    learn3:"✔ Simulator Training\nSafe practice before real flights.",
+    learn4:"✔ Real Flight Training\nOutdoor practice with licensed instructors.",
+    learn5:"✔ Malaysia Drone Regulations\nMust-know rules for hobby & commercial use.",
+    benefitsTitle:"Benefits for Students",
+    benefit1:"Improve confidence and decision-making.",
+    benefit2:"Learn engineering and STEM concepts.",
+    benefit3:"Hands-on learning with real devices.",
+    enrollBtn:"Enroll Now"
+  },
+  ms: {
+    navHome:"Laman Utama",
+    navProjects:"Penyelesaian",
+    navEducation:"Pendidikan",
+    navResearch:"Penyelidikan",
+    navContact:"Hubungi",
+    navKids:"Zon Kanak-Kanak",
+    heroTitle:"Program Teknologi Dron",
+    heroDesc:"Kuasi kemahiran penerbangan, aerodinamik, bahagian dron dan misi dunia sebenar.",
+    aboutTitle:"Mengenai Program Ini",
+    aboutDesc:"Pelajar mempelajari asas teknologi dron termasuk kawalan penerbangan, keselamatan, aerodinamik dan latihan simulator. Sesuai untuk umur 10–18 tahun.",
+    highlightsTitle:"Sorotan Program",
+    card1:"Belajar asas dron dan komponennya.",
+    card2:"Latihan simulator selamat untuk penerbangan.",
+    card3:"Sesi penerbangan dron di luar.",
+    videoTitle:"Tonton Program Dron Kami",
+    learnTitle:"Apa Yang Pelajar Pelajari",
+    learn1:"✔ Komponen Dron\nRangka, motor, ESC, pengawal, bateri.",
+    learn2:"✔ Aerodinamik\nBagaimana dron bergerak, terangkat, berpusing, dan stabil.",
+    learn3:"✔ Latihan Simulator\nLatihan selamat sebelum penerbangan sebenar.",
+    learn4:"✔ Latihan Penerbangan Sebenar\nLatihan luar dengan jurulatih berlesen.",
+    learn5:"✔ Peraturan Dron Malaysia\nPeraturan penting untuk hobi & komersial.",
+    benefitsTitle:"Manfaat Untuk Pelajar",
+    benefit1:"Tingkatkan keyakinan dan kemahiran membuat keputusan.",
+    benefit2:"Pelajari konsep kejuruteraan dan STEM.",
+    benefit3:"Pembelajaran praktikal dengan peranti sebenar.",
+    enrollBtn:"Daftar Sekarang"
+  }
+};
+
+function updateLanguage(lang){
+  for(let key in langData[lang]){
+    const el=document.getElementById(key);
+    if(el) el.innerText = langData[lang][key];
+  }
+}
+
+document.getElementById("langSelector").addEventListener("change", function(){
+  updateLanguage(this.value);
+});
+</script>
+
+</body>
+</html>
