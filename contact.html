@@ -3,196 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NC Smart Tech — Contact</title>
+<title>Contact — NC Smart Tech</title>
 
 <!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
-
-  body {
-    background: #f5f8ff;
-    color: #222;
-  }
-
-  /* NAVIGATION */
-  header {
-    background: #fff;
-    padding: 15px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  }
-
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-  }
-
-  .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  nav a {
-    margin-left: 25px;
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: 0.3s;
-  }
-
-  nav a:hover {
-    color: #005eff;
-  }
-
-  /* HERO SECTION */
-  .hero {
-    text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(to bottom right, #005eff, #1b8fff);
-    color: white;
-  }
-
-  .hero h1 {
-    font-size: 50px;
-    margin-bottom: 10px;
-  }
-
-  .hero p {
-    font-size: 18px;
-    opacity: 0.9;
-  }
-
-  /* CONTACT FORM */
-  #contact {
-    padding: 70px 0;
-  }
-
-  .contact-form {
-    background: #fff;
-    padding: 40px;
-    border-radius: 18px;
-    max-width: 600px;
-    margin: auto;
-    box-shadow: 0 6px 25px rgba(0,0,0,0.1);
-    animation: fadeIn 0.7s ease-in-out;
-  }
-
-  .contact-form label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-  }
-
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    transition: 0.3s;
-  }
-
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    border-color: #005eff;
-    box-shadow: 0 0 6px rgba(0,94,255,0.3);
-    outline: none;
-  }
-
-  .send-btn {
-    width: 100%;
-    padding: 15px;
-    background: #005eff;
-    border: none;
-    font-size: 18px;
-    color: white;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: 600;
-  }
-
-  .send-btn:hover {
-    background: #0043c4;
-  }
-
-  /* FOOTER */
-  .footer {
-    text-align: center;
-    padding: 20px;
-    background: #fff;
-    margin-top: 50px;
-    color: #555;
-    border-top: 1px solid #eaeaea;
-  }
-.youtube-btn {
-  position: fixed;
-  bottom: 90px;       /* adjust distance from bottom */
-  right: 90px;        /* adjust distance from right */
-  width: 60px;
-  height: 60px;
-  background: #FF0000;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  z-index: 999;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.youtube-btn img {
-  width: 35px;  /* icon size */
-  height: 35px;
-}
-
-.youtube-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-}
-
-  /* ANIMATION */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>
-
+<!-- MAIN GLOBAL STYLE -->
+<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
+<!-- HEADER -->
 <header>
-  <div class="container nav">
-    <div class="brand">
-      <img src="images/logo.png" alt="NC Smart Tech Logo" height="250">
-    </div>
-    <nav>
+  <div class="nav-container">
+    <img src="images/logo.png" alt="NC Smart Tech Logo">
+    <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="solutions.html">Solutions</a>
       <a href="education.html">Education</a>
+      <a href="solutions.html">Solutions</a>
       <a href="research.html">Research</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
   </div>
 </header>
 
-<main>
-
+<!-- HERO -->
 <section class="hero">
   <h1>Contact Us</h1>
   <p>Get in touch for demos, inquiries, or collaboration opportunities.</p>
 </section>
 
-<section id="contact">
-  <div class="container">
+<!-- CONTENT -->
+<div class="container">
+
+  <section class="section">
+    <h2>Send Us a Message</h2>
+
     <form action="https://formspree.io/f/xyzlwqka" method="POST" class="contact-form">
       <label>Your Name</label>
       <input type="text" name="name" required>
@@ -203,76 +50,52 @@
       <label>Your Message</label>
       <textarea name="message" rows="5" required></textarea>
 
-      <button type="submit" class="send-btn">Send Message</button>
+      <div class="center">
+        <button type="submit" class="btn">Send Message</button>
+      </div>
     </form>
-  </div>
-</section>
+  </section>
 
-<!-- Chat Bot Integration -->
+</div>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 NC Smart Tech. All Rights Reserved.
+</footer>
+
+<!-- CHATBOT -->
 <script>
 (function(){
-    if(!window.chatbase || window.chatbase("getState") !== "initialized"){
-        window.chatbase = (...args)=>{ 
-            if(!window.chatbase.q){ window.chatbase.q = []; } 
-            window.chatbase.q.push(args); 
-        };
-        window.chatbase = new Proxy(window.chatbase,{
-            get(target, prop){ 
-                if(prop === "q"){ return target.q; } 
-                return (...args)=>target(prop, ...args); 
-        }});
-    }
-    const onLoad = function(){
-        const script = document.createElement("script");
-        script.src = "https://www.chatbase.co/embed.min.js";
-        script.id = "chatbot";
-        script.domain = "www.chatbase.co";
-        document.body.appendChild(script);
+  if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+    window.chatbase = (...args)=>{
+      if(!window.chatbase.q){ window.chatbase.q=[]; }
+      window.chatbase.q.push(args);
     };
-    if(document.readyState === "complete"){ onLoad(); }
-    else { window.addEventListener("load", onLoad); }
+    window.chatbase = new Proxy(window.chatbase,{
+      get(target, prop){
+        if(prop === "q"){ return target.q; }
+        return (...args)=>target(prop, ...args);
+      }
+    });
+  }
+  const onLoad = function(){
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "chatbot";
+    document.body.appendChild(script);
+  };
+  window.addEventListener("load", onLoad);
 })();
 </script>
 
-</main>
-
-<footer class="footer">
-  &copy; 2025 NC Smart Tech. All rights reserved.
-</footer>
-<!-- WhatsApp Floating Button -->
+<!-- WHATSAPP -->
 <a href="https://wa.me/601158605250" target="_blank" class="whatsapp-float">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
-<style>
-.whatsapp-float {
-  position: fixed;
-  bottom: 22px;
-  right: 22px;
-  z-index: 999;
-  background: #25D366;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: 0.3s;
-}
-
-.whatsapp-float img {
-  width: 35px;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.1);
-}
-</style>
-
-<!-- YouTube Floating Button -->
+<!-- YOUTUBE -->
 <a href="https://www.youtube.com/@ARDUINOPLATFORM" target="_blank" class="youtube-btn">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg">
 </a>
 
 </body>
