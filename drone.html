@@ -2,29 +2,70 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Drone Program</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drone Program — NC Smart Tech</title>
 
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- GLOBAL STYLE -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- PAGE-SPECIFIC STYLE -->
 <style>
-body {
-  font-family: Arial;
-  margin:0;
-  padding:0;
-  background:#ffffff;
-  color:#222;
+/* NAVBAR */
+header {
+  background:#fff;
+  padding:15px 0;
+  box-shadow:0 2px 8px rgba(0,0,0,0.07);
+  position: sticky;
+  top:0;
+  z-index:999;
+}
+.nav-container {
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.nav-container img {
+  width:200px;
+}
+.nav-links a {
+  margin:0 12px;
+  font-weight:500;
+  color:#333;
+  text-decoration:none;
+  transition:0.3s;
+}
+.nav-links a:hover {
+  color:#0056d2;
+}
+.nav-links a.active {
+  color:#0056d2;
+  font-weight:600;
+}
+.lang-select {
+  padding:6px 10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  margin-left:10px;
 }
 
-/* HERO SECTION */
+/* HERO */
 .hero {
   padding:120px 20px;
-  background:url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+  background: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
   color:white;
   text-align:center;
   box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.45);
 }
-.hero h1 { font-size:50px; font-weight:700; }
-.hero p { font-size:20px; margin-top:10px; }
+.hero h1 { font-size:50px; font-weight:700; margin-bottom:10px; }
+.hero p { font-size:20px; max-width:800px; margin:auto; }
 
-/* GENERAL LAYOUT */
+/* CONTAINER */
 .container {
   width:90%;
   max-width:1100px;
@@ -32,24 +73,35 @@ body {
   padding:50px 0;
 }
 
+/* SECTION HEADINGS */
 .section h2 {
-  color:#0a7b44;
-  margin-bottom:10px;
+  color:#0056d2;
   font-size:32px;
   font-weight:700;
+  text-align:center;
+  margin-bottom:20px;
+}
+.section h2::after {
+  content:'';
+  display:block;
+  width:60px;
+  height:4px;
+  background:#0056d2;
+  margin:10px auto 0;
+  border-radius:2px;
 }
 
 /* INFO BOXES */
 .box {
-  background:#f1fff6;
+  background:#f5f8ff;
   padding:20px;
   border-radius:12px;
   margin-bottom:20px;
-  border:1px solid #c9f1d8;
-  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+  border:1px solid #cce0ff;
+  box-shadow:0 5px 15px rgba(0,86,210,0.05);
 }
 
-/* IMAGE CARDS */
+/* IMAGE GALLERY */
 .gallery {
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
@@ -62,7 +114,8 @@ body {
   border-radius:15px;
   overflow:hidden;
   box-shadow:0 6px 20px rgba(0,0,0,0.1);
-  transition:transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align:center;
 }
 
 .card:hover {
@@ -82,16 +135,37 @@ body {
   color:#333;
 }
 
+/* VIDEO BOX */
+.video-box {
+  margin-top:20px;
+  width:100%;
+  max-width:900px;
+  margin:auto;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+.video-box iframe {
+  width:100%;
+  height:500px;
+  border:none;
+  border-radius:15px;
+}
+
 /* ENROLL BUTTON */
 .btn {
   display:inline-block;
-  padding:12px 25px;
-  background:#0a7b44;
+  padding:14px 30px;
+  background:#0056d2;
   color:white;
-  border-radius:6px;
+  border-radius:8px;
   text-decoration:none;
-  font-weight:bold;
-  margin-top:20px;
+  font-weight:600;
+  margin-top:30px;
+  transition:0.3s;
+}
+.btn:hover {
+  background:#0041a8;
 }
 
 /* YouTube Floating Button */
@@ -110,30 +184,52 @@ body {
   z-index: 999;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.youtube-btn img { width: 35px; height: 35px; }
+.youtube-btn img {
+  width: 35px;
+  height: 35px;
+}
 .youtube-btn:hover {
   transform: scale(1.1);
   box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
-  .video-box {
-  margin-top:20px;
-  width:100%;
-  max-width:900px;
-  margin:auto;
-  border-radius:15px;
-  overflow:hidden;
-  box-shadow:0 8px 20px rgba(0,0,0,0.15);
-}
 
-.video-box iframe {
-  width:100%;
-  height:500px;
+/* RESPONSIVE */
+@media (max-width:768px) {
+  .hero h1 { font-size:36px; }
+  .hero p { font-size:16px; }
+  .card img { height:150px; }
+  .video-box iframe { height:350px; }
+  .nav-container { flex-direction:column; align-items:flex-start; }
+  .nav-links { margin-top:10px; display:flex; flex-wrap:wrap; }
+  .nav-links a { margin:5px; }
 }
-
+@media (max-width:480px) {
+  .hero h1 { font-size:28px; }
+  .hero p { font-size:14px; }
+  .card img { height:120px; }
+  .video-box iframe { height:250px; }
+}
 </style>
-
 </head>
 <body>
+
+<!-- HEADER / NAVBAR -->
+<header>
+  <div class="nav-container">
+    <img src="images/logo.png" alt="NC Smart Tech Logo">
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="drone.html">Solutions</a>
+      <a href="education.html">Education</a>
+      <a href="research.html">Research</a>
+      <a href="contact.html">Contact</a>
+      <select id="langSelector" class="lang-select">
+        <option value="en">EN</option>
+        <option value="ms">BM</option>
+      </select>
+    </div>
+  </div>
+</header>
 
 <!-- HERO -->
 <div class="hero">
@@ -143,69 +239,67 @@ body {
 
 <div class="container">
 
-<!-- ABOUT -->
-<div class="section">
-  <h2>About This Program</h2>
-  <p>Students learn the fundamentals of drone technology including flight control, safety, aerodynamics and hands-on simulator training. Perfect for ages 10–18.</p>
-</div>
-
-<!-- IMAGE GALLERY -->
-<div class="section">
-  <h2>Program Highlights</h2>
-
-  <div class="gallery">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1508614589041-895b88991e66?auto=format&fit=crop&w=900&q=60">
-      <div class="card-text">Learn drone basics and components.</div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1508873699372-7ae4c3f797e0?auto=format&fit=crop&w=900&q=60">
-      <div class="card-text">Perfect simulator practice for safe flying.</div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1510733333360-0492b254a874?auto=format&fit=crop&w=900&q=60">
-      <div class="card-text">Real outdoor drone flight sessions.</div>
-    </div>
-
+  <!-- ABOUT -->
+  <div class="section">
+    <h2>About This Program</h2>
+    <p style="text-align:center; max-width:800px; margin:auto;">
+      Students learn the fundamentals of drone technology including flight control, safety, aerodynamics, and hands-on simulator training. Perfect for ages 10–18.
+    </p>
   </div>
-</div>
-<!-- VIDEO SECTION -->
-<div class="section">
-  <h2>Watch Our Drone Program in Action</h2>
 
-  <div class="video-box">
-    <iframe 
-      src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-      title="Drone Program Video"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
+  <!-- IMAGE GALLERY -->
+  <div class="section">
+    <h2>Program Highlights</h2>
+    <div class="gallery">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1508614589041-895b88991e66?auto=format&fit=crop&w=900&q=60" alt="Drone Basics">
+        <div class="card-text">Learn drone basics and components.</div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1508873699372-7ae4c3f797e0?auto=format&fit=crop&w=900&q=60" alt="Simulator Practice">
+        <div class="card-text">Perfect simulator practice for safe flying.</div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1510733333360-0492b254a874?auto=format&fit=crop&w=900&q=60" alt="Outdoor Flight">
+        <div class="card-text">Real outdoor drone flight sessions.</div>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- WHAT STUDENTS LEARN -->
-<div class="section">
-  <h2>What Students Learn</h2>
-  <div class="box"><strong>✔ Drone Components</strong><br>Frame, motors, ESC, controllers, battery.</div>
-  <div class="box"><strong>✔ Aerodynamics</strong><br>How drones move, lift, turn and stabilize.</div>
-  <div class="box"><strong>✔ Simulator Training</strong><br>Safe practice before real flights.</div>
-  <div class="box"><strong>✔ Real Flight Training</strong><br>Outdoor practice with licensed instructors.</div>
-  <div class="box"><strong>✔ Malaysia Drone Regulations</strong><br>Must-know rules for hobby & commercial use.</div>
-</div>
+  <!-- VIDEO -->
+  <div class="section">
+    <h2>Watch Our Drone Program in Action</h2>
+    <div class="video-box">
+      <iframe 
+        src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+        title="Drone Program Video" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
 
-<!-- BENEFITS -->
-<div class="section">
-  <h2>Benefits for Students</h2>
-  <div class="box">Improve confidence and decision-making.</div>
-  <div class="box">Learn engineering and STEM concepts.</div>
-  <div class="box">Hands-on learning with real devices.</div>
-</div>
+  <!-- WHAT STUDENTS LEARN -->
+  <div class="section">
+    <h2>What Students Learn</h2>
+    <div class="box"><strong>✔ Drone Components</strong><br>Frame, motors, ESC, controllers, battery.</div>
+    <div class="box"><strong>✔ Aerodynamics</strong><br>How drones move, lift, turn, and stabilize.</div>
+    <div class="box"><strong>✔ Simulator Training</strong><br>Safe practice before real flights.</div>
+    <div class="box"><strong>✔ Real Flight Training</strong><br>Outdoor practice with licensed instructors.</div>
+    <div class="box"><strong>✔ Malaysia Drone Regulations</strong><br>Must-know rules for hobby & commercial use.</div>
+  </div>
 
-<a class="btn" href="contact.html">Enroll Now</a>
+  <!-- BENEFITS -->
+  <div class="section">
+    <h2>Benefits for Students</h2>
+    <div class="box">Improve confidence and decision-making.</div>
+    <div class="box">Learn engineering and STEM concepts.</div>
+    <div class="box">Hands-on learning with real devices.</div>
+  </div>
+
+  <div style="text-align:center;">
+    <a class="btn" href="contact.html">Enroll Now</a>
+  </div>
 
 </div>
 
